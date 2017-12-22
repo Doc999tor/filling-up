@@ -16,9 +16,24 @@ body
   margin 0
 .h1, h1, button, input
   font-size 21px
+  &:focus
+    outline none
 .right
   float right
 .left
   float left
 .hidden, #hidden
   display none
+.bullets
+  margin 0 auto
+  width 36px
+  padding-top 10px
+  .bullet
+    width 10px
+    height 10px
+    border-radius 50%
+    background-color grey
+    display inline-block
+    margin 0 1px
+  .active
+    background-color red

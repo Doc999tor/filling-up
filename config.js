@@ -1,11 +1,26 @@
 var config = {
   translations: {
-
+    welcome: 'Welcome',
+    be_glad: 'We will be glad if you fill out the following data',
+    skip: 'Skip and continue with',
+    facebook: 'Login with facebook',
+    or_fill: 'fill out the following data',
+    full_name: 'Full name',
+    email: 'Email',
+    adress: 'Adress',
+    continue: 'Continue',
+    selfies: 'Want to make selfies',
+    or: 'or',
+    want: 'Yes, I want, go foto',
+    not_now: 'Not now',
+    back: 'Back'
   },
   urls: {
-
+    media: './dist/media/',
+    photo: '/photo',
+    home: '/'
   },
-  'data': {
+  data: {
     name: '',
     email: '',
     address: '',
@@ -16,6 +31,6 @@ var config = {
     note: '',
     permit_ads: false
   },
-  isRTL: true,
+  isRtL: false,
   address_based: true
 }
