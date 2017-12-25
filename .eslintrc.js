@@ -11,7 +11,8 @@ module.exports = {
     config: false,
     Swiper: false,
     moment: false,
-    React: false
+    React: false,
+    FB: false
   },
   "parser": "babel-eslint",
   "parserOptions": {

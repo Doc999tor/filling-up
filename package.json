@@ -38,8 +38,5 @@
     "stylint": "^1.5.9",
     "webpack": "^3.8.1",
     "stylus": "^0.54.5"
-  },
-  "dependencies": {
-    "preact": "^8.2.7"
   }
 }

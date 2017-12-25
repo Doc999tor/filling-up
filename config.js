@@ -16,6 +16,7 @@ var config = {
     back: 'Back'
   },
   urls: {
+    adress: 'https://maps.googleapis.com/maps/api/geocode/json?address={query}&language={language}',
     media: './dist/media/',
     photo: '/photo',
     home: '/'
@@ -32,5 +33,7 @@ var config = {
     permit_ads: false
   },
   isRtL: false,
-  address_based: true
+  address_based: true,
+  plugins: ['highres_photos'],
+  timeout: 500
 }
