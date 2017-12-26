@@ -1,5 +1,6 @@
 var config = {
   translations: {
+    language: 'en',
     welcome: 'Welcome',
     be_glad: 'We will be glad if you fill out the following data',
     skip: 'Skip and continue with',
@@ -35,5 +36,6 @@ var config = {
   isRtL: false,
   address_based: true,
   plugins: ['highres_photos'],
-  timeout: 500
+  timeout: 500,
+  max_side: 1000
 }
