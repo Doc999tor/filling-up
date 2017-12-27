@@ -70,10 +70,11 @@ class Home extends React.Component {
   componentWillMount = () => { if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl' }
   render () {
     return (
-      <div id='home'>
+      <div id='photo'>
         <div className='bullets'>
           <div className='bullet' />
           <div className='bullet active' />
+          <div className='bullet' />
           <div className='bullet' />
         </div>
         <h1 className='selfies'>{config.translations.selfies}</h1>
@@ -92,7 +93,7 @@ class Home extends React.Component {
         </div>
         <div className='btns-wrap'>
           <div className='btn'><button><Link to={config.urls.home}>{config.translations.back}</Link></button></div>
-          <div className='btn'><button><Link to={'/photo'}>{config.translations.continue}</Link></button></div>
+          <div className='btn'><button><Link to={config.urls.other_data}>{config.translations.continue}</Link></button></div>
         </div>
       </div>
     )

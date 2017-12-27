@@ -74,6 +74,7 @@ class Home extends React.Component {
           <div className='bullet active' />
           <div className='bullet' />
           <div className='bullet' />
+          <div className='bullet' />
         </div>
         <h1 className='welcome'>{config.translations.welcome}</h1>
         <h1 className='be_glad'>{config.translations.be_glad}</h1>
