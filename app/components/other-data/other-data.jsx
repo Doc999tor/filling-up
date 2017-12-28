@@ -6,9 +6,15 @@ let timeout
 
 class Home extends React.Component {
   state = {
-    selectedLabel: config.translations.source_list[0].label,
-    birthdate: '',
-    gender: '',
+    selectedLabel: config.data.source ? config.data.source : config.translations.source,
+    selectedValue: config.data.source,
+    birthdate: config.data.birthdate,
+    gender: config.data.gender,
+    note: config.data.note,
+    isRecomendation: false,
+    checkChecker: false,
+    isCheck: false,
+    userId: null,
     clients: []
   }
   changeSelect = e => {
@@ -53,10 +59,10 @@ class Home extends React.Component {
           </div>
         </div>
         <div className='inputs'>
-          <input ref='date' type='text' onBlur={() => { this.refs.date.type = 'text' }} onFocus={() => { this.refs.date.type = 'date' }}
+          <input className='field' ref='date' type='text' onBlur={() => { this.refs.date.type = 'text' }} onFocus={() => { this.refs.date.type = 'date' }}
             placeholder={config.translations.date_of_birth} value={this.state.birthdate} onChange={e => this.setState({birthdate: e.target.value})} />
-          <div className='select-wrap'>
-            <Select value={this.state.selectedLabel} onChange={e => this.changeSelect(e)} options={config.translations.source_list} />
+          <div className='select-wrap' style={config.translations.source === this.state.selectedLabel ? {color: 'grey'} : {color: 'black'}}>
+            <Select value={this.state.selectedLabel} onChange={e => this.changeSelect(e)} options={config.translations.source_list} placeholder='asdfa' />
           </div>
           <div className={this.state.isRecomendation ? 'input-wrap' : 'hidden'}>
             <div className='label'>{config.translations.recommended_by}</div>
@@ -68,10 +74,22 @@ class Home extends React.Component {
                 <div key={k} onClick={() => this.setState({inputValue: i.name, userId: i.id, isViewClients: false})}>{i.name}</div>)}
             </div>
           </div>
-          <input type='text' placeholder={config.translations.remarks_and_preferences} value={this.state.adres} onChange={e => this.changeAdress(e.target.value)} />
+          <input className='field' type='text' placeholder={config.translations.remarks_and_preferences} value={this.state.note} onChange={e => this.setState({note: e.target.value})} />
+          <div className='checkbox_container' style={this.state.checkChecker ? {border: '1px solid red'} : {border: '1px solid white'}}>
+            <div className='checkbox_wrap'>
+              <input className='checkbox' type='checkbox' checked={this.state.isCheck}
+                onChange={() => this.setState({isCheck: !this.state.isCheck, checkChecker: false}, () => {
+                  if (this.state.isCheck) config.data.permit_ads = true
+                  else config.data.permit_ads = false
+                })} />
+            </div>
+            <div className='label_wrap'>
+              <h1 className='checkbox_label'>{config.translations.customers_agree}</h1>
+            </div>
+          </div>
         </div>
-        <div className='btn-wrap'>
-          <button><Link to='/'>{config.translations.confirm}</Link></button>
+        <div className='btn-wrap' onClick={!this.state.isCheck ? () => this.setState({checkChecker: true}) : () => {}}>
+          <button>{this.state.isCheck ? <Link to='/'>{config.translations.confirm}</Link> : config.translations.confirm}</button>
         </div>
       </div>
     )

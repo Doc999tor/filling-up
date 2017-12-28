@@ -32,7 +32,7 @@
     width 90%
     margin 0 auto
     position relative
-    input
+    .field
       width 100%
       height 50px
       margin 5px 0
@@ -54,24 +54,35 @@
     padding 8px 0px
     .active
       border none
-      color grey
+    .options
+      width 100.5%
+      top 43px
+      padding 0 5px
+      border-radius 10px
+      border-top 1px solid grey
+      border-left 1px solid grey
+      border-right 2px solid grey
+      border-bottom 2px solid grey
   .input-wrap
     width 100%
-    height 40px
-    padding 0 10px
     .label
-      width 45%
+      width 43%
       display inline-block
-      font-size 21px
-      margin 0 9px
+      font-size 18px
+      color grey
     input
       display inline-block
-      width 45%
+      width 57%
       height 30px
-      border 1px solid grey
-      text-align end
+      border-top 1px solid grey
+      border-left 1px solid grey
+      border-right 2px solid grey
+      border-bottom 2px solid grey
+      text-align start
       color #00bfff
       padding 0 5px
+      border-radius 5px
+      margin-bottom 2px
       &:focus
         outline none
     .clients-list-wrap-right
@@ -79,18 +90,21 @@
     .clients-list-wrap-left
       left 0
     .clients-list-wrap
-      margin 0 31px
-      width 43%
+      width 57%
       background-color white
       z-index 15
+      border-radius 5px
       position absolute
-      border 1px solid silver
+      border-top 1px solid grey
+      border-left 1px solid grey
+      border-right 2px solid grey
+      border-bottom 2px solid grey
       max-height 200px
       overflow-y scroll
       overflow-x hidden
       div
         font-size 21px
-        text-align end
+        text-align start
         padding 0 5px
   .btn-wrap
     width 100%
@@ -103,6 +117,24 @@
       border-radius 20px
       border 2px solid grey
       background-color white
+      color #6b6b6b
       a
         color #6b6b6b
         text-decoration none
+  .checkbox_container
+    width 100%
+    padding 5px 0
+    border 1px solid white
+    .checkbox_wrap
+      display inline-block
+      width 10%
+      .checkbox
+        position relative
+        top 1px
+        width 25px
+        height 25px
+    .label_wrap
+      display inline-block
+      width 80%
+      .checkbox_label
+        font-size 12px

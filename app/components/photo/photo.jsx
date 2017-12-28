@@ -4,7 +4,7 @@ const {Link} = ReactRouterDOM
 
 class Home extends React.Component {
   state = {
-    img: config.urls.media + 'foto.svg'
+    img: ''
   }
   addFoto = e => {
     let f = e.target.files[0]
@@ -67,7 +67,18 @@ class Home extends React.Component {
     }
     this.refs.file_wrap.reset()
   }
-  componentWillMount = () => { if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl' }
+  componentWillMount = () => {
+    if (config.data.photo) {
+      let reader = new FileReader()
+      reader.readAsDataURL(config.data.photo)
+      reader.onload = () => {
+        this.setState({ img: reader.result })
+      }
+    } else {
+      this.setState({ img: config.urls.media + 'foto.svg' })
+    }
+    if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
+  }
   render () {
     return (
       <div id='photo'>

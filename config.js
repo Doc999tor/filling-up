@@ -23,6 +23,7 @@ var config = {
     remarks_and_preferences: 'Remarks and preferences',
     confirm: 'Confirm',
     recommended_by: 'Recommended by:',
+    customers_agree: 'Check here to indicate that you have read and agree to the terms of the Atzma.in Customer Agreement',
     source_list: [
       {value: 'ads', label: 'Ads'},
       {value: 'fb_page', label: 'fb_page'},
@@ -53,6 +54,9 @@ var config = {
   },
   isRtL: false,
   address_based: true,
+  greetings_text: 'We`re so glad to see you our friend, your next visit you`ll get 20% discount. Remember, every client is our family',
+  business_name: 'Beauty Salon Maria',
+  business_links: ['facebook url', 'website'],
   plugins: ['highres_photos'],
   timeout: 500,
   max_side: 1000

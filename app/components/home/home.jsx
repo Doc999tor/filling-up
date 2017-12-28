@@ -5,11 +5,11 @@ let timeout
 
 class Home extends React.Component {
   state = {
+    addres: config.data.address,
+    email: config.data.email,
+    name: config.data.name,
     isViewAdress: false,
-    adress: [],
-    email: '',
-    adres: '',
-    name: ''
+    adress: []
   }
   componentWillMount = () => { if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl' }
   changeEmail = e => {
@@ -93,7 +93,7 @@ class Home extends React.Component {
             <input type='text' placeholder={config.translations.email} value={this.state.email} onChange={e => this.changeEmail(e.target.value)} />
           </span>
           {config.address_based &&
-            <input type='text' placeholder={config.translations.adress} value={this.state.adres} onChange={e => this.changeAdress(e.target.value)} />}
+            <input type='text' placeholder={config.translations.adress} value={this.state.addres} onChange={e => this.changeAdress(e.target.value)} />}
           <div className={this.state.isViewAdress ? 'adress-list-wrap' : 'hidden'}>
             {this.state.adress.map(i => (
               <div onClick={() => this.setState({adres: i.formatted_address, isViewAdress: false})}>{i.formatted_address}</div>)
