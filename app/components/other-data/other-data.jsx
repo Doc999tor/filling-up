@@ -1,7 +1,6 @@
-import {clientGetService} from 'project-services'
+import {clientGetService, fillingPostService} from 'project-services'
 import {Select} from 'project-components'
 import './other-data.styl'
-const {Link} = ReactRouterDOM
 let timeout
 
 class Home extends React.Component {
@@ -16,6 +15,9 @@ class Home extends React.Component {
     isCheck: false,
     userId: null,
     clients: []
+  }
+  static propTypes = {
+    history: PropTypes.object
   }
   changeSelect = e => {
     this.setState({selectedLabel: e.label, selectedValue: e.value, userId: null})
@@ -89,7 +91,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className='btn-wrap' onClick={!this.state.isCheck ? () => this.setState({checkChecker: true}) : () => {}}>
-          <button>{this.state.isCheck ? <Link to='/'>{config.translations.confirm}</Link> : config.translations.confirm}</button>
+          <button onClick={this.state.isCheck ? () => this.props.history.push(config.urls.home) : () => {}}>{config.translations.confirm}</button>
         </div>
       </div>
     )

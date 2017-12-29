@@ -1,10 +1,13 @@
 import {dataURLtoFile, getOrientation} from 'project-components'
+import {fillingPostService} from 'project-services'
 import './photo.styl'
-const {Link} = ReactRouterDOM
 
 class Home extends React.Component {
   state = {
     img: ''
+  }
+  static propTypes = {
+    history: PropTypes.object
   }
   addFoto = e => {
     let f = e.target.files[0]
@@ -14,7 +17,11 @@ class Home extends React.Component {
       reader.readAsDataURL(f)
       reader.onload = () => {
         this.setState({ img: reader.result })
-        config.data.test = f // todo API
+        config.data.photo = reader.result
+        config.data.photo_name = f.name
+        localStorage.setItem('photo', reader.result)
+        localStorage.setItem('photo_name', f.name)
+        // dataURLtoFile(dataURL, f.name) todo API
       }
     } else {
       getOrientation(f, or => {
@@ -61,7 +68,11 @@ class Home extends React.Component {
           ctx.drawImage(img, 0, 0, w, h)
           let dataURL = canvas.toDataURL()
           this.setState({ img: dataURL })
-          config.data.test = dataURLtoFile(dataURL, f.name) // todo API
+          config.data.photo = dataURL
+          config.data.photo_name = f.name
+          localStorage.setItem('photo', dataURL)
+          localStorage.setItem('photo_name', f.name)
+          // dataURLtoFile(dataURL, f.name) todo API
         }
       })
     }
@@ -78,6 +89,9 @@ class Home extends React.Component {
       this.setState({ img: config.urls.media + 'foto.svg' })
     }
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
+  }
+  continue = () => {
+    this.props.history.push(config.urls.other_data)
   }
   render () {
     return (
@@ -100,11 +114,11 @@ class Home extends React.Component {
           <button className='yes'>{config.translations.want}</button>
           <form ref='file_wrap'><input type='file' accept='image/*' capture='camera' onChange={e => this.addFoto(e)} /></form>
           <h1>{config.translations.or}</h1>
-          <button className='not_now'>{config.translations.not_now}</button>
+          <button className='not_now' onClick={() => this.props.history.push(config.urls.other_data)}>{config.translations.not_now}</button>
         </div>
         <div className='btns-wrap'>
-          <div className='btn'><button><Link to={config.urls.home}>{config.translations.back}</Link></button></div>
-          <div className='btn'><button><Link to={config.urls.other_data}>{config.translations.continue}</Link></button></div>
+          <div className='btn'><button onClick={() => this.props.history.push(config.urls.home)}>{config.translations.back}</button></div>
+          <div className='btn'><button onClick={this.continue}>{config.translations.continue}</button></div>
         </div>
       </div>
     )

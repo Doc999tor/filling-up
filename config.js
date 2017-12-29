@@ -36,7 +36,10 @@ var config = {
     adress: 'https://maps.googleapis.com/maps/api/geocode/json?address={query}&language={language}',
     add_client_url: '/add-client/clients?q={query}',
     main: 'https://api.bewebmaster.co.il',
+    photo_r: '/filling-up/photo',
+    notes: '/filling-up/notes',
     other_data: '/other_data',
+    filling_up: '/filling-up',
     media: './dist/media/',
     photo: '/photo',
     home: '/'
