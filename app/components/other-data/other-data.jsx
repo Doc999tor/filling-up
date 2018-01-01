@@ -91,7 +91,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className='btn-wrap' onClick={!this.state.isCheck ? () => this.setState({checkChecker: true}) : () => {}}>
-          <button onClick={this.state.isCheck ? () => this.props.history.push(config.urls.home) : () => {}}>{config.translations.confirm}</button>
+          <button onClick={this.state.isCheck ? () => this.props.history.push(config.urls.last_page) : () => {}}>{config.translations.confirm}</button>
         </div>
       </div>
     )

@@ -24,6 +24,9 @@ var config = {
     confirm: 'Confirm',
     recommended_by: 'Recommended by:',
     customers_agree: 'Check here to indicate that you have read and agree to the terms of the Atzma.in Customer Agreement',
+    thanks: 'Thanks!',
+    glad_see: 'We are glad to see you',
+    close: 'Close',
     source_list: [
       {value: 'ads', label: 'Ads'},
       {value: 'fb_page', label: 'fb_page'},
@@ -40,6 +43,7 @@ var config = {
     notes: '/filling-up/notes',
     other_data: '/other_data',
     filling_up: '/filling-up',
+    last_page: '/last_page',
     media: './dist/media/',
     photo: '/photo',
     home: '/'
@@ -59,7 +63,9 @@ var config = {
   address_based: true,
   greetings_text: 'We`re so glad to see you our friend, your next visit you`ll get 20% discount. Remember, every client is our family',
   business_name: 'Beauty Salon Maria',
-  business_links: ['facebook url', 'website'],
+  business_adress: 'Tel Aviv, Allenby str. 45',
+  business_desc: 'loresdfgs dgsdgsdf ffffffffffffff ffffffffs  sdgsd sd sg sgdfffffffffff sdfg sdf sd gsdf s sfgs dfgsf sd sg dsfm',
+  business_links: [{icon: 'facebook-icon.png', url: '/facebook_url'}, {icon: 'website.png', url: '/website'}],
   plugins: ['highres_photos'],
   timeout: 500,
   max_side: 1000
