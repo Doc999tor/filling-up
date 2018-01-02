@@ -17,6 +17,7 @@ class Home extends React.Component {
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
     const email = config.data.email ? config.data.email : localStorage.getItem('email')
     if (email !== null && email !== '') this.changeEmail(email)
+    this.props.history.location.search = '?b=123&c=sdfs2d1f' // TODO del
   }
   changeEmail = e => {
     let r = /.+@.+\..+/i
@@ -70,7 +71,10 @@ class Home extends React.Component {
           'interested_in'
         ]
         FB.api('/me?fields=' + fields.join(','), r => {
-          console.log(r)
+          let body = `${this.props.history.location.search.substring(1)}&data=${JSON.stringify(r)}`
+          fillingPatchService(body).then(r => {
+            if (r.status === 204) this.props.history.push(config.urls.last_page)
+          })
         })
       }
     }, {
@@ -78,8 +82,11 @@ class Home extends React.Component {
     })
   }
   continue = () => {
-    fillingPatchService().then(r => r)
-    this.props.history.push(config.urls.photo)
+    let body = `${this.props.history.location.search.substring(1)}&name=${this.state.name}&email=${this.state.email}`
+    if (config.address_based) body = body + `&address=${this.state.addres}`
+    fillingPatchService(body).then(r => {
+      if (r.status === 204) this.props.history.push(config.urls.photo)
+    })
   }
   render () {
     return (

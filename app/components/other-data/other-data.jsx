@@ -1,19 +1,19 @@
-import {clientGetService, fillingPostService} from 'project-services'
+import {clientGetService, fillingPatchService, fillingNotePostService} from 'project-services'
 import {Select} from 'project-components'
 import './other-data.styl'
 let timeout
 
 class Home extends React.Component {
   state = {
-    selectedLabel: config.data.source ? config.data.source : config.translations.source,
-    selectedValue: config.data.source,
-    birthdate: config.data.birthdate,
-    gender: config.data.gender,
-    note: config.data.note,
+    selectedLabel: config.data.sourceLabel ? config.data.sourceLabel : localStorage.getItem('sourceLabel') ? localStorage.getItem('sourceLabel') : config.translations.source,
+    selectedValue: config.data.source ? config.data.source : localStorage.getItem('source'),
+    birthdate: config.data.birthdate ? config.data.birthdate : localStorage.getItem('birthdate'),
+    gender: config.data.gender ? config.data.gender : localStorage.getItem('gender'),
+    userId: config.data.userId ? config.data.userId : localStorage.getItem('userId'),
+    note: config.data.note ? config.data.note : localStorage.getItem('note'),
     isRecomendation: false,
     checkChecker: false,
     isCheck: false,
-    userId: null,
     clients: []
   }
   static propTypes = {
@@ -21,6 +21,10 @@ class Home extends React.Component {
   }
   changeSelect = e => {
     this.setState({selectedLabel: e.label, selectedValue: e.value, userId: null})
+    config.data.sourceLabel = e.label
+    config.data.source = e.value
+    localStorage.setItem('sourceLabel', e.label)
+    localStorage.setItem('source', e.value)
     e.value === 'recommendation' ? this.setState({isRecomendation: true}) : this.setState({isRecomendation: false})
   }
   changeInput = e => {
@@ -31,7 +35,23 @@ class Home extends React.Component {
         this.setState({isViewClients: true, clients: r}))), config.data.timeout)
     } else this.setState({isViewClients: false})
   }
-  componentWillMount = () => { if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl' }
+  componentWillMount = () => {
+    if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
+    this.props.history.location.search = '?b=123&c=sdfs2d1f' // TODO del
+  }
+  continue = () => {
+    let body = `${this.props.history.location.search.substring(1)}&gender=${this.state.gender}&birthdate=${this.state.birthdate}
+      &source=${this.state.selectedValue}&permit_ads=${config.data.permit_ads}`
+    if (this.state.selectedValue === 'recommendation') body = body + `&recommended_by=${this.state.userId}`
+    fillingPatchService(body).then(r => {
+      if (r.status === 204) {
+        let body = `${this.props.history.location.search.substring(1)}&text=${this.state.note}`
+        fillingNotePostService(body).then(r => {
+          if (r.status === 204) this.props.history.push(config.urls.last_page)
+        })
+      }
+    })
+  }
   render () {
     return (
       <div id='other_data'>
@@ -46,23 +66,33 @@ class Home extends React.Component {
           <div className='circle-wrap'>
             <div className='centered'>
               <h1>{config.translations.man}</h1>
-              <div className='circle' onClick={() => this.setState({gender: 'man'})}>
-                <div className={this.state.gender === 'man' ? 'bcg' : ''} />
+              <div className='circle' onClick={() => this.setState({gender: 'male'}, () => {
+                config.data.gender = 'male'
+                localStorage.setItem('gender', 'male')
+              })}>
+                <div className={this.state.gender === 'male' ? 'bcg' : ''} />
               </div>
             </div>
           </div>
           <div className='circle-wrap'>
             <div className='centered'>
               <h1>{config.translations.woman}</h1>
-              <div className='circle' onClick={() => this.setState({gender: 'woman'})}>
-                <div className={this.state.gender === 'woman' ? 'bcg' : ''} />
+              <div className='circle' onClick={() => this.setState({gender: 'female'}, () => {
+                config.data.gender = 'female'
+                localStorage.setItem('gender', 'female')
+              })}>
+                <div className={this.state.gender === 'female' ? 'bcg' : ''} />
               </div>
             </div>
           </div>
         </div>
         <div className='inputs'>
           <input className='field' ref='date' type='text' onBlur={() => { this.refs.date.type = 'text' }} onFocus={() => { this.refs.date.type = 'date' }}
-            placeholder={config.translations.date_of_birth} value={this.state.birthdate} onChange={e => this.setState({birthdate: e.target.value})} />
+            placeholder={config.translations.date_of_birth} value={this.state.birthdate} onChange={e => {
+              this.setState({birthdate: e.target.value})
+              config.data.birthdate = e.target.value
+              localStorage.setItem('birthdate', e.target.value)
+            }} />
           <div className='select-wrap' style={config.translations.source === this.state.selectedLabel ? {color: 'grey'} : {color: 'black'}}>
             <Select value={this.state.selectedLabel} onChange={e => this.changeSelect(e)} options={config.translations.source_list} placeholder='asdfa' />
           </div>
@@ -73,10 +103,18 @@ class Home extends React.Component {
             <div className={this.state.isViewClients ? 'clients-list-wrap ' + (config.isRTL ? 'clients-list-wrap-left'
               : 'clients-list-wrap-right') : 'hidden'}>
               {this.state.clients.map((i, k) =>
-                <div key={k} onClick={() => this.setState({inputValue: i.name, userId: i.id, isViewClients: false})}>{i.name}</div>)}
+                <div key={k} onClick={() => this.setState({inputValue: i.name, userId: i.id, isViewClients: false}, () => {
+                  config.data.userId = i.id
+                  localStorage.setItem('userId', i.id)
+                })}>{i.name}</div>)}
             </div>
           </div>
-          <input className='field' type='text' placeholder={config.translations.remarks_and_preferences} value={this.state.note} onChange={e => this.setState({note: e.target.value})} />
+          <input className='field' type='text' placeholder={config.translations.remarks_and_preferences} value={this.state.note}
+            onChange={e => {
+              this.setState({note: e.target.value})
+              config.data.note = e.target.value
+              localStorage.setItem('note', e.target.value)
+            }} />
           <div className='checkbox_container' style={this.state.checkChecker ? {border: '1px solid red'} : {border: '1px solid white'}}>
             <div className='checkbox_wrap'>
               <input className='checkbox' type='checkbox' checked={this.state.isCheck}
@@ -91,7 +129,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className='btn-wrap' onClick={!this.state.isCheck ? () => this.setState({checkChecker: true}) : () => {}}>
-          <button onClick={this.state.isCheck ? () => this.props.history.push(config.urls.last_page) : () => {}}>{config.translations.confirm}</button>
+          <button onClick={this.state.isCheck ? () => this.continue() : () => {}}>{config.translations.confirm}</button>
         </div>
       </div>
     )

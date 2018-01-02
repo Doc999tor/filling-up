@@ -1,10 +1,11 @@
 import {dataURLtoFile, getOrientation} from 'project-components'
-import {fillingPostService} from 'project-services'
+import {fillingPhotoPostService} from 'project-services'
 import './photo.styl'
 
 class Home extends React.Component {
   state = {
-    img: ''
+    img: config.data.photo_url ? config.data.photo_url : localStorage.getItem('photo_url'),
+    photo_name: config.data.photo_name ? config.data.photo_name : localStorage.getItem('photo_name')
   }
   static propTypes = {
     history: PropTypes.object
@@ -17,11 +18,11 @@ class Home extends React.Component {
       reader.readAsDataURL(f)
       reader.onload = () => {
         this.setState({ img: reader.result })
-        config.data.photo = reader.result
+        config.data.photo_url = reader.result
         config.data.photo_name = f.name
-        localStorage.setItem('photo', reader.result)
+        localStorage.setItem('photo_url', reader.result)
         localStorage.setItem('photo_name', f.name)
-        // dataURLtoFile(dataURL, f.name) todo API
+        config.data.photo = dataURLtoFile(this.state.img, this.state.photo_name)
       }
     } else {
       getOrientation(f, or => {
@@ -68,30 +69,35 @@ class Home extends React.Component {
           ctx.drawImage(img, 0, 0, w, h)
           let dataURL = canvas.toDataURL()
           this.setState({ img: dataURL })
-          config.data.photo = dataURL
+          config.data.photo_url = dataURL
           config.data.photo_name = f.name
-          localStorage.setItem('photo', dataURL)
+          localStorage.setItem('photo_url', dataURL)
           localStorage.setItem('photo_name', f.name)
-          // dataURLtoFile(dataURL, f.name) todo API
+          config.data.photo = dataURLtoFile(this.state.img, this.state.photo_name)
         }
       })
     }
     this.refs.file_wrap.reset()
   }
   componentWillMount = () => {
-    if (config.data.photo) {
-      let reader = new FileReader()
-      reader.readAsDataURL(config.data.photo)
-      reader.onload = () => {
-        this.setState({ img: reader.result })
-      }
+    if (this.state.img) {
+      config.data.photo = dataURLtoFile(this.state.img, this.state.photo_name)
     } else {
       this.setState({ img: config.urls.media + 'foto.svg' })
     }
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
+    this.props.history.location.search = '?b=123&c=sdfs2d1f' // TODO del
   }
   continue = () => {
-    this.props.history.push(config.urls.other_data)
+    let q = JSON.parse('{"' + decodeURI(this.props.history.location.search.substring(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
+    let body = new FormData()
+    body.append('b', q.b)
+    body.append('c', q.c)
+    body.append('photo', config.data.photo)
+    body.append('date', moment.utc().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'))
+    fillingPhotoPostService(body).then(r => {
+      if (r.status === 204) this.props.history.push(config.urls.other_data)
+    })
   }
   render () {
     return (
