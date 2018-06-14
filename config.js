@@ -46,7 +46,8 @@ var config = {
     last_page: '/last_page',
     media: './dist/media/',
     photo: '/photo',
-    home: '/'
+    home: '/',
+    baseUrl: ''
   },
   data: {
     name: '',

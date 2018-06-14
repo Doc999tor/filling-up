@@ -5,19 +5,31 @@ const alias = {
   'project-services': path.resolve('./services')
 }
 module.exports = env => {
-  let outputJSCK = './dist/[id].bundle.js'
-  let outputCSS = './dist/main.bundle.css'
-  let outputJS = './dist/main.bundle.js'
+  let outputJSCK = '[id].bundle.js'
+  let outputCSS = 'main.bundle.css'
+  let outputJS = 'main.bundle.js'
   let devtool = 'source-map'
+  let baseChunksPath = '/dist/'
+  let baseBuildPath = './dist'
   if (env === 'production-p') {
-    outputJSCK = './dist/[id].bundle.min.js'
-    outputCSS = './dist/main.bundle.min.css'
-    outputJS = './dist/main.bundle.min.js'
+    outputJSCK = '[id].bundle.min.js'
+    outputCSS = 'main.bundle.min.css'
+    outputJS = 'main.bundle.min.js'
     devtool = false
+  }
+  if (env === 'build-public') {
+    outputJSCK = '[id].bundle.min.js'
+    outputCSS = 'main.bundle.min.css'
+    outputJS = 'main.bundle.min.js'
+    devtool = false
+    baseChunksPath = '/public/creating-clients/'
+    baseBuildPath = './public/creating-clients'
   }
   return ({
     entry: './app/main.js',
     output: {
+      path: path.resolve(__dirname, baseBuildPath),
+      publicPath: baseChunksPath,
       chunkFilename: outputJSCK,
       filename: outputJS
     },

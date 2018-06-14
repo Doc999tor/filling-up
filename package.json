@@ -12,6 +12,7 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --module-bind 'css=style!css'",
     "build-p": "webpack -p --env production-p",
+    "build-public": "webpack -p --env build-public",
     "build": "webpack"
   },
   "devDependencies": {

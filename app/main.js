@@ -9,11 +9,11 @@ const {BrowserRouter, Switch, Route, Redirect} = ReactRouterDOM
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route exact path={config.urls.other_data} component={OtherData} />
-      <Route exact path={config.urls.last_page} component={LastPage} />
-      <Route exact path={config.urls.photo} component={Photo} />
-      <Route exact path={config.urls.home} component={Home} />
-      <Redirect from='*' to={config.urls.home} />
+      <Route exact path={config.urls.baseUrl + config.urls.other_data} component={OtherData} />
+      <Route exact path={config.urls.baseUrl + config.urls.last_page} component={LastPage} />
+      <Route exact path={config.urls.baseUrl + config.urls.photo} component={Photo} />
+      <Route exact path={config.urls.baseUrl + config.urls.home} component={Home} />
+      <Redirect from='*' to={config.urls.baseUrl + config.urls.home} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root'))
