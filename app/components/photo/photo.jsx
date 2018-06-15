@@ -96,7 +96,7 @@ class Home extends React.Component {
     body.append('photo', config.data.photo)
     body.append('date', moment.utc().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'))
     fillingPhotoPostService(body).then(r => {
-      if (r.status === 204) this.props.history.push(config.urls.other_data)
+      if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.other_data)
     })
   }
   render () {
@@ -120,10 +120,10 @@ class Home extends React.Component {
           <button className='yes'>{config.translations.want}</button>
           <form ref='file_wrap'><input type='file' accept='image/*' capture='camera' onChange={e => this.addFoto(e)} /></form>
           <h1>{config.translations.or}</h1>
-          <button className='not_now' onClick={() => this.props.history.push(config.urls.other_data)}>{config.translations.not_now}</button>
+          <button className='not_now' onClick={() => this.props.history.push(config.urls.baseUrl + config.urls.other_data)}>{config.translations.not_now}</button>
         </div>
         <div className='btns-wrap'>
-          <div className='btn'><button onClick={() => this.props.history.push(config.urls.home)}>{config.translations.back}</button></div>
+          <div className='btn'><button onClick={() => this.props.history.push(config.urls.baseUrl + config.urls.home)}>{config.translations.back}</button></div>
           <div className='btn'><button onClick={this.continue}>{config.translations.continue}</button></div>
         </div>
       </div>

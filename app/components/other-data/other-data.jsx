@@ -47,7 +47,7 @@ class Home extends React.Component {
       if (r.status === 204) {
         let body = `${this.props.history.location.search.substring(1)}&text=${this.state.note}`
         fillingNotePostService(body).then(r => {
-          if (r.status === 204) this.props.history.push(config.urls.last_page)
+          if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
         })
       }
     })

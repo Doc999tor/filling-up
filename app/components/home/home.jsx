@@ -73,7 +73,7 @@ class Home extends React.Component {
         FB.api('/me?fields=' + fields.join(','), r => {
           let body = `${this.props.history.location.search.substring(1)}&data=${JSON.stringify(r)}`
           fillingPatchService(body).then(r => {
-            if (r.status === 204) this.props.history.push(config.urls.last_page)
+            if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
           })
         })
       }
@@ -85,7 +85,7 @@ class Home extends React.Component {
     let body = `${this.props.history.location.search.substring(1)}&name=${this.state.name}&email=${this.state.email}`
     if (config.address_based) body = body + `&address=${this.state.addres}`
     fillingPatchService(body).then(r => {
-      if (r.status === 204) this.props.history.push(config.urls.photo)
+      if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.photo)
     })
   }
   render () {

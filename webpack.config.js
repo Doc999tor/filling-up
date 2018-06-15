@@ -22,8 +22,8 @@ module.exports = env => {
     outputCSS = 'main.bundle.min.css'
     outputJS = 'main.bundle.min.js'
     devtool = false
-    baseChunksPath = '/public/creating-clients/'
-    baseBuildPath = './public/creating-clients'
+    baseChunksPath = '/public/filling-up/'
+    baseBuildPath = './public/filling-up'
   }
   return ({
     entry: './app/main.js',
