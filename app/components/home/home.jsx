@@ -38,10 +38,10 @@ class Home extends React.Component {
   }
   facebookLogin = () => {
     FB.init({
-      appId: '190021218217828',
+      appId: '1923449871239766',
       cookie: true,
       oauth: true,
-      version: 'v2.8'
+      version: 'v2.10'
     })
     FB.login(res => {
       if (res.status === 'connected') {
@@ -50,35 +50,27 @@ class Home extends React.Component {
           'about',
           'age_range',
           'birthday',
-          'context',
           'email',
           'first_name',
           'middle_name',
           'last_name',
           'gender',
-          'link',
           'name',
           'location',
           'timezone',
           'website',
-          'work',
-          'languages',
-          'devices',
-          'picture',
-          'taggable_friends',
-          'photos',
-          'likes',
-          'interested_in'
+          'picture.width(480).height(480)',
+          'photos'
         ]
         FB.api('/me?fields=' + fields.join(','), r => {
-          let body = `${this.props.history.location.search.substring(1)}&data=${JSON.stringify(r)}`
+          let body = `${this.props.history.location.search.substring(1)}&data=${encodeURIComponent(JSON.stringify(r))}`
           fillingPatchService(body).then(r => {
             if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
           })
         })
       }
     }, {
-      scope: 'public_profile,email,user_friends,user_photos,user_website,user_birthday,user_about_me,user_location,user_hometown,user_likes'
+      scope: 'public_profile,email,user_photos,user_birthday,user_location,user_hometown'
     })
   }
   continue = () => {

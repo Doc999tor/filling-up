@@ -40,8 +40,7 @@ class Home extends React.Component {
     this.props.history.location.search = '?b=123&c=sdfs2d1f' // TODO del
   }
   continue = () => {
-    let body = `${this.props.history.location.search.substring(1)}&gender=${this.state.gender}&birthdate=${this.state.birthdate}
-      &source=${this.state.selectedValue}&permit_ads=${config.data.permit_ads}`
+    let body = `${this.props.history.location.search.substring(1)}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&source=${this.state.selectedValue}&permit_ads=${config.data.permit_ads}`
     if (this.state.selectedValue === 'recommendation') body = body + `&recommended_by=${this.state.userId}`
     fillingPatchService(body).then(r => {
       if (r.status === 204) {
