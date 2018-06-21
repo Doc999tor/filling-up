@@ -8,7 +8,9 @@ class Home extends React.Component {
     email: config.data.email ? config.data.email : localStorage.getItem('email'),
     name: config.data.name ? config.data.name : localStorage.getItem('name'),
     isViewAdress: false,
-    adress: []
+    adress: [],
+    param1: 123,
+    param2: 'sdfs2d1f'
   }
   static propTypes = {
     history: PropTypes.object
@@ -17,7 +19,6 @@ class Home extends React.Component {
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
     const email = config.data.email ? config.data.email : localStorage.getItem('email')
     if (email !== null && email !== '') this.changeEmail(email)
-    this.props.history.location.search = '?b=123&c=sdfs2d1f' // TODO del
   }
   changeEmail = e => {
     let r = /.+@.+\..+/i
@@ -63,7 +64,7 @@ class Home extends React.Component {
           'photos'
         ]
         FB.api('/me?fields=' + fields.join(','), r => {
-          let body = `${this.props.history.location.search.substring(1)}&data=${encodeURIComponent(JSON.stringify(r))}`
+          let body = `b=${this.state.param1}&c=${this.state.param2}&fb_data=${encodeURIComponent(JSON.stringify(r))}`
           fillingPatchService(body).then(r => {
             if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
           })
@@ -74,7 +75,7 @@ class Home extends React.Component {
     })
   }
   continue = () => {
-    let body = `${this.props.history.location.search.substring(1)}&name=${this.state.name}&email=${this.state.email}`
+    let body = `b=${this.state.param1}&c=${this.state.param2}&name=${this.state.name}&email=${this.state.email}`
     if (config.address_based) body = body + `&address=${this.state.addres}`
     fillingPatchService(body).then(r => {
       if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.photo)

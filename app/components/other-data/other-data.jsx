@@ -14,7 +14,9 @@ class Home extends React.Component {
     isRecomendation: false,
     checkChecker: false,
     isCheck: false,
-    clients: []
+    clients: [],
+    param1: 123,
+    param2: 'sdfs2d1f'
   }
   static propTypes = {
     history: PropTypes.object
@@ -37,14 +39,13 @@ class Home extends React.Component {
   }
   componentWillMount = () => {
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
-    this.props.history.location.search = '?b=123&c=sdfs2d1f' // TODO del
   }
   continue = () => {
-    let body = `${this.props.history.location.search.substring(1)}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&source=${this.state.selectedValue}&permit_ads=${config.data.permit_ads}`
+    let body = `b=${this.state.param1}&c=${this.state.param2}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&source=${this.state.selectedValue}&permit_ads=${config.data.permit_ads}`
     if (this.state.selectedValue === 'recommendation') body = body + `&recommended_by=${this.state.userId}`
     fillingPatchService(body).then(r => {
       if (r.status === 204) {
-        let body = `${this.props.history.location.search.substring(1)}&text=${this.state.note}`
+        let body = `b=${this.state.param1}&c=${this.state.param2}&text=${this.state.note}`
         fillingNotePostService(body).then(r => {
           if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
         })

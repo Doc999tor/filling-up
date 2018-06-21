@@ -5,7 +5,9 @@ import './photo.styl'
 class Home extends React.Component {
   state = {
     img: config.data.photo_url ? config.data.photo_url : localStorage.getItem('photo_url'),
-    photo_name: config.data.photo_name ? config.data.photo_name : localStorage.getItem('photo_name')
+    photo_name: config.data.photo_name ? config.data.photo_name : localStorage.getItem('photo_name'),
+    param1: 123,
+    param2: 'sdfs2d1f'
   }
   static propTypes = {
     history: PropTypes.object
@@ -86,10 +88,9 @@ class Home extends React.Component {
       this.setState({ img: config.urls.media + 'foto.svg' })
     }
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
-    this.props.history.location.search = '?b=123&c=sdfs2d1f' // TODO del
   }
   continue = () => {
-    let q = JSON.parse('{"' + decodeURI(this.props.history.location.search.substring(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
+    let q = JSON.parse('{"' + decodeURI(`b=${this.state.param1}&c=${this.state.param2}`).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
     let body = new FormData()
     body.append('b', q.b)
     body.append('c', q.c)
