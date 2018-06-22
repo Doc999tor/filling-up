@@ -1,5 +1,4 @@
 import {clientGetService, fillingPatchService, fillingNotePostService} from 'project-services'
-import {Select} from 'project-components'
 import './other-data.styl'
 let timeout
 
@@ -41,13 +40,13 @@ class Home extends React.Component {
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
   }
   continue = () => {
-    let body = `b=${this.state.param1}&c=${this.state.param2}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&source=${this.state.selectedValue}&permit_ads=${config.data.permit_ads}`
+    let body = `b=${this.state.param1}&c=${this.state.param2}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&permit_ads=${config.data.permit_ads}`
     if (this.state.selectedValue === 'recommendation') body = body + `&recommended_by=${this.state.userId}`
     fillingPatchService(body).then(r => {
       if (r.status === 204) {
-        let body = `b=${this.state.param1}&c=${this.state.param2}&text=${this.state.note}`
+        let body = `b=${this.state.param1}&c=${this.state.param2}&text=${this.state.note}&date=${moment.utc().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')}`
         fillingNotePostService(body).then(r => {
-          if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
+          if (r.status === 201) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
         })
       }
     })
@@ -93,22 +92,6 @@ class Home extends React.Component {
               config.data.birthdate = e.target.value
               localStorage.setItem('birthdate', e.target.value)
             }} />
-          <div className='select-wrap' style={config.translations.source === this.state.selectedLabel ? {color: 'grey'} : {color: 'black'}}>
-            <Select value={this.state.selectedLabel} onChange={e => this.changeSelect(e)} options={config.translations.source_list} placeholder='asdfa' />
-          </div>
-          <div className={this.state.isRecomendation ? 'input-wrap' : 'hidden'}>
-            <div className='label'>{config.translations.recommended_by}</div>
-            <input type='text' value={this.state.inputValue} onChange={e => this.changeInput(e.target.value)}
-              placeholder={config.translations.customer_pl} />
-            <div className={this.state.isViewClients ? 'clients-list-wrap ' + (config.isRTL ? 'clients-list-wrap-left'
-              : 'clients-list-wrap-right') : 'hidden'}>
-              {this.state.clients.map((i, k) =>
-                <div key={k} onClick={() => this.setState({inputValue: i.name, userId: i.id, isViewClients: false}, () => {
-                  config.data.userId = i.id
-                  localStorage.setItem('userId', i.id)
-                })}>{i.name}</div>)}
-            </div>
-          </div>
           <input className='field' type='text' placeholder={config.translations.remarks_and_preferences} value={this.state.note}
             onChange={e => {
               this.setState({note: e.target.value})
