@@ -21,8 +21,6 @@ class Home extends React.Component {
     if (email !== null && email !== '') this.changeEmail(email)
     const { history, location } = this.props
     this.props.history.push(location.pathname + '?b=123&c=sdfs2d1f')
-    // const obj = qs.parse(this.props.history.location.search.slice(1))
-    // this.props.history.location.search = '?b=123&c=sdfs2d1f' // TODO del
   }
   changeEmail = e => {
     let r = /.+@.+\..+/i

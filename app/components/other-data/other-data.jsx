@@ -45,11 +45,10 @@ class Home extends React.Component {
     let query = qs.parse(this.props.history.location.search.slice(1))
     let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&permit_ads=${config.data.permit_ads}`
     if (this.state.selectedValue === 'recommendation') body = body + `&recommended_by=${this.state.userId}`
-    fillingPatchService(body).then(() => {
-      let body = `b=${query.b}&c=${query.c}&text=${this.state.note}&date=${moment.utc().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')}`
-      fillingNotePostService(body).then(r => {
-        if (r.status === 201) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
-      })
+    fillingPatchService(body)
+    let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&date=${moment.utc().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')}`
+    fillingNotePostService(bodysrt).then(r => {
+      if (r.status === 201) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
     })
   }
   render () {
