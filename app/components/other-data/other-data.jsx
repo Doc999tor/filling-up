@@ -1,4 +1,5 @@
 import {clientGetService, fillingPatchService, fillingNotePostService} from 'project-services'
+import qs from 'qs'
 import './other-data.styl'
 let timeout
 
@@ -13,12 +14,11 @@ class Home extends React.Component {
     isRecomendation: false,
     checkChecker: false,
     isCheck: false,
-    clients: [],
-    param1: 123,
-    param2: 'sdfs2d1f'
+    clients: []
   }
   static propTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    location: PropTypes.object
   }
   changeSelect = e => {
     this.setState({selectedLabel: e.label, selectedValue: e.value, userId: null})
@@ -38,17 +38,18 @@ class Home extends React.Component {
   }
   componentWillMount = () => {
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
+    const { history, location } = this.props
+    this.props.history.push(location.pathname + '?b=123&c=sdfs2d1f')
   }
   continue = () => {
-    let body = `b=${this.state.param1}&c=${this.state.param2}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&permit_ads=${config.data.permit_ads}`
+    let query = qs.parse(this.props.history.location.search.slice(1))
+    let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&permit_ads=${config.data.permit_ads}`
     if (this.state.selectedValue === 'recommendation') body = body + `&recommended_by=${this.state.userId}`
-    fillingPatchService(body).then(r => {
-      if (r.status === 204) {
-        let body = `b=${this.state.param1}&c=${this.state.param2}&text=${this.state.note}&date=${moment.utc().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')}`
-        fillingNotePostService(body).then(r => {
-          if (r.status === 201) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
-        })
-      }
+    fillingPatchService(body).then(() => {
+      let body = `b=${query.b}&c=${query.c}&text=${this.state.note}&date=${moment.utc().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')}`
+      fillingNotePostService(body).then(r => {
+        if (r.status === 201) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
+      })
     })
   }
   render () {
