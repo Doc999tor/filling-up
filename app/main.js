@@ -12,8 +12,7 @@ ReactDOM.render(
       <Route exact path={config.urls.baseUrl + config.urls.other_data} component={OtherData} />
       <Route exact path={config.urls.baseUrl + config.urls.last_page} component={LastPage} />
       <Route exact path={config.urls.baseUrl + config.urls.photo} component={Photo} />
-      <Route exact path={config.urls.baseUrl + config.urls.home} component={Home} />
-      <Redirect from='*' to={config.urls.baseUrl + config.urls.home} />
+      <Route path={config.urls.baseUrl + config.urls.home} component={Home} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root'))

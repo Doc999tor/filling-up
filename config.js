@@ -47,7 +47,8 @@ var config = {
     media: './dist/media/',
     photo: '/photo',
     home: '/',
-    baseUrl: '/en/filling-up'
+    baseUrl: '/en/filling-up',
+    params: '?b=123&c=sdfs2d1f'
   },
   data: {
     name: '',

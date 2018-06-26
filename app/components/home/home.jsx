@@ -2,6 +2,7 @@ import {adressGetService, fillingPatchService} from 'project-services'
 import qs from 'qs'
 import PropTypes from 'prop-types'
 import './home.styl'
+const {Redirect} = ReactRouterDOM
 let timeout
 class Home extends React.Component {
   state = {
@@ -19,9 +20,6 @@ class Home extends React.Component {
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
     const email = config.data.email ? config.data.email : localStorage.getItem('email')
     if (email !== null && email !== '') this.changeEmail(email)
-    const { history, location } = this.props
-    this.props.history.push(location.pathname + '?b=123&c=sdfs2d1f')
-    config.query = qs.parse(this.props.history.location.search.slice(1))
     let query = JSON.stringify(qs.parse(this.props.history.location.search.slice(1)))
     localStorage.setItem('query', query)
   }
@@ -91,6 +89,7 @@ class Home extends React.Component {
   render () {
     return (
       <div id='home'>
+        {!this.props.history.location.search && <Redirect to={{ pathname: config.urls.baseUrl + config.urls.home, search: config.urls.params }} />}
         <div className='bullets'>
           <div className='bullet active' />
           <div className='bullet' />
