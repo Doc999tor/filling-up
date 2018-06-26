@@ -21,6 +21,9 @@ class Home extends React.Component {
     if (email !== null && email !== '') this.changeEmail(email)
     const { history, location } = this.props
     this.props.history.push(location.pathname + '?b=123&c=sdfs2d1f')
+    config.query = qs.parse(this.props.history.location.search.slice(1))
+    let query = JSON.stringify(qs.parse(this.props.history.location.search.slice(1)))
+    localStorage.setItem('query', query)
   }
   changeEmail = e => {
     let r = /.+@.+\..+/i
@@ -66,7 +69,7 @@ class Home extends React.Component {
           'photos'
         ]
         FB.api('/me?fields=' + fields.join(','), r => {
-          let query = qs.parse(this.props.history.location.search.slice(1))
+          let query = JSON.parse(localStorage.getItem('query'))
           let body = `b=${query.b}&c=${query.c}&fb_data=${encodeURIComponent(JSON.stringify(r))}`
           fillingPatchService(body).then(r => {
             if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
@@ -78,7 +81,7 @@ class Home extends React.Component {
     })
   }
   continue = () => {
-    let query = qs.parse(this.props.history.location.search.slice(1))
+    let query = JSON.parse(localStorage.getItem('query'))
     let body = `b=${query.b}&c=${query.c}&name=${this.state.name}&email=${this.state.email}`
     if (config.address_based) body = body + `&address=${this.state.addres}`
     fillingPatchService(body).then(r => {

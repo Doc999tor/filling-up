@@ -1,5 +1,4 @@
 import {clientGetService, fillingPatchService, fillingNotePostService} from 'project-services'
-import qs from 'qs'
 import './other-data.styl'
 let timeout
 
@@ -17,8 +16,7 @@ class Home extends React.Component {
     clients: []
   }
   static propTypes = {
-    history: PropTypes.object,
-    location: PropTypes.object
+    history: PropTypes.object
   }
   changeSelect = e => {
     this.setState({selectedLabel: e.label, selectedValue: e.value, userId: null})
@@ -38,11 +36,9 @@ class Home extends React.Component {
   }
   componentWillMount = () => {
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
-    const { history, location } = this.props
-    this.props.history.push(location.pathname + '?b=123&c=sdfs2d1f')
   }
   continue = () => {
-    let query = qs.parse(this.props.history.location.search.slice(1))
+    let query = JSON.parse(localStorage.getItem('query'))
     let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&permit_ads=${config.data.permit_ads}`
     if (this.state.selectedValue === 'recommendation') body = body + `&recommended_by=${this.state.userId}`
     fillingPatchService(body)

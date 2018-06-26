@@ -1,6 +1,5 @@
 import {dataURLtoFile, getOrientation} from 'project-components'
 import {fillingPhotoPostService} from 'project-services'
-import qs from 'qs'
 import './photo.styl'
 
 class Home extends React.Component {
@@ -9,8 +8,7 @@ class Home extends React.Component {
     photo_name: config.data.photo_name ? config.data.photo_name : localStorage.getItem('photo_name')
   }
   static propTypes = {
-    history: PropTypes.object,
-    location: PropTypes.object
+    history: PropTypes.object
   }
   addFoto = e => {
     let f = e.target.files[0]
@@ -88,11 +86,9 @@ class Home extends React.Component {
       this.setState({ img: config.urls.media + 'foto.svg' })
     }
     if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
-    const { history, location } = this.props
-    this.props.history.push(location.pathname + '?b=123&c=sdfs2d1f')
   }
   continue = () => {
-    let query = qs.parse(this.props.history.location.search.slice(1))
+    let query = JSON.parse(localStorage.getItem('query'))
     let q = JSON.parse('{"' + decodeURI(`b=${query.b}&c=${query.c}`).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
     let body = new FormData()
     body.append('b', q.b)
