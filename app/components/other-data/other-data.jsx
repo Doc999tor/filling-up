@@ -39,7 +39,7 @@ class Home extends React.Component {
   }
   continue = () => {
     let query = JSON.parse(localStorage.getItem('query'))
-    let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&permit_ads=${config.data.permit_ads}`
+    let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&birthyear=${this.state.birthdate.split('-', 1).join()}&permit_ads=${config.data.permit_ads}`
     if (this.state.selectedValue === 'recommendation') body = body + `&recommended_by=${this.state.userId}`
     fillingPatchService(body)
     let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&date=${moment.utc().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')}`
