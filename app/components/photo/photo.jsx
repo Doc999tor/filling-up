@@ -22,7 +22,9 @@ class Home extends React.Component {
         config.data.photo_name = f.name
         localStorage.setItem('photo_url', reader.result)
         localStorage.setItem('photo_name', f.name)
-        config.data.photo = dataURLtoFile(this.state.img, this.state.photo_name)
+        this.setState({photo_name: f.name}, () => {
+          config.data.photo = dataURLtoFile(this.state.img, this.state.photo_name)
+        })
       }
     } else {
       getOrientation(f, or => {
