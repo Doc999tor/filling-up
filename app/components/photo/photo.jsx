@@ -4,8 +4,7 @@ import './photo.styl'
 
 class Home extends React.Component {
   state = {
-    img: config.data.photo_url ? config.data.photo_url : localStorage.getItem('photo_url'),
-    photo_name: config.data.photo_name ? config.data.photo_name : localStorage.getItem('photo_name')
+    img: config.data.photo_url ? config.data.photo_url : localStorage.getItem('photo_url')
   }
   static propTypes = {
     history: PropTypes.object
@@ -22,9 +21,7 @@ class Home extends React.Component {
         config.data.photo_name = f.name
         localStorage.setItem('photo_url', reader.result)
         localStorage.setItem('photo_name', f.name)
-        this.setState({photo_name: f.name}, () => {
-          config.data.photo = dataURLtoFile(this.state.img, this.state.photo_name)
-        })
+        config.data.photo = dataURLtoFile(this.state.img, f.name)
       }
     } else {
       getOrientation(f, or => {
@@ -75,7 +72,7 @@ class Home extends React.Component {
           config.data.photo_name = f.name
           localStorage.setItem('photo_url', dataURL)
           localStorage.setItem('photo_name', f.name)
-          config.data.photo = dataURLtoFile(this.state.img, this.state.photo_name)
+          config.data.photo = dataURLtoFile(this.state.img, f.name)
         }
       })
     }
@@ -83,7 +80,7 @@ class Home extends React.Component {
   }
   componentWillMount = () => {
     if (this.state.img) {
-      config.data.photo = dataURLtoFile(this.state.img, this.state.photo_name)
+      config.data.photo = dataURLtoFile(this.state.img, localStorage.getItem('photo_name'))
     } else {
       this.setState({ img: config.urls.media + 'foto.svg' })
     }
