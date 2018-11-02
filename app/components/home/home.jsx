@@ -41,12 +41,6 @@ class Home extends React.Component {
     } else this.setState({isViewAdress: false})
   }
   facebookLogin = () => {
-    FB.init({
-      appId: '1923449871239766',
-      cookie: true,
-      oauth: true,
-      version: 'v2.10'
-    })
     FB.login(res => {
       if (res.status === 'connected') {
         let fields = [
