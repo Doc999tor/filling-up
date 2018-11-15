@@ -1,4 +1,5 @@
 import {clientGetService, fillingPatchService, fillingNotePostService} from 'project-services'
+import {Datepicker} from 'project-components'
 import './other-data.styl'
 let timeout
 
@@ -7,6 +8,7 @@ class Home extends React.Component {
     selectedLabel: config.data.sourceLabel ? config.data.sourceLabel : localStorage.getItem('sourceLabel') ? localStorage.getItem('sourceLabel') : config.translations.source,
     selectedValue: config.data.source ? config.data.source : localStorage.getItem('source'),
     birthdate: config.data.birthdate ? config.data.birthdate : localStorage.getItem('birthdate'),
+    birthyear: config.data.birthyear ? config.data.birthyear : localStorage.getItem('birthyear'),
     gender: config.data.gender ? config.data.gender : localStorage.getItem('gender'),
     userId: config.data.userId ? config.data.userId : localStorage.getItem('userId'),
     note: config.data.note ? config.data.note : localStorage.getItem('note'),
@@ -40,8 +42,8 @@ class Home extends React.Component {
   continue = () => {
     let query = JSON.parse(localStorage.getItem('query'))
     let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&permit_ads=${config.data.permit_ads}`
-    if (this.state.birthdate) body = body + `&birthdate=${this.state.birthdate.split('-').slice(1).join('-')}&birthyear=${this.state.birthdate.split('-', 1).join()}`
-    let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&date=${moment().format('YYYY-MM-DD hh:mm:ss')}`
+    if (this.state.birthdate) body = body + `&birthdate=${this.state.birthdate}&birthyear=${this.state.birthyear}`
+    let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&added=${moment().format('YYYY-MM-DD hh:mm:ss')}`
     let promises = [
       fillingPatchService(body),
       this.state.note ? fillingNotePostService(bodysrt) : Promise.resolve('resolved')
@@ -50,6 +52,8 @@ class Home extends React.Component {
       this.props.history.push(config.urls.baseUrl + config.urls.last_page)
     })
   }
+  getBirthdate = value => this.setState({birthdate: value})
+  getBirthyear = value => this.setState({birthyear: value})
   render () {
     return (
       <div id='other_data'>
@@ -85,12 +89,18 @@ class Home extends React.Component {
           </div>
         </div>
         <div className='inputs'>
-          <input className='field' ref='date' type='text' onBlur={() => { this.refs.date.type = 'text' }} onFocus={() => { this.refs.date.type = 'date' }}
+          <div className='field'>
+            <Datepicker
+              getBirthdate={this.getBirthdate}
+              getBirthyear={this.getBirthyear}
+            />
+          </div>
+          {/* <input className='field' ref='date' type='text' onBlur={() => { this.refs.date.type = 'text' }} onFocus={() => { this.refs.date.type = 'date' }}
             placeholder={config.translations.date_of_birth} value={this.state.birthdate} onChange={e => {
               this.setState({birthdate: e.target.value})
               config.data.birthdate = e.target.value
               localStorage.setItem('birthdate', e.target.value)
-            }} />
+            }} /> */}
           <input className='field' type='text' placeholder={config.translations.remarks_and_preferences} value={this.state.note}
             onChange={e => {
               this.setState({note: e.target.value})
