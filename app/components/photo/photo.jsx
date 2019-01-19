@@ -84,7 +84,7 @@ class Home extends React.Component {
     } else {
       this.setState({ img: config.urls.media + 'foto.svg' })
     }
-    if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
+    if (config.isRTL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
   }
   continue = () => {
     let query = JSON.parse(localStorage.getItem('query'))

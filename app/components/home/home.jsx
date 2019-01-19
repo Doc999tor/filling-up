@@ -17,7 +17,7 @@ class Home extends React.Component {
     location: PropTypes.object
   }
   componentWillMount = () => {
-    if (config.isRtL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
+    if (config.isRTL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
     const email = config.data.email ? config.data.email : localStorage.getItem('email')
     if (email !== null && email !== '') this.changeEmail(email)
     let query = JSON.stringify(qs.parse(this.props.history.location.search.slice(1)))

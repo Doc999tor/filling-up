@@ -61,7 +61,7 @@ var config = {
     note: '',
     permit_ads: false
   },
-  isRtL: false,
+  isRTL: false,
   address_based: true,
   greetings_text: 'We`re so glad to see you our friend, your next visit you`ll get 20% discount. Remember, every client is our family',
   business_name: 'Beauty Salon Maria',
