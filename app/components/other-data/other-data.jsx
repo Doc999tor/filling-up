@@ -43,7 +43,7 @@ class Home extends React.Component {
     let query = JSON.parse(localStorage.getItem('query'))
     let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&permit_ads=${config.data.permit_ads}`
     if (this.state.birthdate) body = body + `&birthdate=${this.state.birthdate}&birthyear=${this.state.birthyear}`
-    let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&added=${moment().format('YYYY-MM-DD hh:mm:ss')}`
+    let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&added=${moment().format('YYYY-MM-DD HH:mm:ss')}`
     let promises = [
       fillingPatchService(body),
       this.state.note ? fillingNotePostService(bodysrt) : Promise.resolve('resolved')

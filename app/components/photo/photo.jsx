@@ -93,7 +93,7 @@ class Home extends React.Component {
     body.append('b', q.b)
     body.append('c', q.c)
     body.append('photo', config.data.photo)
-    body.append('date', moment().format('YYYY-MM-DD hh:mm:ss'))
+    body.append('date', moment().format('YYYY-MM-DD HH:mm:ss'))
     fillingPhotoPostService(body).then(r => {
       if (r.status === 201) this.props.history.push(config.urls.baseUrl + config.urls.other_data)
     })
