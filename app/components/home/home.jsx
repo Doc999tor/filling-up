@@ -83,7 +83,7 @@ class Home extends React.Component {
   render () {
     return (
       <div id='home'>
-        {!this.props.history.location.search && <Redirect to={{ pathname: config.urls.baseUrl + config.urls.home, search: config.urls.params }} />}
+        {/* {!this.props.history.location.search && <Redirect to={{ pathname: config.urls.baseUrl + config.urls.home, search: config.urls.params }} />} */}
         <div className='bullets'>
           <div className='bullet active' />
           <div className='bullet' />
