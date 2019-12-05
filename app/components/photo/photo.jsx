@@ -1,5 +1,6 @@
-import {dataURLtoFile, getOrientation} from 'project-components'
-import {fillingPhotoPostService} from 'project-services'
+import { default as dataURLtoFile } from 'project-components/decodeBase64.js'
+import { default as getOrientation } from 'project-components/getOrientation.js'
+import { postPhotoService as fillingPhotoPostService } from 'project-services/filling-up.service.js'
 import './photo.styl'
 
 class Home extends React.Component {

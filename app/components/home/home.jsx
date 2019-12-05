@@ -1,8 +1,9 @@
-import {adressGetService, fillingPatchService} from 'project-services'
+import { default as adressGetService } from 'project-services/adress.service.js'
+import { patchService as fillingPatchService } from 'project-services/filling-up.service.js'
 import qs from 'qs'
 import PropTypes from 'prop-types'
 import './home.styl'
-const {Redirect} = ReactRouterDOM
+const { Redirect } = ReactRouterDOM
 let timeout
 class Home extends React.Component {
   state = {

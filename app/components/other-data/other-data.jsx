@@ -1,5 +1,9 @@
-import {clientGetService, fillingPatchService, fillingNotePostService} from 'project-services'
-import {Datepicker} from 'project-components'
+import { getService as clientGetService } from 'project-services/client.service.js'
+import {
+  patchService as fillingPatchService,
+  postNoteService as fillingNotePostService
+} from 'project-services/filling-up.service.js'
+import { default as Datepicker } from 'project-components/Datepicker/datepicker.jsx'
 import './other-data.styl'
 let timeout
 
@@ -17,9 +21,11 @@ class Home extends React.Component {
     isCheck: false,
     clients: []
   }
+
   static propTypes = {
     history: PropTypes.object
   }
+
   changeSelect = e => {
     this.setState({selectedLabel: e.label, selectedValue: e.value, userId: null})
     config.data.sourceLabel = e.label
@@ -28,6 +34,7 @@ class Home extends React.Component {
     localStorage.setItem('source', e.value)
     e.value === 'recommendation' ? this.setState({isRecomendation: true}) : this.setState({isRecomendation: false})
   }
+
   changeInput = e => {
     clearTimeout(timeout)
     this.setState({inputValue: e})
@@ -36,9 +43,11 @@ class Home extends React.Component {
         this.setState({isViewClients: true, clients: r}))), config.data.timeout)
     } else this.setState({isViewClients: false})
   }
-  componentWillMount = () => {
+
+  componentDidMount = () => {
     if (config.isRTL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
   }
+
   continue = () => {
     let query = JSON.parse(localStorage.getItem('query'))
     let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&permit_ads=${config.data.permit_ads}`
@@ -52,8 +61,9 @@ class Home extends React.Component {
       this.props.history.push(config.urls.baseUrl + config.urls.last_page)
     })
   }
-  getBirthdate = value => this.setState({birthdate: value})
-  getBirthyear = value => this.setState({birthyear: value})
+
+  getBirthdate = value => this.setState({ birthdate: value })
+  getBirthyear = value => this.setState({ birthyear: value })
   render () {
     return (
       <div id='other_data'>

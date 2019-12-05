@@ -27,6 +27,13 @@ var config = {
     thanks: 'Thanks!',
     glad_see: 'We are glad to see you',
     close: 'Close',
+    datepicker: {
+      placeholder: {
+        year: 'Year',
+        month: 'Month',
+        day: 'Day'
+      }
+    },
     source_list: [
       {value: 'ads', label: 'Ads'},
       {value: 'fb_page', label: 'fb_page'},
