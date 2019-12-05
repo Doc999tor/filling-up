@@ -19,7 +19,10 @@ class Home extends React.Component {
     isRecomendation: false,
     checkChecker: false,
     isCheck: false,
-    clients: []
+    clients: [],
+    year: config.translations.datepicker.placeholder.year,
+    day: config.translations.datepicker.placeholder.day,
+    month: config.translations.datepicker.placeholder.month
   }
 
   static propTypes = {
@@ -51,7 +54,8 @@ class Home extends React.Component {
   continue = () => {
     let query = JSON.parse(localStorage.getItem('query'))
     let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&permit_ads=${config.data.permit_ads}`
-    if (this.state.birthdate) body = body + `&birthdate=${this.state.birthdate}&birthyear=${this.state.birthyear}`
+    if (this.state.birthyear) body = body + `&birthyear=${this.state.birthyear}`
+    if (this.state.birthdate_month && this.state.birthdate_day) body = body + `&birthdate=${this.state.birthdate_month}-${this.state.birthdate_day}`
     let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&added=${moment().format('YYYY-MM-DD HH:mm:ss')}`
     let promises = [
       fillingPatchService(body),
@@ -62,9 +66,29 @@ class Home extends React.Component {
     })
   }
 
-  getBirthdate = value => this.setState({ birthdate: value })
-  getBirthyear = value => this.setState({ birthyear: value })
+  handleChangeYear = event => {
+    this.setState({
+      year: event.target.value,
+      birthyear: event.target.value
+    })
+  }
+
+  handleChangeMonth = event => {
+    this.setState({
+      month: event.target.value,
+      birthdate_month: event.target.value
+    })
+  }
+
+  handleChangeDay = event => {
+    this.setState({
+      day: event.target.value,
+      birthdate_day: event.target.value
+    })
+  }
+
   render () {
+    const { year, month, day } = this.state
     return (
       <div id='other_data'>
         <div className='bullets'>
@@ -101,8 +125,12 @@ class Home extends React.Component {
         <div className='inputs'>
           <div className='field'>
             <Datepicker
-              getBirthdate={this.getBirthdate}
-              getBirthyear={this.getBirthyear}
+              handleChangeYear={this.handleChangeYear}
+              handleChangeMonth={this.handleChangeMonth}
+              handleChangeDay={this.handleChangeDay}
+              year={year}
+              month={month}
+              day={day}
             />
           </div>
           {/* <input className='field' ref='date' type='text' onBlur={() => { this.refs.date.type = 'text' }} onFocus={() => { this.refs.date.type = 'date' }}
