@@ -1,62 +1,59 @@
 #home
   .welcome, .be_glad, .skip, .or_fill
-    display block
-    margin 0 auto
-    width 100%
     text-align center
     color #6b6b6b
-    padding-bottom 10px
+    padding-bottom 0.6rem
+  p
+    font-size 1.3rem
+    margin 0
   .skip
     color steelblue
     padding-bottom 5px
   .soc_net
-    width 100%
+    display flex
+    justify-content center
     .facebook-wrap
-      width 65%
-      height 50px
-      margin 0 auto
+      display flex
+      outline none
+      align-items center
+      border none
+      padding 0.6rem 0
+      padding-inline-end 0.6rem
       background-color steelblue
-      border-radius 5px
+      border-radius 0.4rem
       img
-        display inline-block
-        margin 10px
-        width 30px
-        height 30px
-      h1
+        display block
+        width 1.8rem
+        height 1.8rem
+      p
         display inline-block
         position relative
-        top -18px
         font-weight 600
         color white
   .sep
-    margin-top 20px
-    width 100%
-    height 20px
+    margin-top 1.25rem
     background-color whitesmoke
     text-align center
     span
       color grey
-      font-size 20px
-      position relative
-      top -4px
+      font-size 1.25rem
   .or_fill
-    padding-top 15px
+    padding-top 1rem
   .inputs
     width 90%
     margin 0 auto
-    position relative
     input
       width 100%
-      height 50px
+      padding 0.7rem
       margin 5px 0
-      border-radius 10px
-      border-top 1px solid grey
-      border-left 1px solid grey
-      border-right 2px solid grey
-      border-bottom 2px solid grey
-      padding 5px
+      border-radius 0.6rem
+      border 1px solid grey
+      transition border-color 0.5s
+    input.notValidEmail
+      border 1px solid red
+    input.notValidEmail:focus
+      border 1px solid grey
   .btn-wrap
-    width 100%
     padding-top 20px
     button
       display block
@@ -69,17 +66,4 @@
       a
         color #6b6b6b
         text-decoration none
-.adress-list-wrap
-  width 100%
-  border-radius 10px
-  background-color white
-  z-index 15
-  position absolute
-  border 1px solid silver
-  max-height 200px
-  overflow-y scroll
-  overflow-x hidden
-  div
-    font-size 21px
-    text-align start
-    padding 0 5px
+
