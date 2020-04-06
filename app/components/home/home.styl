@@ -42,17 +42,20 @@
   .inputs
     width 90%
     margin 0 auto
-    input
-      width 100%
+    .input_wrap
       padding 0.7rem
-      margin 5px 0
+      margin 0.8rem 0
       border-radius 0.6rem
       border 1px solid grey
       transition border-color 0.5s
-    input.notValidEmail
+      input
+        padding 0
+        width 100%
+        margin 0
+        border none
+        background-color transparent !important
+    .input_wrap.notValidEmail
       border 1px solid red
-    input.notValidEmail:focus
-      border 1px solid grey
   .btn-wrap
     padding-top 20px
     button

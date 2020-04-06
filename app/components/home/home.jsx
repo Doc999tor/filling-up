@@ -2,6 +2,7 @@ import { patchService as fillingPatchService } from 'project-services/filling-up
 import qs from 'qs'
 import PropTypes from 'prop-types'
 import './home.styl'
+const { Redirect } = ReactRouterDOM
 class Home extends React.Component {
   state = {
     address: config.data.address ? config.data.address : localStorage.getItem('address'),
@@ -87,6 +88,7 @@ class Home extends React.Component {
     const { name, email, address, validEmail } = this.state
     return (
       <div id='home'>
+        {!this.props.history.location.search && <Redirect to={{ pathname: config.urls.baseUrl + config.urls.home, search: config.urls.params }} />}
         <div className='bullets'>
           <div className='bullet active' />
           <div className='bullet' />
@@ -105,33 +107,38 @@ class Home extends React.Component {
         <div className='sep'><span>{config.translations.or}</span></div>
         <p className='or_fill'>{config.translations.or_fill}</p>
         <div className='inputs'>
-          <input
-            type='text'
-            name='name'
-            placeholder={config.translations.full_name}
-            value={name}
-            onChange={this.handleChangeInput}
-          />
-          <input
-            type='text'
-            name='email'
-            className={validEmail ? 'validEmail' : 'notValidEmail'}
-            placeholder={config.translations.email}
-            value={email}
-            onBlur={this.handleCheckEmail}
-            onChange={this.handleChangeInput}
-          />
-          {config.address_based &&
+          <div className='input_wrap'>
             <input
               type='text'
-              name='address'
-              placeholder={config.translations.adress}
-              value={address}
+              name='name'
+              placeholder={config.translations.full_name}
+              value={name}
               onChange={this.handleChangeInput}
-            />}
+            />
+          </div>
+          <div className={'input_wrap' + (validEmail ? ' validEmail' : ' notValidEmail')}>
+            <input
+              type='text'
+              name='email'
+              placeholder={config.translations.email}
+              value={email}
+              onBlur={this.handleCheckEmail}
+              onChange={this.handleChangeInput}
+            />
+          </div>
+          {config.address_based &&
+            <div className='input_wrap'>
+              <input
+                type='text'
+                name='address'
+                placeholder={config.translations.adress}
+                value={address}
+                onChange={this.handleChangeInput}
+              />
+            </div>}
         </div>
         <div className='btn-wrap'>
-          <button onClick={validEmail && this.continue}>{config.translations.continue}</button>
+          <button onClick={this.continue}>{config.translations.continue}</button>
         </div>
       </div>
     )
