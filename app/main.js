@@ -12,7 +12,7 @@ ReactDOM.render(
       <Route exact path={config.urls.baseUrl + config.urls.other_data} component={OtherData} />
       <Route exact path={config.urls.baseUrl + config.urls.last_page} component={LastPage} />
       <Route exact path={config.urls.baseUrl + config.urls.photo} component={Photo} />
-      <Route path={config.urls.baseUrl + config.urls.home} component={Home} />
+      <Route exact path={config.urls.baseUrl + config.urls.home} component={Home} />
       <Redirect from='/' to={{ pathname: config.urls.baseUrl + config.urls.home, search: config.urls.params }} />
     </Switch>
   </BrowserRouter>,

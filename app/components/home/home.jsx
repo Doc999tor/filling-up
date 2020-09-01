@@ -43,36 +43,54 @@ class Home extends React.Component {
   }
 
   facebookLogin = () => {
-    FB.login(res => {
-      if (res.status === 'connected') {
-        let fields = [
-          'id',
-          'about',
-          'age_range',
-          'birthday',
-          'email',
-          'first_name',
-          'middle_name',
-          'last_name',
-          'gender',
-          'name',
-          'location',
-          'timezone',
-          'website',
-          'picture.width(480).height(480)',
-          'photos'
-        ]
-        FB.api('/me?fields=' + fields.join(','), r => {
-          let query = JSON.parse(localStorage.getItem('query'))
-          let body = `b=${query.b}&c=${query.c}&fb_data=${encodeURIComponent(JSON.stringify(r))}`
-          fillingPatchService(body).then(r => {
-            if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
-          })
-        })
+    // FB.login(res => {
+    //   if (res.status === 'connected') {
+    //     let fields = [
+    //       'id',
+    //       'about',
+    //       'age_range',
+    //       'birthday',
+    //       'email',
+    //       'first_name',
+    //       'middle_name',
+    //       'last_name',
+    //       'gender',
+    //       'name',
+    //       'location',
+    //       'timezone',
+    //       'website',
+    //       'picture.width(480).height(480)',
+    //       'photos'
+    //     ]
+    //     FB.api('/me?fields=' + fields.join(','), r => {
+    //       let query = JSON.parse(localStorage.getItem('query'))
+    //       let body = `b=${query.b}&c=${query.c}&fb_data=${encodeURIComponent(JSON.stringify(r))}`
+    //       fillingPatchService(body).then(r => {
+    //         if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
+    //       })
+    //     })
+    //   }
+    // }, {
+    //   scope: 'public_profile,email,user_photos,user_birthday,user_location,user_hometown'
+    // })
+    FB.login(function(response) {
+      if (response.authResponse) {
+       console.log('Welcome!  Fetching your information.... ');
+       FB.api('/me', function(response) {
+         console.log('response', response);
+        //  console.log('Good to see you, ' + response.name + '.');
+        let query = JSON.parse(localStorage.getItem('query'))
+        let body = `b=${query.b}&c=${query.c}&fb_data=${encodeURIComponent(JSON.stringify(response))}`
+        fillingPatchService(body).then(r => {
+          if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
+        }) 
+      })
+      } else {
+       console.log('User cancelled login or did not fully authorize.');
       }
-    }, {
-      scope: 'public_profile,email,user_photos,user_birthday,user_location,user_hometown'
-    })
+  }, {
+    scope: 'public_profile, email, user_photos, user_age_range, user_gender, user_link, user_photos, user_birthday, user_location, user_hometown'
+  })
   }
 
   continue = () => {
