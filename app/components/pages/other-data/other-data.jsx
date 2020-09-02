@@ -25,9 +25,6 @@ class Home extends React.Component {
     month: config.translations.datepicker.placeholder.month
   }
 
-  static propTypes = {
-    history: PropTypes.object
-  }
 
   changeSelect = e => {
     this.setState({selectedLabel: e.label, selectedValue: e.value, userId: null})
@@ -52,7 +49,7 @@ class Home extends React.Component {
   }
 
   continue = () => {
-    let query = JSON.parse(localStorage.getItem('query'))
+    let query = JSON.parse(sessionStorage.getItem('fill_query'))
     let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&permit_ads=${config.data.permit_ads}`
     if (this.state.birthyear) body = body + `&birthyear=${this.state.birthyear}`
     if (this.state.birthdate_month && this.state.birthdate_day) body = body + `&birthdate=${this.state.birthdate_month}-${this.state.birthdate_day}`

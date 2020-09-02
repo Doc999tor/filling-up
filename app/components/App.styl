@@ -1,0 +1,19 @@
+.suspense
+  width 100%
+  min-height 100vh
+  display flex
+  align-items center
+  justify-content center
+  background-color var(--sec-color)
+  .loader
+    width 56px
+    height 56px
+    animation 1s spin infinite linear
+    opacity .8
+    @keyframes spin
+      from
+        transform rotate(0deg)
+      to
+        transform rotate(360deg)
+
+

@@ -7,9 +7,7 @@ class Home extends React.Component {
   state = {
     img: config.data.photo_url ? config.data.photo_url : localStorage.getItem('photo_url')
   }
-  static propTypes = {
-    history: PropTypes.object
-  }
+
   addFoto = e => {
     let f = e.target.files[0]
     let img = new Image()
@@ -88,7 +86,7 @@ class Home extends React.Component {
     if (config.isRTL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
   }
   continue = () => {
-    let query = JSON.parse(localStorage.getItem('query'))
+    let query = JSON.parse(sessionStorage.getItem('fill_query'))
     let q = JSON.parse('{"' + decodeURI(`b=${query.b}&c=${query.c}`).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
     let body = new FormData()
     body.append('b', q.b)

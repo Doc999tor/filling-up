@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y1=".22" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#9265f2"/>
+            <stop offset="1" stop-color="#4f2da7"/>
+        </linearGradient>
+        <style>
+            .cls-1{fill:url(#linear-gradient)}
+        </style>
+    </defs>
+    <g id="ic_fill_in" transform="translate(-3.996 -2.058)">
+        <path id="Path_13855" d="M17.121 20H4.875a1.009 1.009 0 0 0 0 2h12.246a1.009 1.009 0 0 0 0-2z" class="cls-1" data-name="Path 13855" transform="translate(0 -1.942)"/>
+        <path id="Path_13856" d="M4.874 16.058h.079l3.647-.334a1.747 1.747 0 0 0 1.058-.5l7.873-7.9a1.691 1.691 0 0 0-.061-2.38l-2.4-2.406a1.744 1.744 0 0 0-2.327-.061l-7.873 7.9a1.759 1.759 0 0 0-.5 1.063L4 15.1a.875.875 0 0 0 .875.957zm8.984-12.295l2.388 2.4-1.746 1.71-2.348-2.353z" class="cls-1" data-name="Path 13856"/>
+    </g>
+</svg>
