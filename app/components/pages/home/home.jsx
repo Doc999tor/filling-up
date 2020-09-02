@@ -1,9 +1,10 @@
+import React, { Component } from 'react'
 import { patchService as fillingPatchService } from 'project-services/filling-up.service.js'
-import qs from 'qs'
-import PropTypes from 'prop-types'
+// import qs from 'qs'
+// import PropTypes from 'prop-types'
 import './home.styl'
-const { Redirect } = ReactRouterDOM
-class Home extends React.Component {
+// const { Redirect } = ReactRouterDOM
+class Home extends Component {
   state = {
     address: config.data.address ? config.data.address : localStorage.getItem('address'),
     email: config.data.email ? config.data.email : localStorage.getItem('email'),
@@ -12,17 +13,20 @@ class Home extends React.Component {
     adress: []
   }
 
-  static propTypes = {
-    history: PropTypes.object,
-    location: PropTypes.object
-  }
+  // static propTypes = {
+  //   history: PropTypes.object,
+  //   location: PropTypes.object
+  // }
 
   componentDidMount = () => {
     if (config.isRTL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
     const email = config.data.email ? config.data.email : localStorage.getItem('email')
     if (email !== null && email !== '') this.handleCheckEmail(email)
-    const query = JSON.stringify(qs.parse(this.props.history.location.search.slice(1)))
-    localStorage.setItem('query', query)
+    // const query = JSON.stringify(qs.parse(this.props.history.location.search.slice(1)))
+    // const b = new URL(document.location).searchParams.get('c')
+    // const c = new URL(document.location).searchParams.get('b')
+    // const query = { c, b }
+    // localStorage.setItem('query', query)
   }
 
   handleChangeInput = e => {
@@ -42,59 +46,59 @@ class Home extends React.Component {
     pattern.test(email) || email === '' ? this.setState({ validEmail: true }) : this.setState({ validEmail: false })
   }
 
-  facebookLogin = () => {
-    // FB.login(res => {
-    //   if (res.status === 'connected') {
-    //     let fields = [
-    //       'id',
-    //       'about',
-    //       'age_range',
-    //       'birthday',
-    //       'email',
-    //       'first_name',
-    //       'middle_name',
-    //       'last_name',
-    //       'gender',
-    //       'name',
-    //       'location',
-    //       'timezone',
-    //       'website',
-    //       'picture.width(480).height(480)',
-    //       'photos'
-    //     ]
-    //     FB.api('/me?fields=' + fields.join(','), r => {
-    //       let query = JSON.parse(localStorage.getItem('query'))
-    //       let body = `b=${query.b}&c=${query.c}&fb_data=${encodeURIComponent(JSON.stringify(r))}`
-    //       fillingPatchService(body).then(r => {
-    //         if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
-    //       })
-    //     })
-    //   }
-    // }, {
-    //   scope: 'public_profile,email,user_photos,user_birthday,user_location,user_hometown'
-    // })
-    FB.login(function(response) {
-      if (response.authResponse) {
-       console.log('Welcome!  Fetching your information.... ');
-       FB.api('/me', function(response) {
-         console.log('response', response);
-        //  console.log('Good to see you, ' + response.name + '.');
-        let query = JSON.parse(localStorage.getItem('query'))
-        let body = `b=${query.b}&c=${query.c}&fb_data=${encodeURIComponent(JSON.stringify(response))}`
-        fillingPatchService(body).then(r => {
-          if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
-        }) 
-      })
-      } else {
-       console.log('User cancelled login or did not fully authorize.');
-      }
-  }, {
-    scope: 'public_profile, email, user_photos, user_age_range, user_gender, user_link, user_photos, user_birthday, user_location, user_hometown'
-  })
-  }
+  // facebookLogin = () => {
+  //   // FB.login(res => {
+  //   //   if (res.status === 'connected') {
+  //   //     let fields = [
+  //   //       'id',
+  //   //       'about',
+  //   //       'age_range',
+  //   //       'birthday',
+  //   //       'email',
+  //   //       'first_name',
+  //   //       'middle_name',
+  //   //       'last_name',
+  //   //       'gender',
+  //   //       'name',
+  //   //       'location',
+  //   //       'timezone',
+  //   //       'website',
+  //   //       'picture.width(480).height(480)',
+  //   //       'photos'
+  //   //     ]
+  //   //     FB.api('/me?fields=' + fields.join(','), r => {
+  //   //       let query = JSON.parse(localStorage.getItem('query'))
+  //   //       let body = `b=${query.b}&c=${query.c}&fb_data=${encodeURIComponent(JSON.stringify(r))}`
+  //   //       fillingPatchService(body).then(r => {
+  //   //         if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
+  //   //       })
+  //   //     })
+  //   //   }
+  //   // }, {
+  //   //   scope: 'public_profile,email,user_photos,user_birthday,user_location,user_hometown'
+  //   // })
+  //   FB.login(function(response) {
+  //     if (response.authResponse) {
+  //      console.log('Welcome!  Fetching your information.... ');
+  //      FB.api('/me', function(response) {
+  //        console.log('response', response);
+  //       //  console.log('Good to see you, ' + response.name + '.');
+  //       let query = JSON.parse(localStorage.getItem('query'))
+  //       let body = `b=${query.b}&c=${query.c}&fb_data=${encodeURIComponent(JSON.stringify(response))}`
+  //       fillingPatchService(body).then(r => {
+  //         if (r.status === 204) this.props.history.push(config.urls.baseUrl + config.urls.last_page)
+  //       }) 
+  //     })
+  //     } else {
+  //      console.log('User cancelled login or did not fully authorize.');
+  //     }
+  // }, {
+  //   scope: 'public_profile, email, user_photos, user_age_range, user_gender, user_link, user_photos, user_birthday, user_location, user_hometown'
+  // })
+  // }
 
   continue = () => {
-    const query = JSON.parse(localStorage.getItem('query'))
+    const query = JSON.parse(sessionStorage.getItem('fill_query'))
     let body = `b=${query.b}&c=${query.c}&name=${this.state.name}&email=${this.state.email}`
     if (config.address_based) body = body + `&address=${this.state.address}`
     fillingPatchService(body).then(r => {
@@ -106,24 +110,24 @@ class Home extends React.Component {
     const { name, email, address, validEmail } = this.state
     return (
       <div id='home'>
-        {!this.props.history.location.search && <Redirect to={{ pathname: config.urls.baseUrl + config.urls.home, search: config.urls.params }} />}
-        <div className='bullets'>
+        {/* {!document.location.search && <Redirect to={{ pathname: config.urls.baseUrl + config.urls.home, search: config.urls.params }} />} */}
+        {/* <div className='bullets'>
           <div className='bullet active' />
           <div className='bullet' />
           <div className='bullet' />
           <div className='bullet' />
-        </div>
+        </div> */}
         <p className='welcome'>{config.translations.welcome}</p>
         <p className='be_glad'>{config.translations.be_glad}</p>
-        <p className='skip'>{config.translations.skip}</p>
+        {/* <p className='skip'>{config.translations.skip}</p>
         <div className='soc_net'>
           <button className='facebook-wrap' onClick={this.facebookLogin}>
             <img src={config.urls.media + 'facebook.png'} />
             <p>{config.translations.facebook}</p>
           </button>
-        </div>
-        <div className='sep'><span>{config.translations.or}</span></div>
-        <p className='or_fill'>{config.translations.or_fill}</p>
+        </div> */}
+        {/* <div className='sep'><span>{config.translations.or}</span></div>
+        <p className='or_fill'>{config.translations.or_fill}</p> */}
         <div className='inputs'>
           <div className='input_wrap'>
             <input
