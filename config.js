@@ -57,16 +57,14 @@ var config = {
     photo_r: '/filling-up/photo',
     notes: '/filling-up/notes',
     other_data: '/other_data',
-    fill_in: '/fill_in',
     last_page: '/last_page',
     media: './assets/media/',
     photo: '/photo',
-    home: '/home',
-    baseUrl: '/en/filling-up',
+    baseUrl: '',
     params: '?b=123&c=sdfs2d1f'
   },
   data: {
-    name: 'Emily',
+    name: '',
     email: '',
     address: '',
     photo: '',

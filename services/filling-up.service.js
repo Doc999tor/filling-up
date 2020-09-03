@@ -1,4 +1,4 @@
-import mainRequestService from './request.service'
+import mainRequestService from 'project-components/request.service.js'
 
 export const patchService = body => {
   const url = config.urls.main + config.urls.filling_up
