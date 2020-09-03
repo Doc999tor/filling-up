@@ -37,16 +37,7 @@ const FillIn = props => {
     sessionStorage.setItem('address', value)
   }
 
-  const callbackPhoto = url => {
-    this.setState({
-      imagePreviewUrl: url,
-      file: dataURLtoFile(url)
-    }, () => this.props.getPicture(this.state.file))
-    // this.props.getPicture(this.state.file)
-    if (this.state.imagePreviewUrl) {
-      this.setState({ pic: 'newImage' })
-    }
-  }
+  const callbackPhoto = photo => setPhoto(photo)
 
   const [photo, setPhoto] = useState('')
   const [deleteAnimation, setDeleteAnimation] = useState(false)
@@ -59,13 +50,13 @@ const FillIn = props => {
   }
 
   const addFoto = e => {
-    let f = e.target.files[0]
-    if (config.plugins.some(i => i === 'highres_photos')) {
+    const f = e.target.files[0]
+    if (config.plugins?.includes('highres_photos')) {
       const reader = new FileReader()
       reader.readAsDataURL(f)
-      reader.onload = () => {
-        setPhoto(reader.result)
-      }
+      reader.onload = () => setPhoto(reader.result)
+    } else {
+      Resize(f, callbackPhoto)
     }
   }
 
@@ -101,7 +92,7 @@ const FillIn = props => {
       {
         photo
           ? <div className={'added_photo' + (deleteAnimation ? ' deleteAnimation' : '')}>
-            <img className={'client-img' + (deleteAnimation ? ' deleteAnimationPhoto' : '')} src={photo} />
+            <img className='client-img' src={photo} />
             <div className='controls'>
               <label className='control_btn'>
                 <img src={config.urls.media + 'ic_photo.svg'} />
