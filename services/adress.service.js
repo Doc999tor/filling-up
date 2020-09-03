@@ -1,4 +1,4 @@
-import mainRequestService from './request.service'
+import mainRequestService from 'project-components/request.service.js'
 
 const getService = q => {
   const url = config.urls.adress.replace('{query}', q).replace('{language}', config.translations.language)

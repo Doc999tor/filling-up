@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18">
+    <g id="ic_delete" transform="translate(-2 -1)">
+        <path id="ic_delete-2" fill="#fff" d="M4 18a2.428 2.428 0 0 1-2.4-2.454V4.909H.8a.819.819 0 0 1 0-1.637H4v-.818A2.427 2.427 0 0 1 6.4 0h3.2A2.428 2.428 0 0 1 12 2.454v.818h3.2a.819.819 0 0 1 0 1.637h-.8v10.637A2.427 2.427 0 0 1 12 18zm-.8-2.454a.809.809 0 0 0 .8.818h8a.809.809 0 0 0 .8-.818V4.909H3.2zm7.2-12.274v-.818a.809.809 0 0 0-.8-.818H6.4a.809.809 0 0 0-.8.818v.818z" data-name="ic_delete" transform="translate(2 1)"/>
+    </g>
+</svg>

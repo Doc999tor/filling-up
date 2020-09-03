@@ -1,0 +1,179 @@
+#fill-in
+  width 100%
+  flex-grow 1
+  .photo-section
+    display flex
+    align-items center
+    justify-content center
+    padding 3.25rem 0
+    .camera
+      background var(--dark-color)
+      border-radius 50%
+      display flex
+      position relative
+      align-items center
+      justify-content center
+      height 3.5rem
+      width 3.5rem
+      .shine_star
+        position absolute
+        border solid 2px rgba(117, 52, 248, 0.5)
+        border-radius 50%
+        display flex
+        align-items center
+        justify-content center
+        width 6.25rem
+        height 6.25rem
+        opacity 0
+        animation shine_star 3s
+        animation-delay 0.5s
+        img
+          width 100%
+  .added_photo
+    height 10rem
+    width 100%
+    will-change height
+    opacity 0
+    animation added_photo 0.3s forwards
+    animation-delay 0.3s
+    position relative
+    overflow hidden
+    .client-img
+      will-change transform
+      position absolute
+      width 100%
+      height 100%
+      object-fit cover
+      animation client_photo 0.3s forwards
+      animation-delay 0.3s
+    .controls
+      position absolute
+      bottom 0
+      left 0
+      z-index 3
+      width 100%
+      display flex
+      align-items center
+      justify-content flex-end
+      padding 1rem 0.5rem
+      .control_btn
+        width 2.375rem
+        height 2.375rem
+        border-radius 50%
+        display flex
+        align-items center
+        justify-content center
+        background-color rgba(0,0,0,0.3)
+        margin 0 0.5rem
+  .added_photo:after
+    content ''
+    z-index 2
+    position absolute
+    width 100%
+    height 100%
+    background-image: linear-gradient(to bottom, rgba(79, 45, 167, 0), rgba(40, 23, 84, 0.6))
+  .deleteAnimation
+    animation deleteAnimation 0.3s forwards
+  .file_input
+    display none
+  .inputs
+    width 100%
+    padding 1rem
+    .input_wrap
+      padding 0 1rem
+      margin-bottom 0.75rem
+      border-radius 0.5rem
+      display flex
+      height 3rem
+      align-items center
+      background-color var(--white-color)
+      box-shadow 0 6px 12px 0 rgba(41, 41, 204, 0.12)
+      border 2px solid var(--white-color)
+      transition border-color 0.5s
+      img
+        -moz-margin-end 1rem
+        -webkit-margin-end 1rem
+        margin-inline-end 1rem
+      input
+        padding 0
+        width 100%
+        font-size 1rem
+        margin 0
+        border none
+        background-color transparent !important
+    .warning
+      transition border-color 0.5s
+      border 2px solid var(--active-color)
+
+  .btn-wrap
+    display flex
+    height 4.75rem
+    position fixed
+    max-width 640px
+    margin 0 auto
+    bottom 0
+    width 100%
+    align-items center
+    padding 0 1.125rem
+    justify-content center
+    box-shadow 0 0 12px 0 rgba(41, 41, 204, 0.2)
+    background-color var(--white-color)
+    button
+      background transparent linear-gradient(0deg, #591EC0 0%, #6623DB 25%, #7D3EE8 48%, #BE95FF 100%) 0% 0% no-repeat padding-box
+      width 100%
+      padding 0
+      text-transform uppercase
+      height 3.25rem
+      border none
+      border-radius 3rem
+      color var(--white-color)
+      font-size 1rem
+      font-weight 500
+
+@keyframes shine_star
+  0%
+    transform scale(0)
+  23%
+    opacity 0.8  
+  46%
+    opacity 0
+    transform scale(1) rotate(360deg)
+  54%
+    opacity 0.4
+  77%
+    opacity 0.8
+  100%
+    opacity 0
+    transform scale(0) rotate(0deg)
+@keyframes deleteAnimation
+  0%
+    height 12.5rem
+  100%
+    height 10rem
+    transform scale(0)
+    border-radius 50%
+@keyframes page_animation_ltr
+  0%
+    transform translateX(100%)
+@keyframes page_animation_rtl
+  0%
+    transform translateX(100%)
+@keyframes added_photo
+  0%
+    height 10rem
+  100%
+    opacity 1
+    height 12rem
+@keyframes client_photo
+  0%
+    transform scale(0)
+    border-radius 50%
+  100%
+    transform scale(1)
+    border-radius 0
+body[style="direction: ltr;"]
+  #fill-in
+    animation page_animation_ltr 0.3s
+body[style="direction: rtl;"]
+  #fill-in
+    animation page_animation_rtl 0.3s
