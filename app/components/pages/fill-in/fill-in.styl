@@ -156,12 +156,6 @@
     height 10rem
     transform scale(0)
     border-radius 50%
-@keyframes page_animation_ltr
-  0%
-    transform translateX(100%)
-@keyframes page_animation_rtl
-  0%
-    transform translateX(100%)
 @keyframes added_photo
   0%
     height 10rem
@@ -170,9 +164,3 @@
     opacity 1
     height 12rem
     transform scale(1)
-body[style="direction: ltr;"]
-  #fill-in
-    animation page_animation_ltr 0.3s
-body[style="direction: rtl;"]
-  #fill-in
-    animation page_animation_rtl 0.3s

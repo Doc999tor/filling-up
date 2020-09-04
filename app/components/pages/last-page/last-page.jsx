@@ -9,31 +9,23 @@ const LastPage = () => {
           <img className='hand' src={config.urls.media + '3d_hand_ok@2x.png'} alt='hand_ok' />
         </div>
       </div>
-      <h1 className='thanks'>{config.data.name ? config.data.name + ', ' + config.translations.thanks : config.translations.thanks}</h1>
-      <div className='like_wrap'><img src={config.urls.media + 'like.svg'} /></div>
-      <h1 className='glad_see'>{config.translations.glad_see}</h1>
-      <div className='text-wrap'>
-        <div className='icon'>
-          <img src={config.urls.media + 'heart.png'} />
-        </div>
-        <h1 className='text'>{config.greetings_text}</h1>
+      <div className='title_text'>
+        <p>{config.translations.last_page?.last_page_title}</p>
       </div>
-      <h1 className='bus_name'>{config.business_name}</h1>
-      <div className='text-wrap'>
-        <div className='icon'>
-          <img src={config.urls.media + 'house.png'} />
-        </div>
-        <div className='text'>
-          <h1 className='address'>{config.business_adress}</h1>
-          <h1>{config.business_desc}</h1>
+      <p className='subtitle_text'>{config.translations.last_page?.last_page_subtitle}</p>
+      <div className='address-strip'>
+        <p className='address_text'>{config.translations.last_page?.business_address_title}</p>
+        <div className='address_label'>
+          <img src={config.urls.media + 'purple_address.svg'} />
+          <p>{config.business_adress}</p>
         </div>
       </div>
       <div className='links'>
-        {config.business_links.map(i => <a href={i.url}><img src={config.urls.media + i.icon} onError={e => { e.target.src = config.urls.media + 'default_link.png' }} /></a>)}
+        {config.business_links?.map(({ url, icon }) => <a key={url} href={url}><img src={config.urls.media + icon} /></a>)}
       </div>
-      {/* <div className='btn-wrap'>
-        <button onClick={() => close()}>{config.translations.close}</button>
-      </div> */}
+      <footer className='footer'>
+        {config.footer?.data?.map(({ name, link, icon }) => <a key={link} href={link}>{icon && <img src={config.urls.media + icon} />}{name && config.translations.footer[name]}</a>)}
+      </footer>
     </div>
   )
 }

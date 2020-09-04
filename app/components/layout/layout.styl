@@ -19,6 +19,7 @@
     margin 0 auto
     top 0
     width 100%
+    z-index 10
     align-items center
     justify-content center
     img
@@ -67,3 +68,30 @@
       height 20.5rem
       z-index 1
       opacity 0
+  .title_text
+    font-size 1.5rem
+    opacity 0
+    padding 1rem 0 0
+    font-weight bold
+    animation title_text 0.5s forwards
+    animation-delay 1s
+    p
+      margin 0
+@keyframes title_text
+  0%
+    transform scale(0)
+  100%
+    opacity 1
+    transform scale(1)
+@keyframes page_animation_ltr
+  0%
+    transform translateX(100%)
+@keyframes page_animation_rtl
+  0%
+    transform translateX(100%)
+body[style="direction: ltr;"]
+  #fill-in, #last_page
+    animation page_animation_ltr 0.3s
+body[style="direction: rtl;"]
+  #fill-in, #last_page
+    animation page_animation_rtl 0.3s

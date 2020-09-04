@@ -36,7 +36,7 @@ const Greeting = ({ history }) => {
           <img className='hand' src={config.urls.media + '3d_hand@2x.png'} alt='hand' />
         </div>
       </div>
-      <div className='greeting_text'>
+      <div className='title_text'>
         {config.data.name
           ? <p>{config.translations.greeting_page?.greeting_title_with_name?.replace('{name}', config.data.name)}</p>
           : <p>{config.translations.greeting_page?.greeting_title}</p>}
