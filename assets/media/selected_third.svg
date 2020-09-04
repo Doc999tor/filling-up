@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 58 58">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset="1" stop-color="#e4e4f9"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-2" x1=".5" x2=".5" y1=".045" y2=".757" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ffc9aa"/>
+            <stop offset="1" stop-color="#f9690e"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-6" x1=".5" x2=".5" y2=".887" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#c5a8ff"/>
+            <stop offset=".517" stop-color="#9058ff"/>
+            <stop offset="1" stop-color="#4e18ac"/>
+        </linearGradient>
+        <style>
+            .cls-2{fill:url(#linear-gradient-2)}
+        </style>
+    </defs>
+    <g id="selected_third_avatar" data-name="selected third avatar" transform="translate(-267 -379)">
+        <circle id="avatar" cx="29" cy="29" r="29" fill="url(#linear-gradient)" transform="translate(267 379)"/>
+        <g id="ic_mask" transform="translate(277 391)">
+            <g id="ic_mask-2" data-name="ic_mask">
+                <g id="Group_10549" data-name="Group 10549" transform="translate(6.355)">
+                    <path id="Path_13835" d="M93.693 89.8h-8.075c.133-5.455 1.5-9.514 4.08-12.07a10.1 10.1 0 0 1 8.535-2.743l.732.14.171.847c.046.228 1.1 5.646-1.73 10.182a10.975 10.975 0 0 1-3.713 3.644z" class="cls-2" data-name="Path 13835" transform="translate(-74.075 -69.466)"/>
+                    <path id="Path_13836" d="M246.826 89.8a10.975 10.975 0 0 1-3.714-3.643c-2.827-4.536-1.776-9.954-1.73-10.183l.171-.847.732-.14a10.1 10.1 0 0 1 8.535 2.743c2.576 2.557 3.947 6.616 4.08 12.07h-8.074z" class="cls-2" data-name="Path 13836" transform="translate(-241.153 -69.466)"/>
+                    <g id="Group_10545" data-name="Group 10545" transform="translate(7.309)">
+                        <path id="Path_13837" d="M239.184 34.782c-3.37-4.284-4.867-8.539-4.45-12.646a13.594 13.594 0 0 1 4.65-8.833l.618-.483 1.583 7.375L240 35.821z" class="cls-2" data-name="Path 13837" transform="translate(-234.666 -12.819)"/>
+                        <path id="Path_13838" d="M189.366 22.136c.417 4.107-1.08 8.362-4.45 12.646l-.818 1.04v-23l.618.483a13.594 13.594 0 0 1 4.65 8.831z" class="cls-2" data-name="Path 13838" transform="translate(-178.761 -12.82)"/>
+                    </g>
+                </g>
+                <path id="Union_45" fill="url(#linear-gradient-6)" d="M19 17.662a10.763 10.763 0 0 1-7.122 2.483C5.328 20.145 0 13.8 0 6.015V0h8.364a12.761 12.761 0 0 1 6.424 1.779A15.1 15.1 0 0 1 19 5.481a15.2 15.2 0 0 1 4.213-3.7A12.766 12.766 0 0 1 29.635 0H38v6.015c0 7.788-5.325 14.129-11.875 14.129A10.8 10.8 0 0 1 19 17.662zm3.752-6.677l-.539.829a5.552 5.552 0 0 0 3.915 1.351c3.041 0 5.561-2.7 5.959-6.189h-2.452a8.371 8.371 0 0 0-6.886 4.009zm-10.874 2.18a5.555 5.555 0 0 0 3.915-1.351l-.539-.829a8.369 8.369 0 0 0-6.89-4.009H5.917c.397 3.493 2.917 6.189 5.958 6.189z" data-name="Union 45" transform="translate(0 13.855)"/>
+            </g>
+        </g>
+    </g>
+</svg>

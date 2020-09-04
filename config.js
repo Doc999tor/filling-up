@@ -12,6 +12,18 @@ var config = {
       last_page_title: 'Nicely Done!',
       last_page_subtitle: 'Thank you so much for your efforts. Have a nice day and see you soon!',
       business_address_title: 'Pure beauty address:',
+      footer: {
+        about_us: 'About Lista CRM',
+        terms_of_use: ' Terms of use'
+      }
+    },
+    other_data: {
+      gender_strip_title: 'Select gender',
+      gender: {
+        male: 'Male',
+        female: 'Female',
+        third: 'Third'
+      }
     },
     welcome: 'Welcome',
     be_glad: 'We will be glad if you fill out the following data',
@@ -45,10 +57,6 @@ var config = {
         month: 'Month',
         day: 'Day'
       }
-    },
-    footer: {
-      about_us: 'About Lista CRM',
-      terms_of_use: ' Terms of use'
     },
     source_list: [
       {value: 'ads', label: 'Ads'},
@@ -94,6 +102,13 @@ var config = {
   plugins: ['highres_photos'],
   timeout: 500,
   max_side: 1000,
+  gender: {
+    data: [
+      { type: 'male', id: 1, icon: 'male.svg', active_icon: 'selected_male.svg' },
+      { type: 'female', id: 2, icon: 'female.svg', active_icon: 'selected_female.svg' },
+      { type: 'third', id: 3, icon: 'third.svg', active_icon: 'selected_third.svg' }
+    ]
+  },
   footer: {
     data: [
       { name: 'about_us', link: `/en/about_us`},
