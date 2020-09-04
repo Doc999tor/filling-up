@@ -2,50 +2,94 @@
   display flex
   flex-direction column
   align-items center
+  p
+    margin 0
   .hand
     animation lastPage 0.5s forwards
     animation-delay 0.5s
-  .thanks
-    width 100%
+  .title_text
+    animation-delay 0.5s
+  .subtitle_text
+    font-size 1rem
+    width 75%
     text-align center
-    padding 10px
-    color deepskyblue
-    font-size 30px
-  .like_wrap
-    width 80px
-    margin 0 auto
-    img
-      width 80px
-      height 80px
-  .glad_see, .bus_name
-    width 100%
-    padding 10px
-    color deepskyblue
-    text-align start
-  .text-wrap
-    .icon
-      display inline-block
-      width 15%
-      padding 10px
+    padding 0.5rem 0 1.5rem
+    color var(--main-lite-color)
+  .address-strip
+    display flex
+    flex-direction column
+    align-items center
+    .address_text
+      font-size 0.75rem
+      text-transform uppercase
+      font-weight bold
+    .address_label
+      display flex
+      align-items center
+      justify-content center
+      padding-top 0.2rem
+      p
+        font-size 1rem
+        color var(--dark-color)
+        line-height 1
       img
-        position relative
-        width 40px
-        top -20px
-      .house
-        top -10px
-    .text
-      display inline-block
-      width 85%
-      color grey
-      .address
-        color deepskyblue
+        -moz-margin-end 0.5rem
+        -webkit-margin-end 0.5rem
+        margin-inline-end 0.5rem
   .links
-    width 160px
+    display flex
+    padding-top 3.875rem
+    align-items center
+    a
+      box-shadow 0 15px 20px 0 rgba(26, 120, 242, 0.16)
+      background-image linear-gradient(to bottom, #ffffff 18%, #deedff)
+      display flex
+      align-items center
+      border-radius 50%
+      justify-content center
+      width 3.25rem
+      height 3.25rem
+      margin 0 0.5rem
+      opacity 0
+      animation links 0.5s forwards
+      animation-delay 1.5s
+    a:nth-child(2)
+      box-shadow 0 15px 20px 0 rgba(224, 1, 149, 0.16)
+      background-image linear-gradient(to bottom, #ffffff 18%, #ffdef0)
+  .footer
+    display flex
+    height 1.75rem
+    position fixed
+    max-width 640px
     margin 0 auto
-    img
-      width 80px
-      height 80px
-      padding 15px
+    bottom 0
+    width 100%
+    opacity 0
+    animation footer 0.5s forwards
+    animation-delay 1.5s
+    align-items center
+    padding 0 1.125rem
+    justify-content space-between
+    background-image linear-gradient(104deg, #9370e6 -32%, #7534f8 32%, #4f2da7 115%)
+    a
+      display flex
+      align-items center
+      text-decoration none
+      color var(--white-color)
+
+    
+@keyframes links
+  0%
+    transform scale(0)
+    opacity 1
+  100%
+    opacity 1
+@keyframes footer
+  0%
+    opacity 1
+    transform translateY(100%)
+  100%
+    opacity 1
 @keyframes lastPage
   0%
     transform translate(20%, 50%)

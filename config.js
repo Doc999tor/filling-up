@@ -8,6 +8,11 @@ var config = {
       fb_btn_label: 'Continue with Facebook',
       fill_in_btn_label: 'Fill In the Form'
     },
+    last_page: {
+      last_page_title: 'Nicely Done!',
+      last_page_subtitle: 'Thank you so much for your efforts. Have a nice day and see you soon!',
+      business_address_title: 'Pure beauty address:',
+    },
     welcome: 'Welcome',
     be_glad: 'We will be glad if you fill out the following data',
     skip: 'Skip and continue with',
@@ -40,6 +45,10 @@ var config = {
         month: 'Month',
         day: 'Day'
       }
+    },
+    footer: {
+      about_us: 'About Lista CRM',
+      terms_of_use: ' Terms of use'
     },
     source_list: [
       {value: 'ads', label: 'Ads'},
@@ -81,8 +90,15 @@ var config = {
   business_logo: './assets/media/ic_facebook.svg',
   business_adress: 'Tel Aviv, Allenby str. 45',
   business_desc: 'loresdfgs dgsdgsdf ffffffffffffff ffffffffs  sdgsd sd sg sgdfffffffffff sdfg sdf sd gsdf s sfgs dfgsf sd sg dsfm',
-  business_links: [{icon: 'facebook-icon.png', url: '/facebook_url'}, {icon: 'website.png', url: '/website'}],
+  business_links: [{icon: 'link_facebook.svg', url: '/facebook_url'}, {icon: 'link_instagram.svg', url: '/instagram'}],
   plugins: ['highres_photos'],
   timeout: 500,
-  max_side: 1000
+  max_side: 1000,
+  footer: {
+    data: [
+      { name: 'about_us', link: `/en/about_us`},
+      { name: 'lista', link: `/en/home`, icon: 'logo.svg'},
+      { name: 'terms_of_use', link: `/en/terms_of_use`}
+    ]
+  }
 }
