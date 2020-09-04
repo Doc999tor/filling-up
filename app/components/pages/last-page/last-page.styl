@@ -1,4 +1,10 @@
 #last_page
+  display flex
+  flex-direction column
+  align-items center
+  .hand
+    animation lastPage 0.5s forwards
+    animation-delay 0.5s
   .thanks
     width 100%
     text-align center
@@ -40,15 +46,10 @@
       width 80px
       height 80px
       padding 15px
-  // .btn-wrap
-  //   width 100%
-  //   padding-top 20px
-  //   button
-  //     display block
-  //     margin 0 auto
-  //     width 50%
-  //     height 40px
-  //     border-radius 20px
-  //     border 2px solid grey
-  //     background-color white
-  //     color #6b6b6b
+@keyframes lastPage
+  0%
+    transform translate(20%, 50%)
+    opacity 1
+  100%
+    transform translate(0%, 0%)
+    opacity 1
