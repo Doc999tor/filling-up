@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="30.001" viewBox="0 0 34 30.001">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y1=".045" y2=".757" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ffc9aa"/>
+            <stop offset="1" stop-color="#f9690e"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-5" x1=".5" x2=".5" y1=".076" y2=".883" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#cccfe3"/>
+            <stop offset="1" stop-color="#8f94ba"/>
+        </linearGradient>
+        <style>
+            .cls-2{fill:url(#linear-gradient)}
+        </style>
+    </defs>
+    <g id="ic_mask" transform="translate(0 -12.819)">
+        <g id="ic_mask-2" data-name="ic_mask">
+            <g id="Group_10548" data-name="Group 10548" opacity="0.7">
+                <path id="Path_13835" d="M90.694 88.224h7.224c-.119-4.881-1.346-8.512-3.651-10.8a9.039 9.039 0 0 0-7.636-2.454l-.655.126-.153.758a13.739 13.739 0 0 0 1.548 9.111 9.82 9.82 0 0 0 3.323 3.259z" class="cls-2" data-name="Path 13835" transform="translate(-79.933 -57.216)"/>
+                <path id="Path_13836" d="M248.377 88.224a9.82 9.82 0 0 0 3.323-3.259 13.739 13.739 0 0 0 1.548-9.111l-.148-.754-.655-.126a9.038 9.038 0 0 0-7.636 2.454c-2.305 2.287-3.531 5.919-3.651 10.8h7.224z" class="cls-2" data-name="Path 13836" transform="translate(-225.139 -57.216)"/>
+                <g id="Group_10545" data-name="Group 10545" transform="translate(12.226 12.819)">
+                    <path id="Path_13837" d="M236.815 32.47c3.015-3.833 4.355-7.64 3.982-11.315a12.163 12.163 0 0 0-4.161-7.9l-.553-.432-1.417 6.6 1.417 13.977z" class="cls-2" data-name="Path 13837" transform="translate(-231.308 -12.819)"/>
+                    <path id="Path_13838" d="M184.159 21.156c-.373 3.675.966 7.482 3.982 11.315l.732.93V12.82l-.553.432a12.163 12.163 0 0 0-4.161 7.904z" class="cls-2" data-name="Path 13838" transform="translate(-184.098 -12.82)"/>
+                </g>
+            </g>
+            <path id="Union_45" fill="url(#linear-gradient-5)" d="M17 15.584a9.719 9.719 0 0 1-6.373 2.19C4.768 17.774 0 12.18 0 5.308V0h7.484a11.539 11.539 0 0 1 5.748 1.569A13.473 13.473 0 0 1 17 4.836a13.543 13.543 0 0 1 3.77-3.267A11.542 11.542 0 0 1 26.516 0H34v5.308c0 6.872-4.764 12.467-10.625 12.467A9.744 9.744 0 0 1 17 15.584zm3.356-5.892l-.482.731a5.01 5.01 0 0 0 3.5 1.192c2.721 0 4.976-2.379 5.331-5.461h-2.19a7.512 7.512 0 0 0-6.161 3.538zm-9.729 1.924a5.01 5.01 0 0 0 3.5-1.192l-.482-.731a7.508 7.508 0 0 0-6.161-3.538h-2.19c.355 3.082 2.606 5.461 5.331 5.461z" data-name="Union 45" transform="translate(0 25.046)"/>
+        </g>
+    </g>
+</svg>

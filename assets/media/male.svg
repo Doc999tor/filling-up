@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 54 54">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ffc9b3"/>
+            <stop offset="1" stop-color="#ffd2c2"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-2" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#cccfe3"/>
+            <stop offset="1" stop-color="#8f94ba"/>
+        </linearGradient>
+        <clipPath id="clip-path">
+            <circle id="Mask" cx="27" cy="27" r="27" fill="url(#linear-gradient)"/>
+        </clipPath>
+        <style>
+            .cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="male_avatar" data-name="male avatar" transform="translate(.326 .272)">
+        <circle id="Mask-2" cx="27" cy="27" r="27" class="cls-2" data-name="Mask" transform="translate(-.326 -.272)"/>
+        <g id="avatar" clip-path="url(#clip-path)" transform="translate(-.326 -.272)">
+            <path id="face" fill="#f8b58e" d="M5.81 19.671v2.216c0 2.955-4.248 4.248-4.248 4.248s4.894 3.694 9.973 3.694 9.973-3.694 9.973-3.694-4.281-1.293-4.248-4.248.011-4.691.033-9.754C19.941 8.7 19.772 6.4 18.324 4.78 13.475-.645.27 1.2.27 1.2S-.962 14.5 1.84 18.378c1.2 1.662 3.97 1.293 3.97 1.293z" transform="translate(16.396 11.33)"/>
+            <path id="shade" d="M0 2.216A14.516 14.516 0 0 0 6.464 0 10.69 10.69 0 0 1 0 4.432z" transform="translate(22.206 28.785)" style="mix-blend-mode:multiply;isolation:isolate" fill="#ee9265" opacity="0.4"/>
+            <path id="body" fill="url(#linear-gradient-2)" d="M2.77 6.89C1.012 10.465 0 18.71 0 18.71h44.325s-1.013-8.246-2.77-11.82S29.532 0 29.532 0C27.553 4.064 16.694 4.064 14.8 0c0 0-10.271 3.315-12.03 6.89z" transform="translate(5.769 36.172)"/>
+            <path id="buttons" d="M0 .739A.739.739 0 1 0 .739 0 .739.739 0 0 0 0 .739zm0 3.693a.739.739 0 1 0 .739-.739.739.739 0 0 0-.739.739zm0 3.694a.739.739 0 1 0 .739-.739.739.739 0 0 0-.739.739z" class="cls-2" transform="rotate(180 14.335 25.474)"/>
+            <path id="hair" fill="#5d4c61" d="M17.511 13.521a1.875 1.875 0 0 1 2.31-.32c2.392 1.243.582 6.007-1.542 6.007-.554 0-.83 1.74 1.637 2.956 0-1.939 2.955-6.741 3.213-11.113 2.974-1.107 2.236-5.537.193-5.537.327-4.062-6.176-6.159-8.694-3.829-2.562-3.07-9.028-1.5-9.416 1.163C.767.475-2.155 7.3 2.007 9.943c1.713 1.089 5.719 1.5 11.5 1.5.873 0 1.362.217 1.118 1.3-.471 2.092.627 3.41 2.886.778z" transform="translate(13.901 4.406)"/>
+        </g>
+    </g>
+</svg>

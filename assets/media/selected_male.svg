@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 58 58">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ffc9b3"/>
+            <stop offset="1" stop-color="#ffd2c2"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-2" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#e4e4f9"/>
+            <stop offset="1" stop-color="#fff"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-3" x1=".046" x2=".853" y1=".5" y2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ffbc95"/>
+            <stop offset="1" stop-color="#f9690e"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-4" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#9058ff"/>
+            <stop offset="1" stop-color="#4f2da7"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-5" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#1d0024"/>
+            <stop offset="1" stop-color="#100014"/>
+        </linearGradient>
+        <clipPath id="clip-path">
+            <circle id="Mask" cx="29" cy="29" r="29" fill="url(#linear-gradient)"/>
+        </clipPath>
+    </defs>
+    <g id="selected_male_avatar" data-name="selected male avatar" transform="translate(.326 .272)">
+        <circle id="Mask-2" cx="29" cy="29" r="29" fill="url(#linear-gradient-2)" data-name="Mask" transform="translate(-.325 -.272)"/>
+        <g id="avatar" clip-path="url(#clip-path)" transform="translate(-.326 -.272)">
+            <path id="face" fill="url(#linear-gradient-3)" d="M6.241 21.061v2.38C6.241 26.615 1.678 28 1.678 28s5.257 3.967 10.712 3.967S23.1 28 23.1 28s-4.6-1.389-4.562-4.562.012-5.038.036-10.476c2.843-3.685 2.661-6.158 1.106-7.9C14.473-.759.29 1.224.29 1.224s-1.324 14.281 1.686 18.449c1.289 1.785 4.265 1.388 4.265 1.388z" transform="translate(17.61 12.236)"/>
+            <path id="shade" d="M0 2.38A15.592 15.592 0 0 0 6.943 0 11.482 11.482 0 0 1 0 4.761z" transform="translate(23.851 30.917)" style="mix-blend-mode:multiply;isolation:isolate" fill="#db6733" opacity="0.5"/>
+            <path id="body" fill="url(#linear-gradient-4)" d="M2.976 7.4C1.087 11.24 0 20.1 0 20.1h47.608s-1.088-8.857-2.976-12.7S31.719 0 31.719 0C29.594 4.365 17.931 4.365 15.9 0c0 0-11.036 3.561-12.924 7.4z" transform="translate(6.196 38.852)"/>
+            <path id="buttons" fill="#fff" d="M0 .793A.793.793 0 1 0 .793 0 .794.794 0 0 0 0 .793zm0 3.968a.793.793 0 1 0 .793-.793.794.794 0 0 0-.793.793zm0 3.967a.793.793 0 1 0 .793-.794.793.793 0 0 0-.793.794z" transform="rotate(180 15.397 27.36)"/>
+            <path id="hair" fill="url(#linear-gradient-5)" d="M18.808 14.522a2.014 2.014 0 0 1 2.481-.344c2.569 1.335.625 6.452-1.657 6.452-.6 0-.891 1.869 1.759 3.175 0-2.083 3.174-7.24 3.451-11.936 3.195-1.189 2.4-5.947.208-5.947.35-4.363-6.635-6.616-9.34-4.113C12.96-1.487 6.017.2 5.6 3.058.824.51-2.314 7.836 2.156 10.679 4 11.849 8.3 12.3 14.51 12.3c.938 0 1.463.233 1.2 1.392-.51 2.242.671 3.657 3.098.83z" transform="translate(14.931 4.732)"/>
+        </g>
+    </g>
+</svg>

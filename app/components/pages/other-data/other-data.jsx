@@ -1,9 +1,11 @@
+import React from 'react'
 import { getService as clientGetService } from 'project-services/client.service.js'
 import {
   patchService as fillingPatchService,
   postNoteService as fillingNotePostService
 } from 'project-services/filling-up.service.js'
-import { default as Datepicker } from 'project-components/Datepicker/datepicker.jsx'
+import Datepicker from 'project-components/Datepicker/datepicker.jsx'
+import { GenderItem } from './components/single-gender/single-gender.jsx'
 import './other-data.styl'
 let timeout
 
@@ -88,11 +90,11 @@ class Home extends React.Component {
     const { year, month, day } = this.state
     return (
       <div id='other_data'>
-        <div className='bullets'>
-          <div className='bullet' />
-          <div className='bullet' />
-          <div className='bullet active' />
-          <div className='bullet' />
+        <div className='gender_strip'>
+          <h3 className='gender_title'>{config.translations.other_data.gender_strip_title}</h3>
+          <div className='gender_items'>
+            {config.gender?.data?.map(({ id, ...props }) => <GenderItem key={id} id={props} {...props} />)}
+          </div>
         </div>
         <h1 className='last_data'>{config.translations.last_data}</h1>
         <div className='gender'>

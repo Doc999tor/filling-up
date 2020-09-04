@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { patchService as fillingPatchService } from 'project-services/filling-up.service.js'
 import { postPhotoService as fillingPhotoPostService } from 'project-services/filling-up.service.js'
 import { getCurrentFormatTime } from '../../../helpers/helpers.js'
-import { default as Resize } from 'project-components/resize.js'
-import { default as dataURLtoFile } from 'project-components/decodeBase64.js'
+import Resize from 'project-components/resize.js'
+import dataURLtoFile from 'project-components/decodeBase64.js'
 
 import './fill-in.styl'
 
@@ -66,7 +66,7 @@ const FillIn = props => {
   const handleToogleEmail = () => setHighlightEmail(highlight => !highlight)
   const [highlightAddress, setHighlightAddress] = useState(false)
   const handleToogleAddress = () => setHighlightAddress(highlight => !highlight)
-  
+
   const continueStep = () => {
     if (name?.trim() && pattern.test(email?.trim())) {
       const query = JSON.parse(sessionStorage.getItem('fill_query'))
@@ -149,7 +149,7 @@ const FillIn = props => {
         </div>
         {config.address_based &&
           <div className={'input_wrap' + (highlightAddress ? ' highlightInput' : '')}>
-            <img src={config.urls.media + 'ic_email.svg'} />
+            <img src={config.urls.media + 'ic_address.svg'} />
             <input
               type='text'
               name='address'

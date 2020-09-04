@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="selected_female_avatar" width="58" height="58" data-name="selected female avatar" viewBox="0 0 58 58">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ffc9b3"/>
+            <stop offset="1" stop-color="#ffd2c2"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-2" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset="1" stop-color="#e4e4f9"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-3" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#9058ff"/>
+            <stop offset="1" stop-color="#4f2da7"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-4" x1=".025" x2="1.129" y1=".5" y2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ffbc95"/>
+            <stop offset="1" stop-color="#f9690e"/>
+        </linearGradient>
+        <clipPath id="clip-path">
+            <circle id="Mask" cx="29" cy="29" r="29" fill="url(#linear-gradient)"/>
+        </clipPath>
+        <clipPath id="clip-path-2">
+            <path id="Mask-2" d="M37.767 9.3c1.42 2.711 2.13 12.589 2.13 12.589H0S.71 12.008 2.13 9.3C4.261 5.229 19.948 0 19.948 0s15.688 5.229 17.819 9.3z" class="cls-2" data-name="Mask"/>
+        </clipPath>
+        <clipPath id="clip-path-3">
+            <path id="Mask-3" d="M-60.287 4.785c-.775-3.389 2.9-5.99 6.682-4.2 8.909 4.2 3.609 10.072.317 9.685s-6.225-2.096-6.999-5.485z" class="cls-3" data-name="Mask" transform="translate(60.391)"/>
+        </clipPath>
+        <style>
+            .cls-2{fill:#fff}.cls-3{fill:#17001d}
+        </style>
+    </defs>
+    <path id="mask-4" fill="url(#linear-gradient-2)" d="M29 0A29 29 0 1 1 0 29 29 29 0 0 1 29 0z" data-name="mask"/>
+    <g id="avatar" clip-path="url(#clip-path)">
+        <g id="body" transform="translate(9.049 37.465)">
+            <path id="Mask-5" fill="url(#linear-gradient-3)" d="M37.767 9.3c1.42 2.711 2.13 12.589 2.13 12.589H0S.71 12.008 2.13 9.3C4.261 5.229 19.948 0 19.948 0s15.688 5.229 17.819 9.3z" data-name="Mask"/>
+            <g id="body-2" clip-path="url(#clip-path-2)" data-name="body">
+                <path id="Combined_Shape" d="M38.735 16.656a1.162 1.162 0 1 1 1.165 1.162 1.162 1.162 0 0 1-1.165-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zm-7.747 0a1.162 1.162 0 1 1 1.159 1.162 1.162 1.162 0 0 1-1.159-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162A1.162 1.162 0 0 1 0 16.656zm34.861-3.874a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.161-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.161-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zm34.862-3.873a1.162 1.162 0 1 1 1.165 1.162 1.162 1.162 0 0 1-1.165-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zm-7.747 0a1.162 1.162 0 1 1 1.159 1.162 1.162 1.162 0 0 1-1.159-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zM0 8.909a1.162 1.162 0 1 1 1.162 1.162A1.162 1.162 0 0 1 0 8.909zm34.861-3.873A1.162 1.162 0 1 1 36.024 6.2a1.162 1.162 0 0 1-1.163-1.164zm-7.747 0A1.162 1.162 0 1 1 28.276 6.2a1.162 1.162 0 0 1-1.161-1.164zm-7.747 0A1.162 1.162 0 1 1 20.53 6.2a1.162 1.162 0 0 1-1.163-1.164zm-7.747 0A1.162 1.162 0 1 1 12.782 6.2a1.162 1.162 0 0 1-1.161-1.164zm-7.747 0A1.162 1.162 0 1 1 5.036 6.2a1.162 1.162 0 0 1-1.163-1.164zm34.862-3.874A1.162 1.162 0 1 1 39.9 2.324a1.162 1.162 0 0 1-1.165-1.162zm-7.747 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zm-23.241 0a1.162 1.162 0 1 1 1.162 1.162 1.162 1.162 0 0 1-1.162-1.162zM0 1.162a1.162 1.162 0 1 1 1.162 1.162A1.162 1.162 0 0 1 0 1.162z" class="cls-2" data-name="Combined Shape" transform="translate(-.581 3.486)"/>
+            </g>
+        </g>
+        <g id="bun" transform="translate(30.998 5.122)">
+            <path id="Mask-6" d="M-60.287 4.785c-.775-3.389 2.9-5.99 6.682-4.2 8.909 4.2 3.609 10.072.317 9.685s-6.225-2.096-6.999-5.485z" class="cls-3" data-name="Mask" transform="translate(60.391)"/>
+            <g id="bun-2" clip-path="url(#clip-path-3)" data-name="bun">
+                <path id="Path_3" fill="#17001d" d="M0 0s6.585 4.261 8.231 1.937c.17.97-.611 3.712-1.84 3.68C2.716 5.521 0 0 0 0z" data-name="Path 3" opacity="0.6" transform="translate(3.326 5.326)"/>
+            </g>
+        </g>
+        <path id="Path" d="M4.523 2.983c3.093 7.733 1.353 11.5-1.063 16.047s.58 8.8.58 8.8a8.638 8.638 0 0 1-3.48-7.157c0-4.93 3.48-8.023.58-12.083s.29-13.341 3.383-5.607z" class="cls-3" transform="translate(35.957 10.827)"/>
+        <path id="hair" d="M19.84 23.317c-4.161 2-4.768 1.892-13.945-5.617C-7.953 6.37 5.12-3.991 19.162 1.529c15.203 6.681 10.11 17.257.678 21.788z" class="cls-3" transform="translate(13.419 7.951)"/>
+        <path id="face" fill="url(#linear-gradient-4)" d="M15.862 21.788c-1.42 2.324-7.876 2.324-9.3 0v-3.873s-.632.019-1.065 0C.97 17.721-.544 10.434.167 3.145.688-2.193 5.21 5.132 12.569 0c-.291 5.617 2.13 5.036 3.2 4.358 4.842-2.227 4.882 6.9.1 6.2z" transform="translate(17.784 17.42)"/>
+        <path id="shade" fill="#db6f3d" d="M.061 2.7C2.681 2.593 6.673 0 6.673 0A8.955 8.955 0 0 1 0 4.437z" transform="rotate(-2 944.473 -674.717)"/>
+        <path id="collar" d="M12.008 1.251V0a4.448 4.448 0 0 1 1.9 1.549c2.068 2.808-.226 5.326-2.1 5.326a5.482 5.482 0 0 1-4.448-2.92 5.482 5.482 0 0 1-4.448 2.92c-1.87 0-4.164-2.518-2.1-5.326A4.448 4.448 0 0 1 2.711 0v1.251c0 1.481 3.242 2.167 4.642 2.23 1.325-.063 4.655-.749 4.655-2.23z" class="cls-2" transform="translate(21.638 37.465)"/>
+    </g>
+</svg>
