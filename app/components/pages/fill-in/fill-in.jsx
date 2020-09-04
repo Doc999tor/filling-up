@@ -60,6 +60,13 @@ const FillIn = props => {
     }
   }
 
+  const [highlightName, setHighlightName] = useState(false)
+  const handleToogleName = () => setHighlightName(highlight => !highlight)
+  const [highlightEmail, setHighlightEmail] = useState(false)
+  const handleToogleEmail = () => setHighlightEmail(highlight => !highlight)
+  const [highlightAddress, setHighlightAddress] = useState(false)
+  const handleToogleAddress = () => setHighlightAddress(highlight => !highlight)
+  
   const continueStep = () => {
     if (name?.trim() && pattern.test(email?.trim())) {
       const query = JSON.parse(sessionStorage.getItem('fill_query'))
@@ -116,32 +123,38 @@ const FillIn = props => {
           </div>
       }
       <div className='inputs'>
-        <div className={'input_wrap' + (isNameValid ? '' : ' warning')}>
+        <div className={'input_wrap' + (isNameValid ? '' : ' warning') + (highlightName ? ' highlightInput' : '')}>
           <img src={config.urls.media + 'ic_clients.svg'} />
           <input
             type='text'
             name='name'
             placeholder={config.translations.full_name}
             value={name}
+            onFocus={handleToogleName}
+            onBlur={handleToogleName}
             onChange={handleChangeName}
           />
         </div>
-        <div className={'input_wrap' + (isEmailValid ? '' : ' warning')}>
+        <div className={'input_wrap' + (isEmailValid ? '' : ' warning') + (highlightEmail ? ' highlightInput' : '')}>
           <img src={config.urls.media + 'ic_email.svg'} />
           <input
             type='email'
             name='email'
+            onFocus={handleToogleEmail}
+            onBlur={handleToogleEmail}
             placeholder={config.translations.email}
             value={email}
             onChange={handleChangeEmail}
           />
         </div>
         {config.address_based &&
-          <div className='input_wrap'>
+          <div className={'input_wrap' + (highlightAddress ? ' highlightInput' : '')}>
             <img src={config.urls.media + 'ic_email.svg'} />
             <input
               type='text'
               name='address'
+              onFocus={handleToogleAddress}
+              onBlur={handleToogleAddress}
               placeholder={config.translations.adress}
               value={address}
               onChange={handleChangeAddress}
