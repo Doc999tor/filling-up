@@ -1,11 +1,14 @@
 import React from 'react'
+
+import { GenderItem } from './components/single-gender/single-gender.jsx'
+import { ContinueBtn } from '../../continue_btn/continue.jsx'
+
 import { getService as clientGetService } from 'project-services/client.service.js'
 import {
   patchService as fillingPatchService,
   postNoteService as fillingNotePostService
 } from 'project-services/filling-up.service.js'
 import Datepicker from 'project-components/Datepicker/datepicker.jsx'
-import { GenderItem } from './components/single-gender/single-gender.jsx'
 import './other-data.styl'
 let timeout
 
@@ -96,7 +99,7 @@ class Home extends React.Component {
             {config.gender?.data?.map(({ id, ...props }) => <GenderItem key={id} id={props} {...props} />)}
           </div>
         </div>
-        <h1 className='last_data'>{config.translations.last_data}</h1>
+        {/* <h1 className='last_data'>{config.translations.last_data}</h1> */}
         <div className='gender'>
           <div className='circle-wrap'>
             <div className='centered'>
@@ -138,12 +141,12 @@ class Home extends React.Component {
               config.data.birthdate = e.target.value
               localStorage.setItem('birthdate', e.target.value)
             }} /> */}
-          <input className='field' type='text' placeholder={config.translations.remarks_and_preferences} value={this.state.note}
+          {/* <input className='field' type='text' placeholder={config.translations.remarks_and_preferences} value={this.state.note}
             onChange={e => {
               this.setState({note: e.target.value})
               config.data.note = e.target.value
               localStorage.setItem('note', e.target.value)
-            }} />
+            }} /> */}
           <div className='checkbox_container' style={this.state.checkChecker ? {border: '1px solid red'} : {border: '1px solid white'}}>
             <div className='checkbox_wrap'>
               <input className='checkbox' type='checkbox' checked={this.state.isCheck}
@@ -157,9 +160,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        <div className='btn-wrap' onClick={!this.state.isCheck ? () => this.setState({checkChecker: true}) : () => {}}>
-          <button onClick={this.state.isCheck ? () => this.continue() : () => {}}>{config.translations.confirm}</button>
-        </div>
+        <ContinueBtn continueStep={this.continue} />
       </div>
     )
   }
