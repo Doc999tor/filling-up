@@ -19,6 +19,7 @@ var config = {
     },
     other_data: {
       gender_strip_title: 'Select gender',
+      checkbox_label: 'I want to receive Advertising Newsletters and Special Offers from Lista',
       gender: {
         male: 'Male',
         female: 'Female',
