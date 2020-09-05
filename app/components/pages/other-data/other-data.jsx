@@ -1,168 +1,135 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { GenderItem } from './components/single-gender/single-gender.jsx'
 import { ContinueBtn } from '../../continue_btn/continue.jsx'
+import { Checkbox } from 'project-components/checkbox/checkbox.jsx'
+// import Datepicker from 'project-components/Datepicker/datepicker.jsx'
 
 import { getService as clientGetService } from 'project-services/client.service.js'
 import {
   patchService as fillingPatchService,
   postNoteService as fillingNotePostService
 } from 'project-services/filling-up.service.js'
-import Datepicker from 'project-components/Datepicker/datepicker.jsx'
+
 import './other-data.styl'
-let timeout
 
-class Home extends React.Component {
-  state = {
-    selectedLabel: config.data.sourceLabel ? config.data.sourceLabel : localStorage.getItem('sourceLabel') ? localStorage.getItem('sourceLabel') : config.translations.source,
-    selectedValue: config.data.source ? config.data.source : localStorage.getItem('source'),
-    birthdate: config.data.birthdate ? config.data.birthdate : localStorage.getItem('birthdate'),
-    birthyear: config.data.birthyear ? config.data.birthyear : localStorage.getItem('birthyear'),
-    gender: config.data.gender ? config.data.gender : localStorage.getItem('gender'),
-    userId: config.data.userId ? config.data.userId : localStorage.getItem('userId'),
-    note: config.data.note ? config.data.note : localStorage.getItem('note'),
-    isRecomendation: false,
-    checkChecker: false,
-    isCheck: false,
-    clients: [],
-    year: config.translations.datepicker.placeholder.year,
-    day: config.translations.datepicker.placeholder.day,
-    month: config.translations.datepicker.placeholder.month
+// let timeout
+
+const OtherData = () => {
+  const [checkBoxValue, setCheckBoxValue] = useState(false)
+  const handleCangeCheckbox = ({ target }) => {
+    const { checked } = target
+    setCheckBoxValue(checked)
+  }
+  // state = {
+  //   selectedLabel: config.data.sourceLabel ? config.data.sourceLabel : localStorage.getItem('sourceLabel') ? localStorage.getItem('sourceLabel') : config.translations.source,
+  //   selectedValue: config.data.source ? config.data.source : localStorage.getItem('source'),
+  //   birthdate: config.data.birthdate ? config.data.birthdate : localStorage.getItem('birthdate'),
+  //   birthyear: config.data.birthyear ? config.data.birthyear : localStorage.getItem('birthyear'),
+  //   gender: config.data.gender ? config.data.gender : localStorage.getItem('gender'),
+  //   userId: config.data.userId ? config.data.userId : localStorage.getItem('userId'),
+  //   note: config.data.note ? config.data.note : localStorage.getItem('note'),
+  //   isRecomendation: false,
+  //   checkChecker: false,
+  //   isCheck: false,
+  //   clients: [],
+  //   year: config.translations.datepicker.placeholder.year,
+  //   day: config.translations.datepicker.placeholder.day,
+  //   month: config.translations.datepicker.placeholder.month
+  // }
+
+
+  // changeSelect = e => {
+  //   this.setState({selectedLabel: e.label, selectedValue: e.value, userId: null})
+  //   config.data.sourceLabel = e.label
+  //   config.data.source = e.value
+  //   localStorage.setItem('sourceLabel', e.label)
+  //   localStorage.setItem('source', e.value)
+  //   e.value === 'recommendation' ? this.setState({isRecomendation: true}) : this.setState({isRecomendation: false})
+  // }
+
+  // changeInput = e => {
+  //   clearTimeout(timeout)
+  //   this.setState({inputValue: e})
+  //   if (e.length > 0) {
+  //     timeout = setTimeout(() => clientGetService(e).then(r => r.json().then(r =>
+  //       this.setState({isViewClients: true, clients: r}))), config.data.timeout)
+  //   } else this.setState({isViewClients: false})
+  // }
+
+  // componentDidMount = () => {
+  //   if (config.isRTL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
+  // }
+
+  const continueStep = () => {
+    console.log('checkBoxValue', checkBoxValue)
+    // let query = JSON.parse(sessionStorage.getItem('fill_query'))
+    // let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&permit_ads=${config.data.permit_ads}`
+    // if (this.state.birthyear) body = body + `&birthyear=${this.state.birthyear}`
+    // if (this.state.birthdate_month && this.state.birthdate_day) body = body + `&birthdate=${this.state.birthdate_month}-${this.state.birthdate_day}`
+    // let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&added=${moment().format('YYYY-MM-DD HH:mm:ss')}`
+    // let promises = [
+    //   fillingPatchService(body),
+    //   this.state.note ? fillingNotePostService(bodysrt) : Promise.resolve('resolved')
+    // ]
+    // Promise.all(promises).then(() => {
+    //   this.props.history.push(config.urls.baseUrl + config.urls.last_page)
+    // })
   }
 
+  // handleChangeYear = event => {
+  //   this.setState({
+  //     year: event.target.value,
+  //     birthyear: event.target.value
+  //   })
+  // }
 
-  changeSelect = e => {
-    this.setState({selectedLabel: e.label, selectedValue: e.value, userId: null})
-    config.data.sourceLabel = e.label
-    config.data.source = e.value
-    localStorage.setItem('sourceLabel', e.label)
-    localStorage.setItem('source', e.value)
-    e.value === 'recommendation' ? this.setState({isRecomendation: true}) : this.setState({isRecomendation: false})
-  }
+  // handleChangeMonth = event => {
+  //   this.setState({
+  //     month: event.target.value,
+  //     birthdate_month: event.target.value
+  //   })
+  // }
 
-  changeInput = e => {
-    clearTimeout(timeout)
-    this.setState({inputValue: e})
-    if (e.length > 0) {
-      timeout = setTimeout(() => clientGetService(e).then(r => r.json().then(r =>
-        this.setState({isViewClients: true, clients: r}))), config.data.timeout)
-    } else this.setState({isViewClients: false})
-  }
+  // handleChangeDay = event => {
+  //   this.setState({
+  //     day: event.target.value,
+  //     birthdate_day: event.target.value
+  //   })
+  // }
 
-  componentDidMount = () => {
-    if (config.isRTL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
-  }
-
-  continue = () => {
-    let query = JSON.parse(sessionStorage.getItem('fill_query'))
-    let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&permit_ads=${config.data.permit_ads}`
-    if (this.state.birthyear) body = body + `&birthyear=${this.state.birthyear}`
-    if (this.state.birthdate_month && this.state.birthdate_day) body = body + `&birthdate=${this.state.birthdate_month}-${this.state.birthdate_day}`
-    let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&added=${moment().format('YYYY-MM-DD HH:mm:ss')}`
-    let promises = [
-      fillingPatchService(body),
-      this.state.note ? fillingNotePostService(bodysrt) : Promise.resolve('resolved')
-    ]
-    Promise.all(promises).then(() => {
-      this.props.history.push(config.urls.baseUrl + config.urls.last_page)
-    })
-  }
-
-  handleChangeYear = event => {
-    this.setState({
-      year: event.target.value,
-      birthyear: event.target.value
-    })
-  }
-
-  handleChangeMonth = event => {
-    this.setState({
-      month: event.target.value,
-      birthdate_month: event.target.value
-    })
-  }
-
-  handleChangeDay = event => {
-    this.setState({
-      day: event.target.value,
-      birthdate_day: event.target.value
-    })
-  }
-
-  render () {
-    const { year, month, day } = this.state
-    return (
-      <div id='other_data'>
-        <div className='gender_strip'>
-          <h3 className='gender_title'>{config.translations.other_data.gender_strip_title}</h3>
-          <div className='gender_items'>
-            {config.gender?.data?.map(({ id, ...props }) => <GenderItem key={id} id={props} {...props} />)}
-          </div>
+  // const { year, month, day } = this.state
+  return (
+    <div id='other_data'>
+      <div className='gender_strip'>
+        <h3 className='gender_title'>{config.translations.other_data.gender_strip_title}</h3>
+        <div className='gender_items'>
+          {config.gender?.data?.map(({ id, ...props }) => <GenderItem key={id} id={props} {...props} />)}
         </div>
-        {/* <h1 className='last_data'>{config.translations.last_data}</h1> */}
-        <div className='gender'>
-          <div className='circle-wrap'>
-            <div className='centered'>
-              <h1>{config.translations.man}</h1>
-              <div className='circle' onClick={() => this.setState({gender: 'male'}, () => {
-                config.data.gender = 'male'
-                localStorage.setItem('gender', 'male')
-              })}>
-                <div className={this.state.gender === 'male' ? 'bcg' : ''} />
-              </div>
-            </div>
-          </div>
-          <div className='circle-wrap'>
-            <div className='centered'>
-              <h1>{config.translations.woman}</h1>
-              <div className='circle' onClick={() => this.setState({gender: 'female'}, () => {
-                config.data.gender = 'female'
-                localStorage.setItem('gender', 'female')
-              })}>
-                <div className={this.state.gender === 'female' ? 'bcg' : ''} />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className='inputs'>
-          <div className='field'>
-            <Datepicker
-              handleChangeYear={this.handleChangeYear}
-              handleChangeMonth={this.handleChangeMonth}
-              handleChangeDay={this.handleChangeDay}
-              year={year}
-              month={month}
-              day={day}
-            />
-          </div>
-          {/* <input className='field' ref='date' type='text' onBlur={() => { this.refs.date.type = 'text' }} onFocus={() => { this.refs.date.type = 'date' }}
-            placeholder={config.translations.date_of_birth} value={this.state.birthdate} onChange={e => {
-              this.setState({birthdate: e.target.value})
-              config.data.birthdate = e.target.value
-              localStorage.setItem('birthdate', e.target.value)
-            }} /> */}
-          {/* <input className='field' type='text' placeholder={config.translations.remarks_and_preferences} value={this.state.note}
-            onChange={e => {
-              this.setState({note: e.target.value})
-              config.data.note = e.target.value
-              localStorage.setItem('note', e.target.value)
-            }} /> */}
-          <div className='checkbox_container' style={this.state.checkChecker ? {border: '1px solid red'} : {border: '1px solid white'}}>
-            <div className='checkbox_wrap'>
-              <input className='checkbox' type='checkbox' checked={this.state.isCheck}
-                onChange={() => this.setState({isCheck: !this.state.isCheck, checkChecker: false}, () => {
-                  if (this.state.isCheck) config.data.permit_ads = true
-                  else config.data.permit_ads = false
-                })} />
-            </div>
-            <div className='label_wrap'>
-              <h1 className='checkbox_label'>{config.translations.customers_agree}</h1>
-            </div>
-          </div>
-        </div>
-        <ContinueBtn continueStep={this.continue} />
       </div>
-    )
-  }
+      <div className='inputs'>
+        <div className='field'>
+          {/* <Datepicker
+            handleChangeYear={this.handleChangeYear}
+            handleChangeMonth={this.handleChangeMonth}
+            handleChangeDay={this.handleChangeDay}
+            year={year}
+            month={month}
+            day={day}
+          /> */}
+        </div>
+        <div className='checkbox_container'>
+          <Checkbox
+            text={config.translations.other_data.checkbox_label}
+            onHandleChange={handleCangeCheckbox}
+            value={checkBoxValue}
+          />
+          <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />
+          {checkBoxValue && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
+        </div>
+      </div>
+      <ContinueBtn continueStep={continueStep} />
+    </div>
+  )
 }
-export default Home
+export default OtherData
