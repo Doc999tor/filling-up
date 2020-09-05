@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { patchService as fillingPatchService } from 'project-services/filling-up.service.js'
-import { postPhotoService as fillingPhotoPostService } from 'project-services/filling-up.service.js'
+
+import { ContinueBtn } from '../../continue_btn/continue.jsx'
+
+import { patchService as fillingPatchService, postPhotoService as fillingPhotoPostService } from 'project-services/filling-up.service.js'
 import { getCurrentFormatTime } from '../../../helpers/helpers.js'
 import Resize from 'project-components/resize.js'
 import dataURLtoFile from 'project-components/decodeBase64.js'
@@ -161,9 +163,7 @@ const FillIn = props => {
             />
           </div>}
       </div>
-      <div className='btn-wrap'>
-        <button onClick={continueStep}>{config.translations.continue}</button>
-      </div>
+      <ContinueBtn continueStep={continueStep} />
     </div>
   )
 }
