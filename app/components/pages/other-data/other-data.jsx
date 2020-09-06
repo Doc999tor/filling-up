@@ -21,6 +21,11 @@ const OtherData = () => {
     const { checked } = target
     setCheckBoxValue(checked)
   }
+
+  const [gender, setGender] = useState(null)
+  const handleChangeGender = id => {
+    setGender(gender => id === gender ? null : id)
+  }
   // state = {
   //   selectedLabel: config.data.sourceLabel ? config.data.sourceLabel : localStorage.getItem('sourceLabel') ? localStorage.getItem('sourceLabel') : config.translations.source,
   //   selectedValue: config.data.source ? config.data.source : localStorage.getItem('source'),
@@ -63,6 +68,7 @@ const OtherData = () => {
 
   const continueStep = () => {
     console.log('checkBoxValue', checkBoxValue)
+    console.log('gender', gender)
     // let query = JSON.parse(sessionStorage.getItem('fill_query'))
     // let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&permit_ads=${config.data.permit_ads}`
     // if (this.state.birthyear) body = body + `&birthyear=${this.state.birthyear}`
@@ -99,12 +105,13 @@ const OtherData = () => {
   // }
 
   // const { year, month, day } = this.state
+  console.log('object', gender);
   return (
     <div id='other_data'>
       <div className='gender_strip'>
         <h3 className='gender_title'>{config.translations.other_data.gender_strip_title}</h3>
-        <div className='gender_items'>
-          {config.gender?.data?.map(({ id, ...props }) => <GenderItem key={id} id={props} {...props} />)}
+        <div className='gender_items_wrap'>
+          {config.gender?.data?.map(({ id, ...props }) => <GenderItem onSelectGender={handleChangeGender} key={id} gender={gender} id={id} {...props} />)}
         </div>
       </div>
       <div className='inputs'>
