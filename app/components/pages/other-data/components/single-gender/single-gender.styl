@@ -24,6 +24,8 @@
     border-radius 50%
     justify-content center
     background-color var(--white-color)
+    img
+      animation inactive_photo 0.3s
   .select
     width 1.125rem
     height 1.125rem
@@ -50,6 +52,15 @@
     width 4.125rem
     height 4.125rem
     border solid 2px var(--dark-active-color)
+    img
+      animation active_photo 0.3s
   .select
     border solid 6px var(--dark-active-color)
     transition border-width 0.3s
+
+@keyframes active_photo
+  0%
+    transform rotateY(180deg)
+@keyframes inactive_photo
+  0%
+    transform rotateY(180deg)
