@@ -105,7 +105,6 @@ const OtherData = () => {
   // }
 
   // const { year, month, day } = this.state
-  console.log('object', gender);
   return (
     <div id='other_data'>
       <div className='gender_strip'>
