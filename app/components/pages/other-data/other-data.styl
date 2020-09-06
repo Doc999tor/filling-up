@@ -6,9 +6,9 @@
     margin 0
   .gender_strip
     padding 1rem
-    .gender_items
+    .gender_items_wrap
+      position relative
       padding-top 0.75rem
-    .gender_items
       display flex
       justify-content space-between
   
@@ -38,32 +38,42 @@
 @keyframes recommend_hand_ltr
   0%
     opacity 1
+    z-index 11
     transform translate(100%, -50%) scale(0.7)
   45%
     opacity 1
+    z-index 11
     transform translate(0%, 0%) scale(1)
   55%
     opacity 1
+    z-index 11
     transform translate(0%, 0%) scale(1)
   99%
     opacity 0
+    z-index 11
     transform translate(100%, -50%) scale(0.7)
   100%
     opacity 0
+    z-index 9
 @keyframes recommend_hand_rtl
   0%
     opacity 1
+    z-index 11
     transform translate(-100%, -50%) scale(-1, 0.7)
   45%
     opacity 1
+    z-index 11
     transform translate(0%, 0%) scale(-1, 1)
   55%
     opacity 1
+    z-index 11
     transform translate(0%, 0%) scale(-1, 1)
   99%
     opacity 0
+    z-index 11
     transform translate(-100%, -50%) scale(-1, 0.7)
   100%
+    z-index 9
     opacity 0
 @keyframes ok_hand_ltr
   0%
