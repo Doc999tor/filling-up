@@ -105,6 +105,7 @@ var config = {
     photo: '',
     gender: '',
     birthyear: '',
+    birthdate: '',
     source: '',
     note: '',
     permit_ads: false

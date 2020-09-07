@@ -5,127 +5,85 @@ import { ContinueBtn } from '../../continue_btn/continue.jsx'
 import { Checkbox } from 'project-components/checkbox/checkbox.jsx'
 import Datepicker from 'project-components/Datepicker_upd/datepicker.jsx'
 
-import { getService as clientGetService } from 'project-services/client.service.js'
-import {
-  patchService as fillingPatchService,
-  postNoteService as fillingNotePostService
-} from 'project-services/filling-up.service.js'
+import { patchService as fillingPatchService } from 'project-services/filling-up.service.js'
 
 import './other-data.styl'
 
-// let timeout
-
-const OtherData = () => {
-  const [checkBoxValue, setCheckBoxValue] = useState(false)
+const OtherData = ({ history }) => {
+  const [permitAds, setPermitAds] = useState(config.data.permit_ads)
   const handleCangeCheckbox = ({ target }) => {
     const { checked } = target
-    setCheckBoxValue(checked)
+    setPermitAds(checked)
   }
 
-  const [gender, setGender] = useState(null)
-  const handleChangeGender = id => {
-    setGender(gender => id === gender ? null : id)
-  }
-  // state = {
-  //   selectedLabel: config.data.sourceLabel ? config.data.sourceLabel : localStorage.getItem('sourceLabel') ? localStorage.getItem('sourceLabel') : config.translations.source,
-  //   selectedValue: config.data.source ? config.data.source : localStorage.getItem('source'),
-  //   birthdate: config.data.birthdate ? config.data.birthdate : localStorage.getItem('birthdate'),
-  //   birthyear: config.data.birthyear ? config.data.birthyear : localStorage.getItem('birthyear'),
-  //   gender: config.data.gender ? config.data.gender : localStorage.getItem('gender'),
-  //   userId: config.data.userId ? config.data.userId : localStorage.getItem('userId'),
-  //   note: config.data.note ? config.data.note : localStorage.getItem('note'),
-  //   isRecomendation: false,
-  //   checkChecker: false,
-  //   isCheck: false,
-  //   clients: [],
-  //   year: config.translations.datepicker.placeholder.year,
-  //   day: config.translations.datepicker.placeholder.day,
-  //   month: config.translations.datepicker.placeholder.month
-  // }
-
-
-
-  // changeSelect = e => {
-  //   this.setState({selectedLabel: e.label, selectedValue: e.value, userId: null})
-  //   config.data.sourceLabel = e.label
-  //   config.data.source = e.value
-  //   localStorage.setItem('sourceLabel', e.label)
-  //   localStorage.setItem('source', e.value)
-  //   e.value === 'recommendation' ? this.setState({isRecomendation: true}) : this.setState({isRecomendation: false})
-  // }
-
-  // changeInput = e => {
-  //   clearTimeout(timeout)
-  //   this.setState({inputValue: e})
-  //   if (e.length > 0) {
-  //     timeout = setTimeout(() => clientGetService(e).then(r => r.json().then(r =>
-  //       this.setState({isViewClients: true, clients: r}))), config.data.timeout)
-  //   } else this.setState({isViewClients: false})
-  // }
-
-  // componentDidMount = () => {
-  //   if (config.isRTL) document.getElementsByTagName('body')[0].style.direction = 'rtl'
-  // }
-
-  const continueStep = () => {
-    console.log('checkBoxValue', checkBoxValue)
-    console.log('gender', gender)
-    // let query = JSON.parse(sessionStorage.getItem('fill_query'))
-    // let body = `b=${query.b}&c=${query.c}&gender=${this.state.gender}&permit_ads=${config.data.permit_ads}`
-    // if (this.state.birthyear) body = body + `&birthyear=${this.state.birthyear}`
-    // if (this.state.birthdate_month && this.state.birthdate_day) body = body + `&birthdate=${this.state.birthdate_month}-${this.state.birthdate_day}`
-    // let bodysrt = `b=${query.b}&c=${query.c}&text=${this.state.note}&added=${moment().format('YYYY-MM-DD HH:mm:ss')}`
-    // let promises = [
-    //   fillingPatchService(body),
-    //   this.state.note ? fillingNotePostService(bodysrt) : Promise.resolve('resolved')
-    // ]
-    // Promise.all(promises).then(() => {
-    //   this.props.history.push(config.urls.baseUrl + config.urls.last_page)
-    // })
+  const [gender, setGender] = useState(config.data.gender)
+  const handleChangeGender = type => {
+    setGender(gender => type === gender ? null : type)
   }
 
-  const [year, setYear] = useState(config.translations.datepicker.placeholder.year)
-  // const [birthyear, setBirthyear] = useState(config.data.birthyear || '')
+  const [highlightMonth, setHighlightMonth] = useState(false)
+
+  const [highlightDay, setHighlightDay] = useState(false)
+
+  const [year, setYear] = useState(config.data.birthyear || config.translations.datepicker.placeholder.year)
 
   const handleChangeYear = ({ target }) => {
     const { value } = target
     setYear(value)
-    // setBirthyear(value)
-    // this.setState({
-    //   year: event.target.value,
-    //   birthyear: event.target.value
-    // })
-    console.log('year', value)
-    // console.log('birthyear', value)
   }
-  const [month, setMonth] = useState(config.translations.datepicker.placeholder.month)
+
+  const [month, setMonth] = useState(config.data.birthdate ? config.data.birthdate.slice(0, 2) : config.translations.datepicker.placeholder.month)
   const handleChangeMonth = ({ target }) => {
     const { value } = target
     setMonth(value)
-    // this.setState({
-    //   month: event.target.value,
-    //   birthdate_month: event.target.value
-    // })
-    console.log('month', value)
+    highlightMonth && setHighlightMonth(false)
   }
-  const [day, setDay] = useState(config.translations.datepicker.placeholder.day)
+
+  const [day, setDay] = useState(config.data.birthdate ? config.data.birthdate.slice(3) : config.translations.datepicker.placeholder.day)
   const handleChangeDay = ({ target }) => {
     const { value } = target
     setDay(value)
-    // this.setState({
-    //   day: event.target.value,
-    //   birthdate_day: event.target.value
-    // })
-    console.log('day', value)
+    highlightDay && setHighlightDay(false)
   }
 
-  // const { year, month, day } = this.state
+  const sendData = (birthyear = null, birthdate = null) => {
+    const query = JSON.parse(sessionStorage.getItem('fill_query'))
+    let body = `b=${query.b}&c=${query.c}&gender=${gender || null}&permit_ads=${permitAds}&birthyear=${birthyear}&birthdate=${birthdate}`
+    fillingPatchService(body).then(() => history.push(config.urls.baseUrl + config.urls.last_page))
+  }
+
+  const continueStep = () => {
+    if (isNaN(+year) && isNaN(+month) && isNaN(+day)) {
+      sendData()
+      return false
+    } else if (!isNaN(+day) && isNaN(+month) && (isNaN(+year) || !isNaN(+year))) {
+      setHighlightMonth(true)
+      return false
+    } else if (!isNaN(+year) && isNaN(+month) && isNaN(+day)) {
+      setHighlightDay(true)
+      setHighlightMonth(true)
+      return false
+    } else if (isNaN(+year) && !isNaN(+month) && isNaN(+day)) {
+      setHighlightDay(true)
+      return false
+    } else if (!isNaN(+month) && !isNaN(+year) && !isNaN(+day)) {
+      sendData(year, `${month}-${day}`)
+      return false
+    } else if (!isNaN(+month) && !isNaN(+year) && isNaN(+day)) {
+      sendData(year, `${month}-01`)
+      return false
+    } else if (!isNaN(+month) && isNaN(+year) && !isNaN(+day)) {
+      sendData(new Date().getFullYear(), `${month}-${day}`)
+      return false
+    }
+  }
+
   return (
     <div id='other_data'>
       <div className='gender_strip'>
         <h3 className='gender_title'>{config.translations.other_data.gender_strip_title}</h3>
         <div className='gender_items_wrap'>
-          {config.gender?.data?.map(({ id, ...props }) => <GenderItem onSelectGender={handleChangeGender} key={id} gender={gender} id={id} {...props} />)}
+          {config.gender?.data?.map(({ id, ...props }) => <GenderItem onSelectGender={handleChangeGender} key={id} gender={gender} {...props} />)}
         </div>
       </div>
       <div className='birthdate_strip'>
@@ -135,6 +93,8 @@ const OtherData = () => {
             handleChangeYear={handleChangeYear}
             handleChangeMonth={handleChangeMonth}
             handleChangeDay={handleChangeDay}
+            highlightMonth={highlightMonth}
+            highlightDay={highlightDay}
             year={year}
             month={month}
             day={day}
@@ -145,10 +105,10 @@ const OtherData = () => {
         <Checkbox
           text={config.translations.other_data.checkbox_label}
           onHandleChange={handleCangeCheckbox}
-          value={checkBoxValue}
+          value={permitAds}
         />
         <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />
-        {checkBoxValue && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
+        {permitAds && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
       </div>
       <ContinueBtn continueStep={continueStep} />
     </div>
