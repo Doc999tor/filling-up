@@ -10,14 +10,13 @@ import dataURLtoFile from 'project-components/decodeBase64.js'
 import './fill-in.styl'
 
 const FillIn = props => {
-  const pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   const [name, setName] = useState(config.data.name || sessionStorage.getItem('name'))
   const [isNameValid, setIsNameValid] = useState(true)
   const handleChangeName = e => {
     const value = e.target.value
     setIsNameValid(true)
     setName(value)
-    config.data.name = value
     sessionStorage.setItem('name', value)
   }
 
@@ -27,7 +26,6 @@ const FillIn = props => {
     const value = e.target.value
     setIsEmailValid(true)
     setEmail(value)
-    config.data.email = value
     sessionStorage.setItem('email', value)
   }
 
@@ -35,7 +33,6 @@ const FillIn = props => {
   const handleChangeAddress = e => {
     const value = e.target.value
     setAddress(value)
-    config.data.address = value
     sessionStorage.setItem('address', value)
   }
 
