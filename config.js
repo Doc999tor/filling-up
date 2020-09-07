@@ -19,6 +19,7 @@ var config = {
     },
     other_data: {
       gender_strip_title: 'Select gender',
+      birthdate_strip_title: 'Select birthdate',
       checkbox_label: 'I want to receive Advertising Newsletters and Special Offers from Lista',
       gender: {
         male: 'Male',
@@ -59,6 +60,22 @@ var config = {
         day: 'Day'
       }
     },
+    dates: {
+      months: {
+        0: 'January',
+        1: 'February',
+        2: 'March',
+        3: 'April',
+        4: 'May',
+        5: 'June',
+        6: 'July',
+        7: 'August',
+        8: 'September',
+        9: 'October',
+        10: 'November',
+        11: 'December'
+      }
+    },
     source_list: [
       {value: 'ads', label: 'Ads'},
       {value: 'fb_page', label: 'fb_page'},
@@ -87,7 +104,7 @@ var config = {
     address: '',
     photo: '',
     gender: '',
-    birthdate: '',
+    birthyear: '',
     source: '',
     note: '',
     permit_ads: false

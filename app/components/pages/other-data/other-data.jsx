@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { GenderItem } from './components/single-gender/single-gender.jsx'
 import { ContinueBtn } from '../../continue_btn/continue.jsx'
 import { Checkbox } from 'project-components/checkbox/checkbox.jsx'
-// import Datepicker from 'project-components/Datepicker/datepicker.jsx'
+import Datepicker from 'project-components/Datepicker_upd/datepicker.jsx'
 
 import { getService as clientGetService } from 'project-services/client.service.js'
 import {
@@ -42,6 +42,7 @@ const OtherData = () => {
   //   day: config.translations.datepicker.placeholder.day,
   //   month: config.translations.datepicker.placeholder.month
   // }
+
 
 
   // changeSelect = e => {
@@ -83,26 +84,40 @@ const OtherData = () => {
     // })
   }
 
-  // handleChangeYear = event => {
-  //   this.setState({
-  //     year: event.target.value,
-  //     birthyear: event.target.value
-  //   })
-  // }
+  const [year, setYear] = useState(config.translations.datepicker.placeholder.year)
+  // const [birthyear, setBirthyear] = useState(config.data.birthyear || '')
 
-  // handleChangeMonth = event => {
-  //   this.setState({
-  //     month: event.target.value,
-  //     birthdate_month: event.target.value
-  //   })
-  // }
-
-  // handleChangeDay = event => {
-  //   this.setState({
-  //     day: event.target.value,
-  //     birthdate_day: event.target.value
-  //   })
-  // }
+  const handleChangeYear = ({ target }) => {
+    const { value } = target
+    setYear(value)
+    // setBirthyear(value)
+    // this.setState({
+    //   year: event.target.value,
+    //   birthyear: event.target.value
+    // })
+    console.log('year', value)
+    // console.log('birthyear', value)
+  }
+  const [month, setMonth] = useState(config.translations.datepicker.placeholder.month)
+  const handleChangeMonth = ({ target }) => {
+    const { value } = target
+    setMonth(value)
+    // this.setState({
+    //   month: event.target.value,
+    //   birthdate_month: event.target.value
+    // })
+    console.log('month', value)
+  }
+  const [day, setDay] = useState(config.translations.datepicker.placeholder.day)
+  const handleChangeDay = ({ target }) => {
+    const { value } = target
+    setDay(value)
+    // this.setState({
+    //   day: event.target.value,
+    //   birthdate_day: event.target.value
+    // })
+    console.log('day', value)
+  }
 
   // const { year, month, day } = this.state
   return (
@@ -113,26 +128,27 @@ const OtherData = () => {
           {config.gender?.data?.map(({ id, ...props }) => <GenderItem onSelectGender={handleChangeGender} key={id} gender={gender} id={id} {...props} />)}
         </div>
       </div>
-      <div className='inputs'>
+      <div className='birthdate_strip'>
+        <h3 className='birthdate_title'>{config.translations.other_data.birthdate_strip_title}</h3>
         <div className='field'>
-          {/* <Datepicker
-            handleChangeYear={this.handleChangeYear}
-            handleChangeMonth={this.handleChangeMonth}
-            handleChangeDay={this.handleChangeDay}
+          <Datepicker
+            handleChangeYear={handleChangeYear}
+            handleChangeMonth={handleChangeMonth}
+            handleChangeDay={handleChangeDay}
             year={year}
             month={month}
             day={day}
-          /> */}
-        </div>
-        <div className='checkbox_container'>
-          <Checkbox
-            text={config.translations.other_data.checkbox_label}
-            onHandleChange={handleCangeCheckbox}
-            value={checkBoxValue}
           />
-          <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />
-          {checkBoxValue && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
         </div>
+      </div>
+      <div className='checkbox_container'>
+        <Checkbox
+          text={config.translations.other_data.checkbox_label}
+          onHandleChange={handleCangeCheckbox}
+          value={checkBoxValue}
+        />
+        <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />
+        {checkBoxValue && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
       </div>
       <ContinueBtn continueStep={continueStep} />
     </div>
