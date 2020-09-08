@@ -30,6 +30,7 @@ const FillIn = props => {
         searchBox && searchBox.addListener('places_changed', () => {
           const places = searchBox.getPlaces()
           setAddress(places[0].formatted_address)
+          sessionStorage.setItem('address', places[0].formatted_address)
         })
       }
     }
