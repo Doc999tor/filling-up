@@ -164,7 +164,7 @@ const FillIn = props => {
           <input
             type='text'
             name='name'
-            placeholder={config.translations.full_name}
+            placeholder={config.translations.fill_in.name_placeholder}
             value={name}
             onFocus={handleToogleName}
             onBlur={handleToogleName}
@@ -178,7 +178,7 @@ const FillIn = props => {
             name='email'
             onFocus={handleToogleEmail}
             onBlur={handleToogleEmail}
-            placeholder={config.translations.email}
+            placeholder={config.translations.fill_in.email_placeholder}
             value={email}
             onChange={handleChangeEmail}
           />
@@ -195,7 +195,7 @@ const FillIn = props => {
               autoComplete='off'
               onFocus={handleToogleAddress}
               onBlur={handleToogleAddress}
-              placeholder={config.translations.adress}
+              placeholder={config.translations.fill_in.adress_placeholder}
               value={address}
               onChange={handleChangeAddress}
             />
