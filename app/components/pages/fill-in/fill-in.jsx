@@ -13,7 +13,7 @@ import './fill-in.styl'
 const FillIn = props => {
   const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   const inputEl = useRef(null)
-  const [address, setAddress] = useState(config.data.address || sessionStorage.getItem('address'))
+  const [address, setAddress] = useState(sessionStorage.getItem('address') || config.data.address)
   const handleChangeAddress = ({ target }) => {
     const { value } = target
     setAddress(value)
@@ -47,7 +47,7 @@ const FillIn = props => {
     editInfo()
   }, [])
 
-  const [name, setName] = useState(config.data.name || sessionStorage.getItem('name'))
+  const [name, setName] = useState(sessionStorage.getItem('name') || config.data.name)
   const [isNameValid, setIsNameValid] = useState(true)
   const handleChangeName = e => {
     const value = e.target.value
@@ -56,7 +56,7 @@ const FillIn = props => {
     sessionStorage.setItem('name', value)
   }
 
-  const [email, setEmail] = useState(config.data.email || sessionStorage.getItem('email'))
+  const [email, setEmail] = useState(sessionStorage.getItem('email') || config.data.email)
   const [isEmailValid, setIsEmailValid] = useState(true)
   const handleChangeEmail = e => {
     const value = e.target.value
@@ -65,15 +65,20 @@ const FillIn = props => {
     sessionStorage.setItem('email', value)
   }
 
-  const callbackPhoto = photo => setPhoto(photo)
+  const [photo, setPhoto] = useState(sessionStorage.getItem('photo') || '')
 
-  const [photo, setPhoto] = useState('')
+  const callbackPhoto = photo => {
+    setPhoto(photo)
+    sessionStorage.setItem('photo', photo)
+  }
+
   const [deleteAnimation, setDeleteAnimation] = useState(false)
   const deletePhoto = () => {
     setDeleteAnimation(true)
     setTimeout(() => {
       setDeleteAnimation(false)
       setPhoto('')
+      sessionStorage.removeItem('photo')
     }, 350)
   }
 
@@ -82,7 +87,10 @@ const FillIn = props => {
     if (config.plugins?.includes('highres_photos')) {
       const reader = new FileReader()
       reader.readAsDataURL(f)
-      reader.onload = () => setPhoto(reader.result)
+      reader.onload = () => {
+        setPhoto(reader.result)
+        sessionStorage.setItem('photo', reader.result)
+      }
     } else {
       Resize(f, callbackPhoto)
     }
