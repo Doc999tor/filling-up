@@ -10,39 +10,46 @@ import { patchService as fillingPatchService } from 'project-services/filling-up
 import './other-data.styl'
 
 const OtherData = ({ history }) => {
-  const [permitAds, setPermitAds] = useState(config.data.permit_ads)
+  const [permitAds, setPermitAds] = useState(sessionStorage.getItem('permit_ads') || config.data.permit_ads)
   const handleCangeCheckbox = ({ target }) => {
     const { checked } = target
     setPermitAds(checked)
+    sessionStorage.setItem('permit_ads', checked)
   }
 
-  const [gender, setGender] = useState(config.data.gender)
+  const [gender, setGender] = useState(sessionStorage.getItem('gender') || config.data.gender)
   const handleChangeGender = type => {
-    setGender(gender => type === gender ? null : type)
+    setGender(gender => {
+      sessionStorage.setItem('gender', type === gender ? null : type)
+      return type === gender ? null : type
+    })
   }
 
   const [highlightMonth, setHighlightMonth] = useState(false)
 
   const [highlightDay, setHighlightDay] = useState(false)
 
-  const [year, setYear] = useState(config.data.birthyear || config.translations.datepicker.placeholder.year)
+  const [year, setYear] = useState(sessionStorage.getItem('year') || config.data.birthyear || config.translations.datepicker.placeholder.year)
 
   const handleChangeYear = ({ target }) => {
     const { value } = target
     setYear(value)
+    sessionStorage.setItem('year', value)
   }
 
-  const [month, setMonth] = useState(config.data.birthdate ? config.data.birthdate.slice(0, 2) : config.translations.datepicker.placeholder.month)
+  const [month, setMonth] = useState(sessionStorage.getItem('month') || (config.data.birthdate ? config.data.birthdate.slice(0, 2) : config.translations.datepicker.placeholder.month))
   const handleChangeMonth = ({ target }) => {
     const { value } = target
     setMonth(value)
+    sessionStorage.setItem('month', value)
     highlightMonth && setHighlightMonth(false)
   }
 
-  const [day, setDay] = useState(config.data.birthdate ? config.data.birthdate.slice(3) : config.translations.datepicker.placeholder.day)
+  const [day, setDay] = useState(sessionStorage.getItem('day') || (config.data.birthdate ? config.data.birthdate.slice(3) : config.translations.datepicker.placeholder.day))
   const handleChangeDay = ({ target }) => {
     const { value } = target
     setDay(value)
+    sessionStorage.setItem('day', value)
     highlightDay && setHighlightDay(false)
   }
 
@@ -77,7 +84,6 @@ const OtherData = ({ history }) => {
       return false
     }
   }
-
   return (
     <div id='other_data'>
       <div className='gender_strip'>
@@ -107,7 +113,7 @@ const OtherData = ({ history }) => {
           onHandleChange={handleCangeCheckbox}
           value={permitAds}
         />
-        <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />
+        {!permitAds && <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />}
         {permitAds && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
       </div>
       <ContinueBtn continueStep={continueStep} />

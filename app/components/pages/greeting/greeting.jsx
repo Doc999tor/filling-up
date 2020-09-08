@@ -19,7 +19,7 @@ const Greeting = ({ history }) => {
           const b = new URL(document.location).searchParams.get('b')
           const body = `b=${b}&c=${c}&fb_data=${encodeURIComponent(JSON.stringify(response))}`
           fillingPatchService(body).then(r => {
-            if (r.status === 204) history.push(config.urls.baseUrl + config.urls.last_page)
+            if (r.status === 204) history.push(config.urls.baseUrl + config.urls.other_data)
           })
         })
       } else {
