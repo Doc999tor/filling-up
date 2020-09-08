@@ -31,35 +31,9 @@ var config = {
     fill_in: {
       name_placeholder: 'Full name',
       email_placeholder: 'Email',
-      adress_placeholder: 'Email',
-      // name_placeholder: 'Full name',
+      adress_placeholder: 'Address'
     },
-    // welcome: 'Welcome',
-    // be_glad: 'We will be glad if you fill out the following data',
-    // skip: 'Skip and continue with',
-    // facebook: 'Login with facebook',
-    // or_fill: 'fill out the following data',
-    full_name: 'Full name', //replace
-    email: 'Email', //replace
-    adress: 'Adress', //replace
-    continue: 'Continue',
-    selfies: 'Want to make selfies',
-    or: 'or',
-    want: 'Yes, I want, go foto',
-    not_now: 'Not now',
-    back: 'Back',
-    man: 'Man',
-    woman: 'Woman',
-    last_data: 'Last data and finish',
-    date_of_birth: 'Date of birth',
-    source: 'Source',
-    remarks_and_preferences: 'Remarks and preferences',
-    confirm: 'Confirm',
-    recommended_by: 'Recommended by:',
-    customers_agree: 'Check here to indicate that you have read and agree to the terms of the Atzma.in Customer Agreement',
-    thanks: 'Thanks!',
-    glad_see: 'We are glad to see you',
-    close: 'Close',
+    continue_btn_label: 'Continue',
     datepicker: {
       placeholder: {
         year: 'Year',
@@ -82,14 +56,7 @@ var config = {
         10: 'November',
         11: 'December'
       }
-    },
-    source_list: [
-      {value: 'ads', label: 'Ads'},
-      {value: 'fb_page', label: 'fb_page'},
-      {value: 'family', label: 'family'},
-      {value: 'friends', label: 'friends'},
-      {value: 'recommendation', label: 'recommendation'}
-    ]
+    }
   },
   urls: {
     add_address: `https://api.bewebmaster.co.il/settings/maps-api-key?token=${token}`,

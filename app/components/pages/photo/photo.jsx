@@ -117,7 +117,7 @@ class Home extends React.Component {
         <div className='buttons'>
           <button className='yes'>{config.translations.want}</button>
           <form ref='file_wrap'><input type='file' accept='image/*' capture='camera' onChange={e => this.addFoto(e)} /></form>
-          <h1>{config.translations.or}</h1>
+          <h1>or</h1>
           <button className='not_now' onClick={() => this.props.history.push(config.urls.baseUrl + config.urls.other_data)}>{config.translations.not_now}</button>
         </div>
         <div className='btns-wrap'>
