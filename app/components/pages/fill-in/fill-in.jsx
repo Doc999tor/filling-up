@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { ContinueBtn } from '../../continue_btn/continue.jsx'
 
 import { patchService as fillingPatchService, postPhotoService as fillingPhotoPostService } from 'project-services/filling-up.service.js'
+import { getParamsForApp } from 'project-services/adress.service.js'
 import { getCurrentFormatTime } from '../../../helpers/helpers.js'
 import Resize from 'project-components/resize.js'
 import dataURLtoFile from 'project-components/decodeBase64.js'
@@ -11,6 +12,40 @@ import './fill-in.styl'
 
 const FillIn = props => {
   const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+  const inputEl = useRef(null)
+  const [address, setAddress] = useState(config.data.address || sessionStorage.getItem('address'))
+  const handleChangeAddress = ({ target }) => {
+    const { value } = target
+    setAddress(value)
+    sessionStorage.setItem('address', value)
+  }
+  const loadMap = (url, location) => {
+    const scriptTag = document.createElement('script')
+    scriptTag.src = url
+    location.appendChild(scriptTag)
+    scriptTag.onload = () => {
+      if (window.google) {
+        const input = inputEl.current
+        const searchBox = new window.google.maps.places.SearchBox(input)
+        searchBox && searchBox.addListener('places_changed', () => {
+          const places = searchBox.getPlaces()
+          setAddress(places[0].formatted_address)
+        })
+      }
+    }
+  }
+  const editInfo = () => {
+    if (!window.google) {
+      getParamsForApp().then(r => {
+        const key = r.r.api_key
+        loadMap(`https://maps.googleapis.com/maps/api/js?key=${key}&libraries=places&language=${config.locale}`, document.body)
+      })
+    }
+  }
+  useEffect(() => {
+    editInfo()
+  }, [])
+
   const [name, setName] = useState(config.data.name || sessionStorage.getItem('name'))
   const [isNameValid, setIsNameValid] = useState(true)
   const handleChangeName = e => {
@@ -27,13 +62,6 @@ const FillIn = props => {
     setIsEmailValid(true)
     setEmail(value)
     sessionStorage.setItem('email', value)
-  }
-
-  const [address, setAddress] = useState(config.data.address || sessionStorage.getItem('address'))
-  const handleChangeAddress = e => {
-    const value = e.target.value
-    setAddress(value)
-    sessionStorage.setItem('address', value)
   }
 
   const callbackPhoto = photo => setPhoto(photo)
@@ -150,8 +178,12 @@ const FillIn = props => {
           <div className={'input_wrap' + (highlightAddress ? ' highlightInput' : '')}>
             <img src={config.urls.media + 'ic_address.svg'} />
             <input
+              id='pac-input'
+              className='controls form-input'
               type='text'
+              ref={inputEl}
               name='address'
+              autoComplete='off'
               onFocus={handleToogleAddress}
               onBlur={handleToogleAddress}
               placeholder={config.translations.adress}
