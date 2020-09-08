@@ -4,6 +4,7 @@ dist/bundle.min.js
 dist/bundle.js.map
 dist/bundle.css
 dist/bundle.js
+dist/token.js
 node_modules
 .idea
 .git

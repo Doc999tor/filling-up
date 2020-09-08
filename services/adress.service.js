@@ -1,11 +1,9 @@
 import mainRequestService from 'project-components/request.service.js'
 
-const getService = q => {
-  const url = config.urls.adress.replace('{query}', q).replace('{language}', config.translations.language)
+export const getParamsForApp = () => {
+  const url = config.urls.add_address
   const options = {
-    mode: 'cors',
     method: 'GET'
   }
-  return mainRequestService(url, options)
+  return mainRequestService(url, options).then(r => r.json().then(r => ({ r })))
 }
-export default getService
