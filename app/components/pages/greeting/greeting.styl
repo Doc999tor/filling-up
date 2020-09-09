@@ -28,8 +28,8 @@
         justify-content center
         margin-bottom 1rem
         text-decoration none
-        border none
         font-size 1rem
+        border none
         position relative
         font-weight 500
         border-radius 3rem
@@ -59,7 +59,15 @@
         background-image linear-gradient(to bottom, #ffffff 18%, #e6dffc)
       .fill_in_button:before
         background-color: #6334e3;
+      .error_btn
+        border 2px solid var(--active-color)
+        animation errorBtn 0.5s forwards
+        animation-delay 1s 
 
+@keyframes errorBtn
+  100%
+    opacity 0
+    pointer-events none
 @keyframes greeting
   0%
     transform translate(50%, 50%)
