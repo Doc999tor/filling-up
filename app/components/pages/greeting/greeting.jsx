@@ -15,7 +15,7 @@ const Greeting = ({ history }) => {
   const facebookLogin = () => {
     FB.login(function (response) {
       if (response.authResponse) {
-        FB.api('/me', 'GET', { fields: 'name,birthday,email,gender,eee,hometown,age_range,location,timezone,website,picture.width(480).height(480)' }, function (response) {
+        FB.api('/me', 'GET', { fields: 'name,birthday,email,gender,hometown,age_range,location,timezone,website,picture.width(480).height(480)' }, function (response) {
           const c = new URL(document.location).searchParams.get('c')
           const b = new URL(document.location).searchParams.get('b')
           const body = `b=${b}&c=${c}&fb_data=${encodeURIComponent(JSON.stringify(response))}`
