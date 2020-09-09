@@ -1,0 +1,112 @@
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3.5rem;
+  max-width: 640px;
+  min-height: 100vh;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(94, 54, 177, 0.75);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(94, 54, 177, 0.75);
+  box-shadow: 0px 0px 6px 0px rgba(94, 54, 177, 0.75);
+  background-color: var(--sec-color);
+  margin: 0 auto;
+}
+.skeleton header {
+  background-image: linear-gradient(107deg, #9370e6 3%, #7534f8 40%, #4f2da7 87%);
+  display: flex;
+  height: 3.5rem;
+  position: fixed;
+  max-width: 640px;
+  margin: 0 auto;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  align-items: center;
+  justify-content: center;
+}
+.skeleton header .icon_skeleton {
+  -moz-margin-end: 0.5rem;
+  -webkit-margin-end: 0.5rem;
+  margin-inline-end: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #dee2f0;
+}
+.name_skeleton {
+  min-width: 10rem;
+  height: 1rem;
+  border-radius: 0.625rem;
+  background-color: #dee2f0;
+}
+.glow {
+  overflow: hidden;
+  position: relative;
+}
+.glow:before {
+  content: '';
+  display: flex;
+  position: absolute;
+  will-change: opacity, left, right;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  width: 1.5rem;
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+  background-color: #fff;
+  animation: glow 1s infinite;
+  animation-delay: 0.5s;
+}
+.main-wrap {
+  background: transparent linear-gradient(0deg, #EFEFFF 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+.greet {
+  margin-top: 4.8rem;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  position: relative;
+}
+.greet:before {
+  content: '';
+  opacity: 0.35;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  background-image: linear-gradient(to bottom, #f0e8ff, #b195ed 47%, #875de1 70%, #361181);
+  position: absolute;
+  animation: 2s windowspin infinite linear;
+  top: 0;
+  left: 0;
+}
+@keyframes windowspin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes glow {
+  0% {
+    opacity: 1;
+    left: -30%;
+  }
+  10% {
+    opacity: 1;
+    left: -30%;
+  }
+  90% {
+    opacity: 1;
+    left: 120%;
+  }
+  100% {
+    opacity: 1;
+    left: 120%;
+  }
+}
