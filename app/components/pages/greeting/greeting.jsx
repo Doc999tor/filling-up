@@ -4,7 +4,13 @@ import { patchService as fillingPatchService } from 'project-services/filling-up
 import './greeting.styl'
 
 const Greeting = ({ history }) => {
+  const loadFB = () => {
+    var script = document.createElement('script')
+    script.src = config.urls.fb_script
+    document.getElementsByTagName('head')[0].appendChild(script)
+  }
   useEffect(() => {
+    loadFB()
     history.replace({ pathname: config.urls.baseUrl, search: config.urls.params })
     const b = new URL(document.location).searchParams.get('b')
     const c = new URL(document.location).searchParams.get('c')

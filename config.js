@@ -63,6 +63,7 @@ var config = {
     add_client_url: '/add-client/clients?q={query}',
     main: 'https://api.bewebmaster.co.il',
     filling_up: '/filling-up',
+    fb_script: './scripts/fb_script.js',
     photo_r: '/filling-up/photo',
     notes: '/filling-up/notes',
     other_data: '/other_data',
