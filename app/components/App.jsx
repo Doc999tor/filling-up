@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import React, { Suspense, lazy, useEffect } from 'react'
+import { Switch, Route, useHistory } from 'react-router-dom'
 import { Layout } from './layout/layout.jsx'
 import './App.styl'
 
@@ -9,6 +9,13 @@ const LastPage = lazy(() => import('./pages/last-page/last-page.jsx'))
 const OtherData = lazy(() => import('./pages/other-data/other-data.jsx'))
 
 export const App = () => {
+  let history = useHistory()
+  useEffect(() => {
+    const pageName = new URL(document.location).searchParams.get('page')
+    if (pageName === config.urls.photo.slice(1)) history.push(config.urls.baseUrl + config.urls.photo)
+    if (pageName === config.urls.other_data.slice(1)) history.push(config.urls.baseUrl + config.urls.other_data)
+    if (pageName === config.urls.last_page.slice(1)) history.push(config.urls.baseUrl + config.urls.last_page)
+  }, [])
   return (
     <Layout>
       <Switch>
