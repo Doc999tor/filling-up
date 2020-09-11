@@ -17,7 +17,7 @@ const LastPage = () => {
         <p className='address_text'>{config.translations.last_page?.business_address_title}</p>
         <div className='address_label'>
           <img src={config.urls.media + 'purple_address.svg'} />
-          <p>{config.business_adress}</p>
+          <p>{config.business_address}</p>
         </div>
       </div>
       <div className='links'>

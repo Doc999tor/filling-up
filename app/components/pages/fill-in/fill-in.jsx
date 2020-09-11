@@ -44,7 +44,7 @@ const FillIn = props => {
     }
   }
   useEffect(() => {
-    editInfo()
+    config.address_based && editInfo()
   }, [])
 
   const [name, setName] = useState(sessionStorage.getItem('name') || config.data.name)
@@ -118,7 +118,7 @@ const FillIn = props => {
         photo ? fillingPhotoPostService(photoData) : Promise.resolve('resolved')
       ]
       Promise.all(promises).then(() => {
-        props.history.push(config.urls.baseUrl + config.urls.other_data)
+        props.history.push({ pathname: config.urls.baseUrl + config.urls.other_data, search: config.urls.params })
       })
       return false
     }
