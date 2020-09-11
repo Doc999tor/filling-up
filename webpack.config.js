@@ -14,7 +14,8 @@ module.exports = {
   entry: './app/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    chunkFilename: process.env.NODE_ENV ? '[name].chunk.js' : '[name].[contenthash:6].chunk.js',
+    publicPath: process.env.NODE_ENV === 'development' ? '/' : '/public/filling-up/',
+    chunkFilename: process.env.NODE_ENV === 'development' ? '[name].chunk.js' : '[name].[contenthash:6].chunk.js',
     filename: process.env.NODE_ENV === 'development' ? 'main.bundle.js' : 'main.[contenthash:6].bundle.min.js'
   },
   module: {
@@ -61,7 +62,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      chunkFilename: process.env.NODE_ENV ? '[name].chunk.css' : '[name].[contenthash:6].chunk.css',
+      chunkFilename: process.env.NODE_ENV === 'development' ? '[name].chunk.css' : '[name].[contenthash:6].chunk.css',
       filename: process.env.NODE_ENV === 'development' ? 'main.bundle.css' : 'main.[contenthash:6].bundle.min.css'
     }),
     new HtmlWebpackPlugin({

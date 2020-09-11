@@ -60,7 +60,6 @@ var config = {
   },
   urls: {
     add_address: `https://api.bewebmaster.co.il/settings/maps-api-key?token=${token}`,
-    add_client_url: '/add-client/clients?q={query}',
     main: 'https://api.bewebmaster.co.il',
     filling_up: '/filling-up',
     fb_script: './scripts/fb_script.js',
@@ -90,12 +89,10 @@ var config = {
   greetings_text: 'We`re so glad to see you our friend, your next visit you`ll get 20% discount. Remember, every client is our family',
   business_name: 'Beauty Salon Maria',
   business_logo: './assets/media/ic_facebook.svg',
-  business_adress: 'Tel Aviv, Allenby str. 45',
+  business_address: 'Tel Aviv, Allenby str. 45',
   business_desc: 'loresdfgs dgsdgsdf ffffffffffffff ffffffffs  sdgsd sd sg sgdfffffffffff sdfg sdf sd gsdf s sfgs dfgsf sd sg dsfm',
   business_links: [{icon: 'link_facebook.svg', url: '/facebook_url'}, {icon: 'link_instagram.svg', url: '/instagram'}, {icon: 'link_facebook.svg', url: '/facebook_url'}],
   plugins: ['highres_photos'],
-  timeout: 500,
-  max_side: 1000,
   gender: {
     data: [
       { type: 'male', id: 1, icon: 'male.svg', active_icon: 'selected_male.svg' },

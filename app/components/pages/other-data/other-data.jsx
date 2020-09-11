@@ -58,7 +58,7 @@ const OtherData = ({ history }) => {
     let body = `b=${query.b}&c=${query.c}&gender=${gender || null}&permit_ads=${permitAds}&birthyear=${birthyear}&birthdate=${birthdate}`
     fillingPatchService(body).then(r => {
       if (r.status === 204) {
-        history.push(config.urls.baseUrl + config.urls.last_page)
+        history.push({ pathname: config.urls.baseUrl + config.urls.last_page, search: config.urls.params })
       }
     }
     )
