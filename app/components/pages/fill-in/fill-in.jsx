@@ -66,6 +66,7 @@ const FillIn = props => {
   }
 
   const [photo, setPhoto] = useState(sessionStorage.getItem('photo') || '')
+  const [photoName, setPhotoName] = useState(sessionStorage.getItem('photoName') || '')
 
   const callbackPhoto = photo => {
     setPhoto(photo)
@@ -78,7 +79,9 @@ const FillIn = props => {
     setTimeout(() => {
       setDeleteAnimation(false)
       setPhoto('')
+      setPhotoName('')
       sessionStorage.removeItem('photo')
+      sessionStorage.removeItem('photoName')
     }, 350)
   }
 
@@ -86,6 +89,8 @@ const FillIn = props => {
     const f = e.target.files[0]
     if (config.plugins?.includes('highres_photos')) {
       const reader = new FileReader()
+      setPhotoName(f.name)
+      sessionStorage.setItem('photoName', f.name)
       reader.readAsDataURL(f)
       reader.onload = () => {
         setPhoto(reader.result)
@@ -111,7 +116,7 @@ const FillIn = props => {
       const photoData = new FormData()
       photoData.append('b', query.b)
       photoData.append('c', query.c)
-      photo && photoData.append('photo', dataURLtoFile(photo))
+      photo && photoData.append('photo', dataURLtoFile(photo, photoName))
       photoData.append('date', getCurrentFormatTime())
       const promises = [
         fillingPatchService(body),
