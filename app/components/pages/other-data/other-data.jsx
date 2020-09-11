@@ -55,7 +55,8 @@ const OtherData = ({ history }) => {
 
   const sendData = (birthyear = null, birthdate = null) => {
     const query = JSON.parse(sessionStorage.getItem('fill_query'))
-    let body = `b=${query.b}&c=${query.c}&gender=${gender || null}&permit_ads=${permitAds}&birthyear=${birthyear}&birthdate=${birthdate}`
+    const genderValue = gender === 'male' || gender === 'female' ? gender : null
+    let body = `b=${query.b}&c=${query.c}&gender=${genderValue || null}&permit_ads=${permitAds}&birthyear=${birthyear}&birthdate=${birthdate}`
     fillingPatchService(body).then(r => {
       if (r.status === 204) {
         history.push({ pathname: config.urls.baseUrl + config.urls.last_page, search: config.urls.params })
