@@ -28,6 +28,15 @@ const Greeting = ({ history }) => {
           if (response.error) {
             setHighlightBtn(true)
           } else {
+            if (response.gender) sessionStorage.setItem('gender', response.gender)
+            if (response.birthday) {
+              const parseBirthday = response.birthday?.split('/')
+              if (parseBirthday.length === 3) {
+                sessionStorage.setItem('month', parseBirthday[0])
+                sessionStorage.setItem('day', parseBirthday[1])
+                sessionStorage.setItem('year', parseBirthday[2])
+              }
+            }
             fillingPatchService(body).then(r => {
               if (r.status === 204) history.push({ pathname: config.urls.baseUrl + config.urls.other_data, search: config.urls.params })
             })
