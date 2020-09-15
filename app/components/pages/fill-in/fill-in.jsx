@@ -89,16 +89,8 @@ const FillIn = props => {
     const f = e.target.files[0]
     setPhotoName(f.name)
     sessionStorage.setItem('photoName', f.name)
-    if (config.plugins?.includes('highres_photos')) {
-      const reader = new FileReader()
-      reader.readAsDataURL(f)
-      reader.onload = () => {
-        setPhoto(reader.result)
-        sessionStorage.setItem('photo', reader.result)
-      }
-    } else {
-      Resize(f, callbackPhoto)
-    }
+    const highresPhotos = config.plugins?.includes('highres_photos') || false
+    Resize(f, callbackPhoto, highresPhotos)
   }
 
   const [highlightName, setHighlightName] = useState(false)
