@@ -116,7 +116,7 @@ const FillIn = props => {
       const photoData = new FormData()
       photoData.append('b', query.b)
       photoData.append('c', query.c)
-      photo && photoData.append('photo', dataURLtoFile(photo, photoName))
+      photo && photoData.append('photo', dataURLtoFile(photo, photoName), 'profile-picture.jpg')
       photoData.append('date', getCurrentFormatTime())
       const promises = [
         fillingPatchService(body),
