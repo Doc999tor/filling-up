@@ -12,7 +12,7 @@ var config = {
     last_page: {
       last_page_title: 'Nicely Done!',
       last_page_subtitle: 'Thank you so much for your efforts. Have a nice day and see you soon!',
-      business_address_title: 'Pure beauty address:',
+      business_address_title: '{business_name} address',
       footer: {
         about_us: 'About Lista CRM',
         terms_of_use: ' Terms of use'
