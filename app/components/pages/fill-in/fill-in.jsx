@@ -87,10 +87,10 @@ const FillIn = props => {
 
   const addFoto = e => {
     const f = e.target.files[0]
+    setPhotoName(f.name)
+    sessionStorage.setItem('photoName', f.name)
     if (config.plugins?.includes('highres_photos')) {
       const reader = new FileReader()
-      setPhotoName(f.name)
-      sessionStorage.setItem('photoName', f.name)
       reader.readAsDataURL(f)
       reader.onload = () => {
         setPhoto(reader.result)
