@@ -13,13 +13,13 @@ const LastPage = () => {
         <p>{config.translations.last_page?.last_page_title}</p>
       </div>
       <p className='subtitle_text'>{config.translations.last_page?.last_page_subtitle}</p>
-      <div className='address-strip'>
-        <p className='address_text'>{config.translations.last_page?.business_address_title}</p>
+      {config.business_address && <div className='address-strip'>
+        <p className='address_text'>{config.translations.last_page?.business_address_title?.replace('{business_name}', config.business_name)}</p>
         <div className='address_label'>
           <img src={config.urls.media + 'purple_address.svg'} />
           <p>{config.business_address}</p>
         </div>
-      </div>
+      </div>}
       <div className='links'>
         {config.business_links?.map(({ url, icon }) => <a key={url} href={url}><img src={config.urls.media + icon} /></a>)}
       </div>
