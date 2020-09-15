@@ -110,14 +110,13 @@ const FillIn = props => {
 
   const continueStep = () => {
     if (name?.trim() && pattern.test(email?.trim())) {
-      const profilePicture = sessionStorage.getItem('photoName')
       const query = JSON.parse(sessionStorage.getItem('fill_query'))
       let body = `b=${query.b}&c=${query.c}&name=${name?.trim()}&email=${email}`
       if (config.address_based) body = body + `&address=${address?.trim() || null}`
       const photoData = new FormData()
       photoData.append('b', query.b)
       photoData.append('c', query.c)
-      photo && photoData.append('photo', dataURLtoFile(photo, profilePicture), profilePicture || 'profile-picture.jpg')
+      photo && photoData.append('photo', dataURLtoFile(photo, photoName), photoName || 'profile-picture.jpg')
       photoData.append('date', getCurrentFormatTime())
       const promises = [
         fillingPatchService(body),
