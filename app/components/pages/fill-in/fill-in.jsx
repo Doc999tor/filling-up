@@ -101,9 +101,9 @@ const FillIn = props => {
   const handleToogleAddress = () => setHighlightAddress(highlight => !highlight)
 
   const continueStep = () => {
-    if (name?.trim() && pattern.test(email?.trim())) {
+    if (name?.trim() && (pattern.test(email?.trim()) || email?.trim() === '')) {
       const query = JSON.parse(sessionStorage.getItem('fill_query'))
-      let body = `b=${query.b}&c=${query.c}&name=${name?.trim()}&email=${email}`
+      let body = `b=${query.b}&c=${query.c}&name=${name?.trim()}&email=${email || null}`
       if (config.address_based) body = body + `&address=${address?.trim() || null}`
       const photoData = new FormData()
       photoData.append('b', query.b)
@@ -122,7 +122,7 @@ const FillIn = props => {
     if (!name?.trim()) {
       setIsNameValid(false)
     }
-    if (!pattern.test(email?.trim())) {
+    if (!pattern.test(email?.trim()) && email?.trim() !== '') {
       setIsEmailValid(false)
     }
   }
