@@ -47,7 +47,7 @@ const FillIn = props => {
     config.address_based && editInfo()
   }, [])
 
-  const [name, setName] = useState(sessionStorage.getItem('name') || config.data.name)
+  const [name, setName] = useState(sessionStorage.getItem('name') || config.data.name || '')
   const [isNameValid, setIsNameValid] = useState(true)
   const handleChangeName = e => {
     const value = e.target.value
@@ -56,7 +56,7 @@ const FillIn = props => {
     sessionStorage.setItem('name', value)
   }
 
-  const [email, setEmail] = useState(sessionStorage.getItem('email') || config.data.email)
+  const [email, setEmail] = useState(sessionStorage.getItem('email') || config.data.email || '')
   const [isEmailValid, setIsEmailValid] = useState(true)
   const handleChangeEmail = e => {
     const value = e.target.value
