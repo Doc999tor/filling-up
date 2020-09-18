@@ -12,7 +12,11 @@ const LastPage = () => {
       <div className='title_text'>
         <p>{config.translations.last_page?.last_page_title}</p>
       </div>
-      <p className='subtitle_text'>{config.translations.last_page?.last_page_subtitle}</p>
+      <p className='subtitle_text'>
+        {config.greetings_text
+          ? config.greetings_text
+          : config.translations.last_page?.last_page_subtitle}
+      </p>
       {config.business_address && <div className='address-strip'>
         <p className='address_text'>{config.translations.last_page?.business_address_title?.replace('{business_name}', config.business_name)}</p>
         <div className='address_label'>
