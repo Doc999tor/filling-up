@@ -82,7 +82,8 @@ var config = {
     birthdate: '',
     source: '',
     note: '',
-    permit_ads: false
+    permit_ads: false,
+    max_side: 1000
   },
   isRTL: false,
   address_based: true,
@@ -95,9 +96,9 @@ var config = {
   plugins: ['highres_photos'],
   gender: {
     data: [
-      { type: 'male', id: 1, icon: 'male.svg', active_icon: 'selected_male.svg' },
       { type: 'female', id: 2, icon: 'female.svg', active_icon: 'selected_female.svg' },
-      { type: 'third', id: 3, icon: 'third.svg', active_icon: 'selected_third.svg' }
+      { type: 'male', id: 1, icon: 'male.svg', active_icon: 'selected_male.svg' },
+      { type: 'third', id: 3, icon: 'third.svg', active_icon: 'selected_third.svg' },
     ]
   },
   footer: {
