@@ -87,10 +87,12 @@ const FillIn = props => {
 
   const addFoto = e => {
     const f = e.target.files[0]
-    setPhotoName(f.name)
-    sessionStorage.setItem('photoName', f.name)
-    const highresPhotos = config.plugins?.includes('highres_photos') || false
-    Resize(f, callbackPhoto, highresPhotos)
+    if (f) {
+      setPhotoName(f.name)
+      sessionStorage.setItem('photoName', f.name)
+      const highresPhotos = config.plugins?.includes('highres_photos') || false
+      Resize(f, callbackPhoto, highresPhotos)
+    }
   }
 
   const [highlightName, setHighlightName] = useState(false)
