@@ -66,6 +66,7 @@ const FillIn = props => {
   }
 
   const [photo, setPhoto] = useState(sessionStorage.getItem('photo') || '')
+  const [profileImage, setProfileImage] = useState(config.data.profile_image ? config.urls.client_data + config.data.profile_image : '')
   const [photoName, setPhotoName] = useState(sessionStorage.getItem('photoName') || '')
 
   const callbackPhoto = photo => {
@@ -79,6 +80,7 @@ const FillIn = props => {
     setTimeout(() => {
       setDeleteAnimation(false)
       setPhoto('')
+      setProfileImage('')
       setPhotoName('')
       sessionStorage.removeItem('photo')
       sessionStorage.removeItem('photoName')
@@ -132,9 +134,9 @@ const FillIn = props => {
   return (
     <div id='fill-in'>
       {
-        photo
+        profileImage || photo
           ? <div className={'added_photo' + (deleteAnimation ? ' deleteAnimation' : '')}>
-            <img className='client-img' src={photo} />
+            <img className='client-img' src={profileImage || photo} />
             <div className='controls'>
               <label className='control_btn'>
                 <img src={config.urls.media + 'ic_photo.svg'} />

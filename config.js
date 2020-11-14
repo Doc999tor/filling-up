@@ -66,6 +66,7 @@ var config = {
     photo_r: '/filling-up/photo',
     notes: '/filling-up/notes',
     other_data: '/other_data',
+    client_data: './assets/clients/',
     last_page: '/last_page',
     media: './assets/media/',
     photo: '/photo',
@@ -73,10 +74,10 @@ var config = {
     params: '?b=123&c=sdfs2d1f'
   },
   data: {
-    name: '',
-    email: '',
-    address: '',
-    photo: '',
+    name: 'Ahuva Ben Shushan',
+    email: 'ahuva.ben.shushan@gmail.com',
+    address: 'בת ים, ויצמן, 18',
+    profile_image: '24.jpg',
     gender: '',
     birthyear: '',
     birthdate: '',
