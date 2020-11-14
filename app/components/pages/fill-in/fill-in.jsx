@@ -13,7 +13,6 @@ import './fill-in.styl'
 const FillIn = props => {
   const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   const inputEl = useRef(null)
-  const imgEl = useRef(null)
   const [address, setAddress] = useState(sessionStorage.getItem('address') || config.data.address)
   const handleChangeAddress = ({ target }) => {
     const { value } = target
@@ -64,7 +63,6 @@ const FillIn = props => {
   }
 
   const [photo, setPhoto] = useState(sessionStorage.getItem('photo') || '')
-  const [profileImage, setProfileImage] = useState(config.data.profile_image ? config.urls.client_data + config.data.profile_image : '')
   const [photoName, setPhotoName] = useState(sessionStorage.getItem('photoName') || '')
 
   const callbackPhoto = photo => {
@@ -75,15 +73,16 @@ const FillIn = props => {
   useEffect(() => {
     config.address_based && editInfo()
     if (config.data.profile_image && !sessionStorage.getItem('photo')) {
-      const myImage = imgEl.current
+      const myImage = document.createElement('img')
+      const canvas = document.createElement('canvas')
+      const ctx = canvas.getContext('2d')
       myImage.onload = () => {
-        const canvas = document.createElement('canvas')
-        const ctx = canvas.getContext('2d')
-        ctx.width = myImage.width
-        ctx.height = myImage.height
+        canvas.width = myImage.width
+        canvas.height = myImage.height
         ctx.drawImage(myImage, 0, 0)
         addFoto(null, dataURLtoFile(canvas.toDataURL(), config.data.profile_image))
       }
+      myImage.src = config.urls.client_data + config.data.profile_image
     }
   }, [])
 
@@ -93,7 +92,6 @@ const FillIn = props => {
     setTimeout(() => {
       setDeleteAnimation(false)
       setPhoto('')
-      setProfileImage('')
       setPhotoName('')
       sessionStorage.removeItem('photo')
       sessionStorage.removeItem('photoName')
@@ -147,9 +145,9 @@ const FillIn = props => {
   return (
     <div id='fill-in'>
       {
-        profileImage || photo
+        photo
           ? <div className={'added_photo' + (deleteAnimation ? ' deleteAnimation' : '')}>
-            <img ref={imgEl} className='client-img' src={profileImage || photo} />
+            <img className='client-img' src={photo} />
             <div className='controls'>
               <label className='control_btn'>
                 <img src={config.urls.media + 'ic_photo.svg'} />
