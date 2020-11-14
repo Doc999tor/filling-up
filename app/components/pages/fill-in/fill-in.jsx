@@ -13,6 +13,7 @@ import './fill-in.styl'
 const FillIn = props => {
   const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   const inputEl = useRef(null)
+  const imgEl = useRef(null)
   const [address, setAddress] = useState(sessionStorage.getItem('address') || config.data.address)
   const handleChangeAddress = ({ target }) => {
     const { value } = target
@@ -43,9 +44,6 @@ const FillIn = props => {
       })
     }
   }
-  useEffect(() => {
-    config.address_based && editInfo()
-  }, [])
 
   const [name, setName] = useState(sessionStorage.getItem('name') || config.data.name || '')
   const [isNameValid, setIsNameValid] = useState(true)
@@ -74,6 +72,21 @@ const FillIn = props => {
     sessionStorage.setItem('photo', photo)
   }
 
+  useEffect(() => {
+    config.address_based && editInfo()
+    if (config.data.profile_image && !sessionStorage.getItem('photo')) {
+      const myImage = imgEl.current
+      myImage.onload = () => {
+        const canvas = document.createElement('canvas')
+        const ctx = canvas.getContext('2d')
+        ctx.width = myImage.width
+        ctx.height = myImage.height
+        ctx.drawImage(myImage, 0, 0)
+        addFoto(null, dataURLtoFile(canvas.toDataURL(), config.data.profile_image))
+      }
+    }
+  }, [])
+
   const [deleteAnimation, setDeleteAnimation] = useState(false)
   const deletePhoto = () => {
     setDeleteAnimation(true)
@@ -87,8 +100,8 @@ const FillIn = props => {
     }, 350)
   }
 
-  const addFoto = e => {
-    const f = e.target.files[0]
+  const addFoto = (e, data) => {
+    const f = e ? e.target.files[0] : data
     if (f) {
       setPhotoName(f.name)
       sessionStorage.setItem('photoName', f.name)
@@ -136,7 +149,7 @@ const FillIn = props => {
       {
         profileImage || photo
           ? <div className={'added_photo' + (deleteAnimation ? ' deleteAnimation' : '')}>
-            <img className='client-img' src={profileImage || photo} />
+            <img ref={imgEl} className='client-img' src={profileImage || photo} />
             <div className='controls'>
               <label className='control_btn'>
                 <img src={config.urls.media + 'ic_photo.svg'} />

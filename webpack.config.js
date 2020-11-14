@@ -1,6 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin')
@@ -69,7 +69,7 @@ module.exports = {
       template: './index.html'
     }),
     new DynamicCdnWebpackPlugin({ env: 'production' }),
-    new CleanWebpackPlugin()
+    // new CleanWebpackPlugin()
   ],
   resolve: {
     alias: alias
