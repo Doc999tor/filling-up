@@ -16,7 +16,7 @@
     "build": "webpack --mode production"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.4",
+    "@babel/cli": "^7.12.1",
     "@babel/core": "^7.7.4",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-optional-chaining": "^7.7.4",
