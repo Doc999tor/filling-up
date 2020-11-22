@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import { GenderItem } from './components/single-gender/single-gender.jsx'
 import { ContinueBtn } from '../../continue_btn/continue.jsx'
 import { Checkbox } from 'project-components/checkbox/checkbox.jsx'
 import Datepicker from 'project-components/Datepicker_upd/datepicker.jsx'
+import { GenderItem } from 'project-components/single-gender/single-gender.jsx'
 
 import { patchService as fillingPatchService } from 'project-services/filling-up.service.js'
 
@@ -95,7 +95,7 @@ const OtherData = ({ history }) => {
       <div className='gender_strip'>
         <h3 className='gender_title'>{config.translations.other_data.gender_strip_title}</h3>
         <div className='gender_items_wrap'>
-          {config.gender?.data?.map(({ id, ...props }) => <GenderItem onSelectGender={handleChangeGender} key={id} gender={gender} {...props} />)}
+          {config.gender?.data?.map(({ id, type, ...props }) => <GenderItem type={type} gender_text={config.translations.other_data.gender[type]} onSelectGender={handleChangeGender} key={id} gender={gender} {...props} />)}
         </div>
       </div>
       <div className='birthdate_strip'>
