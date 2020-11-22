@@ -93,7 +93,15 @@ var config = {
   business_logo: './assets/media/ic_facebook.svg',
   business_address: 'Tel Aviv, Allenby str. 45',
   business_desc: 'loresdfgs dgsdgsdf ffffffffffffff ffffffffs  sdgsd sd sg sgdfffffffffff sdfg sdf sd gsdf s sfgs dfgsf sd sg dsfm',
-  business_links: [{icon: 'link_facebook.svg', url: '/facebook_url'}, {icon: 'link_instagram.svg', url: '/instagram'}, {icon: 'link_facebook.svg', url: '/facebook_url'}],
+  business_links: [
+    { icon: 'link_facebook.svg', url: '/facebook_url', type: 'facebook' },
+    { icon: 'link_instagram.svg', url: '/instagram', type: 'instagram' },
+    {
+      icon: 'link_website.svg',
+      type: 'website',
+      url: 'https://aquaplants.co.il/'
+    }
+  ],
   plugins: ['highres_photos'],
   gender: {
     data: [

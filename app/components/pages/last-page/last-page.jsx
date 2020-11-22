@@ -25,7 +25,7 @@ const LastPage = () => {
         </div>
       </div>}
       <div className='links'>
-        {config.business_links?.map(({ url, icon }) => <a key={url} href={url}><img src={config.urls.media + icon} /></a>)}
+        {config.business_links?.map(({ url, icon, type }) => <a key={url} className={type} href={url}><img src={config.urls.media + icon} /></a>)}
       </div>
       <footer className='footer'>
         {config.footer?.data?.map(({ name, link, icon }) => <a key={link} href={link}>{icon && <img src={config.urls.media + icon} />}{name && config.translations.last_page.footer[name]}</a>)}
