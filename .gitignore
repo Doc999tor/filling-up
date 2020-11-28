@@ -5,6 +5,8 @@ dist/bundle.js.map
 dist/bundle.css
 dist/bundle.js
 dist/token.js
+token.js
 node_modules
+.DS_Store
 .idea
 .git

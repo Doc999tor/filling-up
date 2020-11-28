@@ -13,6 +13,7 @@ import './fill-in.styl'
 const FillIn = props => {
   const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   const inputEl = useRef(null)
+  const [loading, setLoading] = useState(false)
   const [address, setAddress] = useState(sessionStorage.getItem('address') || config.data.address)
   const handleChangeAddress = ({ target }) => {
     const { value } = target
@@ -117,6 +118,7 @@ const FillIn = props => {
 
   const continueStep = () => {
     if (name && name?.trim() && (pattern.test(email?.trim()) || email?.trim() === '' || !email)) {
+      setLoading(true)
       const query = JSON.parse(sessionStorage.getItem('fill_query'))
       let body = `b=${query.b}&c=${query.c}&name=${name?.trim()}&email=${email || null}`
       if (config.address_based) body = body + `&address=${address?.trim() || null}`
@@ -213,7 +215,7 @@ const FillIn = props => {
             />
           </div>}
       </div>
-      <ContinueBtn continueStep={continueStep} />
+      <ContinueBtn continueStep={continueStep} loading={loading} />
     </div>
   )
 }

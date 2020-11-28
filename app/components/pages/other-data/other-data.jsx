@@ -10,7 +10,8 @@ import { patchService as fillingPatchService } from 'project-services/filling-up
 import './other-data.styl'
 
 const OtherData = ({ history }) => {
-  const [permitAds, setPermitAds] = useState(sessionStorage.getItem('permit_ads') || config.data.permit_ads)
+  const [loading, setLoading] = useState(false)
+  const [permitAds, setPermitAds] = useState((sessionStorage.getItem('permit_ads') === 'true' ? true : false ) || config.data.permit_ads)
   const handleCangeCheckbox = ({ target }) => {
     const { checked } = target
     setPermitAds(checked)
@@ -54,6 +55,7 @@ const OtherData = ({ history }) => {
   }
 
   const sendData = (birthyear = null, birthdate = null) => {
+    setLoading(true)
     const query = JSON.parse(sessionStorage.getItem('fill_query'))
     const genderValue = gender === 'male' || gender === 'female' ? gender : null
     let body = `b=${query.b}&c=${query.c}&gender=${genderValue || null}&permit_ads=${permitAds}&birthyear=${birthyear}&birthdate=${birthdate}`
@@ -122,7 +124,7 @@ const OtherData = ({ history }) => {
         {!permitAds && <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />}
         {permitAds && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
       </div>
-      <ContinueBtn continueStep={continueStep} />
+      <ContinueBtn continueStep={continueStep} loading={loading} />
     </div>
   )
 }
