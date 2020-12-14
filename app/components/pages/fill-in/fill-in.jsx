@@ -73,18 +73,6 @@ const FillIn = props => {
 
   useEffect(() => {
     config.address_based && editInfo()
-    if (config.data.profile_image && !sessionStorage.getItem('photo')) {
-      const myImage = document.createElement('img')
-      const canvas = document.createElement('canvas')
-      const ctx = canvas.getContext('2d')
-      myImage.onload = () => {
-        canvas.width = myImage.width
-        canvas.height = myImage.height
-        ctx.drawImage(myImage, 0, 0)
-        addFoto(null, dataURLtoFile(canvas.toDataURL(), config.data.profile_image))
-      }
-      myImage.src = config.urls.client_data + config.data.profile_image
-    }
   }, [])
 
   const [deleteAnimation, setDeleteAnimation] = useState(false)
@@ -146,32 +134,31 @@ const FillIn = props => {
 
   return (
     <div id='fill-in'>
-      {
-        photo
-          ? <div className={'added_photo' + (deleteAnimation ? ' deleteAnimation' : '')}>
-            <img className='client-img' src={photo} />
-            <div className='controls'>
-              <label className='control_btn'>
-                <img src={config.urls.media + 'ic_photo.svg'} />
-                <input className='file_input' type='file' accept='image/*' onChange={addFoto} />
-              </label>
-              <div className='control_btn' onClick={deletePhoto}>
-                <img src={config.urls.media + 'ic_delete.svg'} />
+      <div className='client-picture'>
+        {
+          photo
+            ? <div className={'added_photo' + (deleteAnimation ? ' deleteAnimation' : '')}>
+              <img className='client-img' src={photo} />
+              <div className='buttons'>
+                <label className='control_btn'>
+                  <img src={config.urls.media + 'ic_photo.svg'} />
+                  <input className='file_input' type='file' accept='image/*' onChange={addFoto} />
+                </label>
+                <div className='control_btn' onClick={deletePhoto}>
+                  <img src={config.urls.media + 'ic_delete.svg'} />
+                </div>
               </div>
             </div>
-          </div>
-          : <div className='photo-section'>
-            <label>
-              <div className='camera'>
-                <img src={config.urls.media + 'ic_add_photo.svg'} />
-                <div className='shine_star'>
-                  <img src={config.urls.media + 'shine_star.svg'} />
+            : <label className='photo-section' style={{ backgroundImage: `url('${config.urls.media}pic@2x.jpg')` }}>
+              <div className='buttons'>
+                <div className='control_btn add_button'>
+                  <img src={config.urls.media + 'ic_add_photo_plus.svg'} />
                 </div>
               </div>
               <input className='file_input' type='file' accept='image/*' onChange={addFoto} />
             </label>
-          </div>
-      }
+        }
+      </div>
       <div className='inputs'>
         <div className={'input_wrap' + (isNameValid ? '' : ' warning') + (highlightName ? ' highlightInput' : '')}>
           <img src={config.urls.media + 'ic_clients.svg'} />
