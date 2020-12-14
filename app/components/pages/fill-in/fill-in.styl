@@ -2,42 +2,21 @@
   width 100%
   flex-grow 1
   background-color var(--sec-color)
+  .client-picture
+    height 12.5rem
+    position relative
   .photo-section
     display flex
-    align-items center
-    justify-content center
-    padding 3.25rem 0
-    .camera
-      background var(--dark-color)
-      border-radius 50%
-      display flex
-      position relative
-      align-items center
-      justify-content center
-      height 3.5rem
-      width 3.5rem
-      .shine_star
-        position absolute
-        border solid 2px rgba(117, 52, 248, 0.5)
-        border-radius 50%
-        display flex
-        align-items center
-        justify-content center
-        width 6.25rem
-        height 6.25rem
-        opacity 0
-        animation shine_star 3s
-        animation-delay 0.5s
-        img
-          width 100%
-  .added_photo
-    height 10rem
     width 100%
+    height 100%
+    background-size cover
+  .added_photo
+    width 100%
+    height 100%
     will-change height
     opacity 0
     animation added_photo 0.3s forwards
     animation-delay 0.3s
-    position relative
     overflow hidden
     .client-img
       will-change transform
@@ -45,25 +24,57 @@
       width 100%
       height 100%
       object-fit cover
-    .controls
-      position absolute
-      bottom 0
-      left 0
-      z-index 3
-      width 100%
+  .controls
+    position absolute
+    bottom 0
+    left 0
+    z-index 3
+    width 100%
+    display flex
+    align-items center
+    justify-content flex-end
+    padding 1rem 0.5rem
+    .control_btn
+      width 2.375rem
+      height 2.375rem
+      border-radius 50%
       display flex
       align-items center
-      justify-content flex-end
-      padding 1rem 0.5rem
-      .control_btn
-        width 2.375rem
-        height 2.375rem
-        border-radius 50%
-        display flex
-        align-items center
-        justify-content center
-        background-color rgba(0,0,0,0.3)
-        margin 0 0.5rem
+      justify-content center
+      background-color rgba(0,0,0,0.3)
+      margin 0 0.5rem
+    .add_button
+      position relative
+      overflow hidden
+    .add_button:before
+      content: ''
+      position absolute
+      width 0.5rem
+      height 0.5rem
+      border 3px solid var(--white-color)
+      border-radius 50%
+      filter blur(4px)
+      animation plus 4s infinite
+      animation-delay 1s
+      @keyframes plus
+        0%
+          width 0.5rem
+          height 0.5rem
+        25%
+          width 0.5rem
+          height 0.5rem
+        35%
+          width 3.5rem
+          height 3.5rem
+        60%
+          width 3.5rem
+          height 3.5rem
+        70%
+          width 0.5rem
+          height 0.5rem
+        100%
+          width 0.5rem
+          height 0.5rem
   .added_photo:after
     content ''
     z-index 2
@@ -139,5 +150,5 @@
     transform scale(0)
   100%
     opacity 1
-    height 12rem
+    height 12.5rem
     transform scale(1)

@@ -146,32 +146,31 @@ const FillIn = props => {
 
   return (
     <div id='fill-in'>
-      {
-        photo
-          ? <div className={'added_photo' + (deleteAnimation ? ' deleteAnimation' : '')}>
-            <img className='client-img' src={photo} />
-            <div className='controls'>
-              <label className='control_btn'>
-                <img src={config.urls.media + 'ic_photo.svg'} />
-                <input className='file_input' type='file' accept='image/*' onChange={addFoto} />
-              </label>
-              <div className='control_btn' onClick={deletePhoto}>
-                <img src={config.urls.media + 'ic_delete.svg'} />
+      <div className='client-picture'>
+        {
+          photo
+            ? <div className={'added_photo' + (deleteAnimation ? ' deleteAnimation' : '')}>
+              <img className='client-img' src={photo} />
+              <div className='controls'>
+                <label className='control_btn'>
+                  <img src={config.urls.media + 'ic_photo.svg'} />
+                  <input className='file_input' type='file' accept='image/*' onChange={addFoto} />
+                </label>
+                <div className='control_btn' onClick={deletePhoto}>
+                  <img src={config.urls.media + 'ic_delete.svg'} />
+                </div>
               </div>
             </div>
-          </div>
-          : <div className='photo-section'>
-            <label>
-              <div className='camera'>
-                <img src={config.urls.media + 'ic_add_photo.svg'} />
-                <div className='shine_star'>
-                  <img src={config.urls.media + 'shine_star.svg'} />
+            : <label className='photo-section' style={{ backgroundImage: `url('${config.urls.media}pic@2x.jpg')` }}>
+              <div className='controls'>
+                <div className='control_btn add_button'>
+                  <img src={config.urls.media + 'ic_add_photo_plus.svg'} />
                 </div>
               </div>
               <input className='file_input' type='file' accept='image/*' onChange={addFoto} />
             </label>
-          </div>
-      }
+        }
+      </div>
       <div className='inputs'>
         <div className={'input_wrap' + (isNameValid ? '' : ' warning') + (highlightName ? ' highlightInput' : '')}>
           <img src={config.urls.media + 'ic_clients.svg'} />
