@@ -73,18 +73,6 @@ const FillIn = props => {
 
   useEffect(() => {
     config.address_based && editInfo()
-    if (config.data.profile_image && !sessionStorage.getItem('photo')) {
-      const myImage = document.createElement('img')
-      const canvas = document.createElement('canvas')
-      const ctx = canvas.getContext('2d')
-      myImage.onload = () => {
-        canvas.width = myImage.width
-        canvas.height = myImage.height
-        ctx.drawImage(myImage, 0, 0)
-        addFoto(null, dataURLtoFile(canvas.toDataURL(), config.data.profile_image))
-      }
-      myImage.src = config.urls.client_data + config.data.profile_image
-    }
   }, [])
 
   const [deleteAnimation, setDeleteAnimation] = useState(false)
@@ -151,7 +139,7 @@ const FillIn = props => {
           photo
             ? <div className={'added_photo' + (deleteAnimation ? ' deleteAnimation' : '')}>
               <img className='client-img' src={photo} />
-              <div className='controls'>
+              <div className='buttons'>
                 <label className='control_btn'>
                   <img src={config.urls.media + 'ic_photo.svg'} />
                   <input className='file_input' type='file' accept='image/*' onChange={addFoto} />
@@ -162,7 +150,7 @@ const FillIn = props => {
               </div>
             </div>
             : <label className='photo-section' style={{ backgroundImage: `url('${config.urls.media}pic@2x.jpg')` }}>
-              <div className='controls'>
+              <div className='buttons'>
                 <div className='control_btn add_button'>
                   <img src={config.urls.media + 'ic_add_photo_plus.svg'} />
                 </div>

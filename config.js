@@ -77,7 +77,6 @@ var config = {
     name: 'Ahuva Ben Shushan',
     email: 'ahuva.ben.shushan@gmail.com',
     address: 'בת ים, ויצמן, 18',
-    // profile_image: '24.jpg',
     gender: '',
     birthyear: '',
     birthdate: '',
