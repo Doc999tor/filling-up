@@ -16,6 +16,7 @@ export const App = () => {
     if (pageName === config.urls.photo.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.photo, search: config.urls.params })
     if (pageName === config.urls.other_data.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.other_data, search: config.urls.params })
     if (pageName === config.urls.last_page.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.last_page, search: config.urls.params })
+    if (config.urls.unsubscribe_page.includes(pageName)) history.replace({ pathname: config.urls.unsubscribe_page, search: config.urls.params })
   }, [])
   return (
     <Layout>

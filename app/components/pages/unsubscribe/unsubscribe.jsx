@@ -15,9 +15,9 @@ const Unsubscribe = ({history}) => {
     reason: ''
   })
 
-  useEffect(() => {
-    history.replace({ search: config.urls.params })
-  }, [])
+  // useEffect(() => {
+  //   history.replace({ search: config.urls.params })
+  // }, [])
 
   const handleSubmit = e => {
     e.preventDefault()
