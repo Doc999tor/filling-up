@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import { ContinueBtn } from '../../continue_btn/continue.jsx'
+import Header from '../../header/header.jsx'
 import { Checkbox } from 'project-components/checkbox/checkbox.jsx'
 import Datepicker from 'project-components/Datepicker_upd/datepicker.jsx'
 import { GenderItem } from 'project-components/single-gender/single-gender.jsx'
@@ -94,6 +95,7 @@ const OtherData = ({ history }) => {
   }
   return (
     <div id='other_data'>
+      <Header />
       <div className='gender_strip'>
         <h3 className='gender_title'>{config.translations.other_data.gender_strip_title}</h3>
         <div className='gender_items_wrap'>

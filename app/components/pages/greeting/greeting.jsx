@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Header from '../../header/header.jsx'
 import { patchService as fillingPatchService } from 'project-services/filling-up.service.js'
 import './greeting.styl'
 
@@ -22,6 +23,7 @@ const Greeting = ({ history }) => {
     FB.login(function (response) {
       if (response.authResponse) {
         FB.api('/me', 'GET', { fields: 'name,birthday,email,gender,timezone,website,picture.width(480).height(480)' }, function (response) {
+          console.log({ response });
           const c = new URL(document.location).searchParams.get('c')
           const b = new URL(document.location).searchParams.get('b')
           const body = `b=${b}&c=${c}&fb_data=${encodeURIComponent(JSON.stringify(response))}`
@@ -52,6 +54,7 @@ const Greeting = ({ history }) => {
   }
   return (
     <div className='greeting'>
+      <Header />
       <div className='window_halper'>
         <div className='window'>
           <img className='hand' src={config.urls.media + '3d_hand@2x.png'} alt='hand' />

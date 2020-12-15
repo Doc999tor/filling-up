@@ -1,0 +1,74 @@
+.unsubscribe
+  .unsubscribe_header
+    background-image linear-gradient(238deg, #bc9ffc, #6331d1)
+    padding 1.5rem
+    width 100%
+    p
+      color var(--white-color)
+    .unsubscribe_title
+      font-size 2rem
+      font-weight 500
+      line-height 1
+      img
+        min-width 2.5rem
+        height 2.5rem
+        -moz-margin-start 0.5rem
+        -webkit-margin-start 0.5rem
+        margin-inline-start 0.5rem
+    .with_img
+      display flex
+      align-items center
+    .unsubscribe_subtitle
+      padding-top 0.5rem
+      font-size 1rem
+      line-height 1.3
+  .unsubscribe_form
+    margin 1.5rem
+    padding 1rem
+    background var(--white-color)
+    position relative
+    border-radius 1rem
+    box-shadow 0 3px 30px 0 rgba(41, 41, 204, 0.16)
+    label
+      display flex
+      flex-direction column
+      margin-bottom 0.5rem
+      span
+        line-height 2
+        font-size 0.75rem
+        font-weight 500
+    input, textarea
+      background-color var(--sec-color)
+      border 2px solid var(--sec-color)
+      outline none
+      font-size 1rem
+      padding 0.875rem 1rem
+      transition border-color 0.5s
+      border-radius 0.5rem
+    textarea
+      resize none
+    input:focus, textarea:focus
+      border 2px solid var(--dark-color)
+      transition border-color 0.5s
+    .submit
+      width 100%
+      outline none
+      border none
+      padding 0
+      margin-top 1rem
+      height 3rem
+      border-radius 0.5rem
+      display flex
+      align-items center
+      justify-content center
+      background-color var(--dark-color)
+      color var(--white-color)
+      text-transform uppercase
+      img
+        -moz-margin-end 0.5rem
+        -webkit-margin-end 0.5rem
+        margin-inline-end 0.5rem
+body[style='direction: rtl;']
+  .submit
+    img
+      transform: scale(-1, 1)

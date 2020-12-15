@@ -1,7 +1,6 @@
 .layout
   display flex
   flex-direction column
-  padding-top 3.5rem
   max-width 640px
   min-height 100vh
   overflow hidden
@@ -10,29 +9,6 @@
   box-shadow 0px 0px 6px 0px rgba(94, 54, 177, 0.75)
   background-color var(--sec-color)
   margin 0 auto
-  header
-    background-image linear-gradient(107deg, #9370e6 3%, #7534f8 40%, #4f2da7 87%)
-    display flex
-    height 3.5rem
-    position fixed
-    max-width 640px
-    margin 0 auto
-    top 0
-    width 100%
-    z-index 20
-    align-items center
-    justify-content center
-    img
-      width 2rem
-      height 2rem
-      -moz-margin-end 0.5rem
-      -webkit-margin-end 0.5rem
-      margin-inline-end 0.5rem
-    h2
-      margin 0
-      color var(--white-color)
-      font-size 1.25rem
-      font-weight 500
   .main-container
     display flex
     flex-direction column
@@ -77,10 +53,11 @@
     animation title_text 0.5s forwards
     animation-delay 1s
     p
-      margin 0
       padding 0 1.5rem
       line-height 1.2
       text-align center
+p
+  margin 0
 @keyframes title_text
   0%
     transform scale(0)

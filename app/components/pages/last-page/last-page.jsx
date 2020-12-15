@@ -1,9 +1,12 @@
 import React from 'react'
+import Header from '../../header/header.jsx'
+
 import './last-page.styl'
 
 const LastPage = () => {
   return (
     <div id='last_page'>
+      <Header />
       <div className='window_halper'>
         <div className='window'>
           <img className='hand' src={config.urls.media + '3d_hand_ok@2x.png'} alt='hand_ok' />

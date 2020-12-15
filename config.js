@@ -33,6 +33,17 @@ var config = {
       email_placeholder: 'Email',
       adress_placeholder: 'Address'
     },
+    unsubscribe: {
+      unsubscribe_title: 'Hello!',
+      unsubscribe_title_with_name: 'Hello, {name}!',
+      unsubscribe_question: 'Want to leave us?',
+      unsubscribe_subtitle: 'If you unsubscribe, you will lose the opportunity to receive discounts and great offers.Still want to unsubscribe? Then fill in all the fields below.',
+      phone_number_label: 'Phone number',
+      phone_number_placeholder: 'Your phone number',
+      unsubscribe_reason_label: 'Unsubscribe reason',
+      unsubscribe_reason_placeholder: 'Type a reason',
+      submit_btn_label: 'Send'
+    },
     continue_btn_label: 'Continue',
     datepicker: {
       placeholder: {
@@ -69,6 +80,7 @@ var config = {
     client_data: './assets/clients/',
     last_page: '/last_page',
     media: './assets/media/',
+    unsubscribe: '/en/unsubscribe',
     photo: '/photo',
     baseUrl: '',
     params: '?b=123&c=sdfs2d1f'

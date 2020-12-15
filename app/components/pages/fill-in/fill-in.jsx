@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import { ContinueBtn } from '../../continue_btn/continue.jsx'
+import Header from '../../header/header.jsx'
 
 import { patchService as fillingPatchService, postPhotoService as fillingPhotoPostService } from 'project-services/filling-up.service.js'
 import { getParamsForApp } from 'project-services/adress.service.js'
@@ -134,6 +135,7 @@ const FillIn = props => {
 
   return (
     <div id='fill-in'>
+      <Header />
       <div className='client-picture'>
         {
           photo
