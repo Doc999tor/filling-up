@@ -42,7 +42,9 @@ var config = {
       phone_number_placeholder: 'Your phone number',
       unsubscribe_reason_label: 'Unsubscribe reason',
       unsubscribe_reason_placeholder: 'Type a reason',
-      submit_btn_label: 'Send'
+      submit_btn_label: 'Send',
+      success: 'Your message sent successfully',
+      sending: 'Sending'
     },
     continue_btn_label: 'Continue',
     datepicker: {

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 
 import { unsubscribeService } from 'project-services/unsubscribe'
 import validatePhone from 'project-components/validate-phone.js'
+import SendingPopup from 'project-components/sending-popup/sending-popup.jsx'
 
 import './unsubscribe.styl'
 
 const Unsubscribe = ({history}) => {
-  const [disableBtn, setDisableBtn] = useState(false)
-  const [sending, setSending] = useState(false)
+  const [showPopup, setShowPopup] = useState(false)
+  const [sendingPopup, setSendingPopup] = useState(true)
   const [validPhone, setValidPhone] = useState(true)
   const [validReason, setValidReason] = useState(true)
   const [inputValues, setValues] = useState({
@@ -15,20 +16,18 @@ const Unsubscribe = ({history}) => {
     reason: ''
   })
 
-  // useEffect(() => {
-  //   history.replace({ search: config.urls.params })
-  // }, [])
-
   const handleSubmit = e => {
     e.preventDefault()
     const { phone, reason } = inputValues
     if (reason?.trim() && validatePhone(phone?.trim())) {
-      setDisableBtn(true)
-      setSending(true)
+      setShowPopup(true)
       const body = `${config.urls.params.slice(1)}&phone=${encodeURIComponent(phone?.trim())}&text=${encodeURIComponent(reason?.trim())}`
       unsubscribeService(body).then(({ status }) => {
         if (status === 200 || status === 204) {
-          setSending(false)
+          setSendingPopup(false)
+          setTimeout(() => {
+            window.location.replace(config.urls.home_site)
+          }, 5000)
         }
       })
     } else {
@@ -69,7 +68,8 @@ const Unsubscribe = ({history}) => {
         <p className='unsubscribe_title with_img'>{config.translations.unsubscribe?.unsubscribe_question} <img src={`${config.urls.media}pic_sad_emoji@2x.png`} alt='' /></p>
         <p className='unsubscribe_subtitle'>{config.translations.unsubscribe?.unsubscribe_subtitle}</p>
       </header>
-      <form className='unsubscribe_form' onSubmit={handleSubmit}>
+      {!showPopup
+        ? <form className='unsubscribe_form' onSubmit={handleSubmit}>
           <label>
             <span>{config.translations.unsubscribe?.phone_number_label}</span>
             <input
@@ -94,14 +94,12 @@ const Unsubscribe = ({history}) => {
               placeholder={config.translations.unsubscribe?.unsubscribe_reason_placeholder}
             />
           </label>
-          <button disabled={disableBtn} className={'submit' + (!inputValues.reason || !validatePhone(inputValues.phone) ? ' unactive' : '')} type='submit'>
-            {sending
-              ? <img className='loader' src={`${config.urls.media}refresh.svg`} alt='' />
-              : <img src={`${config.urls.media}ic_send.svg`} alt='' />
-            }
+          <button className={'submit' + (!inputValues.reason || !validatePhone(inputValues.phone) ? ' unactive' : '')} type='submit'>
+            <img src={`${config.urls.media}ic_send.svg`} alt='' />
             {config.translations.unsubscribe?.submit_btn_label}
           </button>
       </form>
+        : <SendingPopup success_label={config.translations.unsubscribe?.success} sending_label={config.translations.unsubscribe?.sending} sendingPopup={sendingPopup} />}
     </div>
     <footer>
       <a href={config.urls.home_site}>

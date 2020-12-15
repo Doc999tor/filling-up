@@ -76,13 +76,6 @@
         -moz-margin-end 0.5rem
         -webkit-margin-end 0.5rem
         margin-inline-end 0.5rem
-      .loader
-        animation 1s spin infinite linear
-        @keyframes spin
-          from
-            transform rotate(0deg)
-          to
-            transform rotate(360deg)
     .unactive
       opacity 0.5
       transition opacity 0.5s
@@ -94,6 +87,14 @@
     background-color var(--white-color)
     a
       display flex
+  .sending_popup
+    display flex
+    position relative
+    animation none
+    .sending_body
+      width 100%
+      margin 1.5rem
+      max-width 100%
 body[style='direction: rtl;']
   .submit
     img
