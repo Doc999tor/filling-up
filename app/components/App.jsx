@@ -21,11 +21,11 @@ export const App = () => {
     <Layout>
       <Suspense fallback={<div className='suspense'><img className='loader' src={config.urls.media + 'preloader.svg'} /></div>}>
         <Switch>
-            <Route exact path={config.urls.baseUrl + config.urls.photo} component={FillIn} />
-            <Route exact path={config.urls.baseUrl + config.urls.other_data} component={OtherData} />
-            <Route exact path={config.urls.baseUrl + config.urls.last_page} component={LastPage} />
-            <Route exact path={config.urls.unsubscribe} component={Unsubscribe} />
-            <Route exact path={config.urls.baseUrl + '/'} component={Greeting} />
+          <Route exact path={config.urls.baseUrl + config.urls.photo} component={FillIn} />
+          <Route exact path={config.urls.baseUrl + config.urls.other_data} component={OtherData} />
+          <Route exact path={config.urls.baseUrl + config.urls.last_page} component={LastPage} />
+          <Route exact path={config.urls.unsubscribe_page} component={Unsubscribe} />
+          <Route exact path={config.urls.baseUrl + '/'} component={Greeting} />
         </Switch>
       </Suspense>
     </Layout>

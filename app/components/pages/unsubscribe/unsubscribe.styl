@@ -1,4 +1,8 @@
 .unsubscribe
+  display flex
+  flex-direction column
+  justify-content space-between
+  flex-grow 1
   .unsubscribe_header
     background-image linear-gradient(238deg, #bc9ffc, #6331d1)
     padding 1.5rem
@@ -47,6 +51,8 @@
       border-radius 0.5rem
     textarea
       resize none
+    .warning
+      border 2px solid var(--active-color)
     input:focus, textarea:focus
       border 2px solid var(--dark-color)
       transition border-color 0.5s
@@ -63,11 +69,31 @@
       justify-content center
       background-color var(--dark-color)
       color var(--white-color)
+      opacity 1
+      transition opacity 0.5s
       text-transform uppercase
       img
         -moz-margin-end 0.5rem
         -webkit-margin-end 0.5rem
         margin-inline-end 0.5rem
+      .loader
+        animation 1s spin infinite linear
+        @keyframes spin
+          from
+            transform rotate(0deg)
+          to
+            transform rotate(360deg)
+    .unactive
+      opacity 0.5
+      transition opacity 0.5s
+  footer
+    display flex
+    align-items center
+    justify-content center
+    height 2.125rem
+    background-color var(--white-color)
+    a
+      display flex
 body[style='direction: rtl;']
   .submit
     img

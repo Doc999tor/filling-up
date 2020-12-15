@@ -72,6 +72,7 @@ var config = {
   urls: {
     add_address: `https://api.bewebmaster.co.il/settings/maps-api-key?token=${token}`,
     main: 'https://api.bewebmaster.co.il',
+    error_page: 'https://api.bewebmaster.co.il/error_page',
     filling_up: '/filling-up',
     fb_script: './scripts/fb_script.js',
     photo_r: '/filling-up/photo',
@@ -80,7 +81,9 @@ var config = {
     client_data: './assets/clients/',
     last_page: '/last_page',
     media: './assets/media/',
-    unsubscribe: '/en/unsubscribe',
+    unsubscribe_page: '/en/unsubscribe',
+    unsubscribe_api_service: 'https://api.bewebmaster.co.il/unsubscribe',
+    home_site: '/en/home',
     photo: '/photo',
     baseUrl: '',
     params: '?b=123&c=sdfs2d1f'
