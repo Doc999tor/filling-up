@@ -5,6 +5,8 @@
   background-color var(--sec-color)
   h3
     margin 0
+    font-size 0.875rem
+    text-transform uppercase
   .gender_strip
     padding 1rem
     .gender_items_wrap
@@ -31,11 +33,18 @@
           padding 0 0.5rem
           z-index 2
   .checkbox_container
-    padding-top 4rem
-    -moz-padding-start 0.75rem
-    -webkit-padding-start 0.75rem
-    padding-inline-start 0.75rem
+    padding-top 0.5rem
+    -moz-padding-start 1rem
+    -webkit-padding-start 1rem
+    padding-inline-start 1rem
     position relative
+    .permission_strip
+      display flex
+      align-items center
+      .permission_title
+        padding 1rem 0
+      .shared_checkbox_wrap
+        margin 0
     .shared_checkbox_wrap
       position relative
       z-index 5
@@ -58,6 +67,10 @@
       z-index -1
     .shared_checkbox_label
       width 80%
+  .permission_disclaimer
+    font-size 0.75rem
+    text-align center
+    color var(--main-lite-color)
 @keyframes recommend_hand_ltr
   0%
     opacity 1

@@ -116,15 +116,22 @@ const OtherData = ({ history }) => {
         </div>
       </div>
       <div className='checkbox_container'>
-        <Checkbox
-          text={config.translations.other_data.checkbox_label}
-          onHandleChange={handleCangeCheckbox}
-          value={permitAds}
-        />
+        <div className='permission_strip'>
+          <div>
+            <h3 className='permission_title'>{config.translations.other_data.permission_strip_title}</h3>
+            <Checkbox
+              text={config.translations.other_data.checkbox_label.replace('{business_name}', config.business_name)}
+              onHandleChange={handleCangeCheckbox}
+              value={permitAds}
+            />
+          </div>
+          {/* <img src={config.urls.media + 'gift.svg'} alt='' /> */}
+        </div>
         {!permitAds && <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />}
         {permitAds && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
       </div>
-      <ContinueBtn continueStep={continueStep} loading={loading} />
+      <p className='permission_disclaimer'>{config.translations.other_data.permission_disclaimer}</p>
+      <ContinueBtn continueStep={continueStep} loading={loading} label={config.translations.other_data.continue_btn_label} />
     </div>
   )
 }
