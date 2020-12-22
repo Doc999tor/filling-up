@@ -94,37 +94,48 @@ const OtherData = ({ history }) => {
   }
   return (
     <div id='other_data'>
-      <div className='gender_strip'>
-        <h3 className='gender_title'>{config.translations.other_data.gender_strip_title}</h3>
-        <div className='gender_items_wrap'>
-          {config.gender?.data?.map(({ id, type, ...props }) => <GenderItem type={type} gender_text={config.translations.other_data.gender[type]} onSelectGender={handleChangeGender} key={id} gender={gender} {...props} />)}
+      <div className='main_content'>
+        <div className='gender_strip'>
+          <h3 className='gender_title'>{config.translations.other_data.gender_strip_title}</h3>
+          <div className='gender_items_wrap'>
+            {config.gender?.data?.map(({ id, type, ...props }) => <GenderItem type={type} gender_text={config.translations.other_data.gender[type]} onSelectGender={handleChangeGender} key={id} gender={gender} {...props} />)}
+          </div>
+        </div>
+        <div className='birthdate_strip'>
+          <h3 className='birthdate_title'>{config.translations.other_data.birthdate_strip_title}</h3>
+          <div className='field'>
+            <Datepicker
+              handleChangeYear={handleChangeYear}
+              handleChangeMonth={handleChangeMonth}
+              handleChangeDay={handleChangeDay}
+              highlightMonth={highlightMonth}
+              highlightDay={highlightDay}
+              year={year}
+              month={month}
+              day={day}
+            />
+          </div>
+        </div>
+        <div className='checkbox_container'>
+          <div className='permission_strip'>
+            <div>
+              <h3 className='permission_title'>{config.translations.other_data.permission_strip_title}</h3>
+              <Checkbox
+                text={config.translations.other_data.checkbox_label.replace('{business_name}', config.business_name)}
+                onHandleChange={handleCangeCheckbox}
+                value={permitAds}
+              />
+            </div>
+            {/* <img src={config.urls.media + 'gift.svg'} alt='' /> */}
+          </div>
+          {!permitAds && <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />}
+          {permitAds && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
         </div>
       </div>
-      <div className='birthdate_strip'>
-        <h3 className='birthdate_title'>{config.translations.other_data.birthdate_strip_title}</h3>
-        <div className='field'>
-          <Datepicker
-            handleChangeYear={handleChangeYear}
-            handleChangeMonth={handleChangeMonth}
-            handleChangeDay={handleChangeDay}
-            highlightMonth={highlightMonth}
-            highlightDay={highlightDay}
-            year={year}
-            month={month}
-            day={day}
-          />
-        </div>
-      </div>
-      <div className='checkbox_container'>
-        <Checkbox
-          text={config.translations.other_data.checkbox_label}
-          onHandleChange={handleCangeCheckbox}
-          value={permitAds}
-        />
-        {!permitAds && <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />}
-        {permitAds && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
-      </div>
-      <ContinueBtn continueStep={continueStep} loading={loading} />
+      <p
+        className='permission_disclaimer'
+        dangerouslySetInnerHTML={{ __html: config.translations.other_data.permission_disclaimer.replace('{terms_of_use}', `<a class='terms_of_use' href='${config.footer.data[1].link}'>${config.translations.last_page.footer[config.footer.data[1].name]}</a>`)}}></p>
+      <ContinueBtn continueStep={continueStep} loading={loading} label={config.translations.other_data.continue_btn_label} />
     </div>
   )
 }

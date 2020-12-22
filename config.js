@@ -21,7 +21,10 @@ var config = {
     other_data: {
       gender_strip_title: 'Select gender',
       birthdate_strip_title: 'Select birthdate',
-      checkbox_label: 'I want to receive Advertising Newsletters and Special Offers from Lista',
+      permission_strip_title: 'Permission for advertising',
+      permission_disclaimer: 'By joining to the customers club you agree to {terms_of_use} of Lista',
+      checkbox_label: 'I want to receive Advertising Newsletters and Special Offers from {business_name}',
+      continue_btn_label: 'That\'s it',
       gender: {
         male: 'Male',
         female: 'Female',
@@ -29,6 +32,7 @@ var config = {
       }
     },
     fill_in: {
+      fill_in_title: 'You can autofill\n all the data with your\n Facebook account just in one tap',
       name_placeholder: 'Full name',
       email_placeholder: 'Email',
       adress_placeholder: 'Address'
@@ -78,6 +82,7 @@ var config = {
     email: 'ahuva.ben.shushan@gmail.com',
     address: 'בת ים, ויצמן, 18',
     gender: '',
+    profile_image: '24.jpg',
     birthyear: '',
     birthdate: '',
     source: '',
@@ -112,8 +117,8 @@ var config = {
   footer: {
     data: [
       { name: 'about_us', link: `/en/about_us`},
+      { name: 'terms_of_use', link: `/en/terms_of_use`},
       { name: 'lista', link: `/en/home`, icon: 'logo.svg'},
-      { name: 'terms_of_use', link: `/en/terms_of_use`}
     ]
   }
 }

@@ -160,6 +160,7 @@ const FillIn = props => {
         }
       </div>
       <div className='inputs'>
+        <h3 className='fill_in_title'>{config.translations.fill_in.fill_in_title}</h3>
         <div className={'input_wrap' + (isNameValid ? '' : ' warning') + (highlightName ? ' highlightInput' : '')}>
           <img src={config.urls.media + 'ic_clients.svg'} />
           <input
