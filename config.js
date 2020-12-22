@@ -22,7 +22,7 @@ var config = {
       gender_strip_title: 'Select gender',
       birthdate_strip_title: 'Select birthdate',
       permission_strip_title: 'Permission for advertising',
-      permission_disclaimer: 'By clicking the button you\'re giving us your soul',
+      permission_disclaimer: 'By joining to the customers club you agree to {terms_of_use} of Lista',
       checkbox_label: 'I want to receive Advertising Newsletters and Special Offers from {business_name}',
       continue_btn_label: 'That\'s it',
       gender: {
@@ -117,8 +117,8 @@ var config = {
   footer: {
     data: [
       { name: 'about_us', link: `/en/about_us`},
+      { name: 'terms_of_use', link: `/en/terms_of_use`},
       { name: 'lista', link: `/en/home`, icon: 'logo.svg'},
-      { name: 'terms_of_use', link: `/en/terms_of_use`}
     ]
   }
 }
