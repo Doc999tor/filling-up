@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { unsubscribeService } from 'project-services/unsubscribe'
 import validatePhone from 'project-components/validate-phone.js'
 import SendingPopup from 'project-components/sending-popup/sending-popup.jsx'
 
 import './unsubscribe.styl'
-
-const Unsubscribe = ({history}) => {
+const pattern = /^[\s\d()\-*#+]+$/
+const Unsubscribe = () => {
   const [showPopup, setShowPopup] = useState(false)
   const [sendingPopup, setSendingPopup] = useState(true)
   const [validPhone, setValidPhone] = useState(true)
-  const [validReason, setValidReason] = useState(true)
   const [inputValues, setValues] = useState({
     phone: '',
     reason: ''
@@ -19,9 +18,10 @@ const Unsubscribe = ({history}) => {
   const handleSubmit = e => {
     e.preventDefault()
     const { phone, reason } = inputValues
-    if (reason?.trim() && validatePhone(phone?.trim())) {
+    if (validatePhone(phone?.trim())) {
       setShowPopup(true)
-      const body = `${config.urls.params.slice(1)}&phone=${encodeURIComponent(phone?.trim())}&text=${encodeURIComponent(reason?.trim())}`
+      let body = `${config.urls.params.slice(1)}&phone=${encodeURIComponent(phone?.trim())}`
+      if (reason?.trim()) body += `&text=${encodeURIComponent(reason?.trim())}`
       unsubscribeService(body).then(({ status }) => {
         if (status === 200 || status === 204) {
           setSendingPopup(false)
@@ -31,7 +31,6 @@ const Unsubscribe = ({history}) => {
         }
       })
     } else {
-      !reason?.trim() && setValidReason(false)
       !validatePhone(phone?.trim()) && setValidPhone(false)
     }
   }
@@ -41,6 +40,9 @@ const Unsubscribe = ({history}) => {
       ...prevState,
       [name]: value
     }))
+    if (name === 'phone') {
+      pattern.test(value) ? setValidPhone(true) : setValidPhone(false)
+    }
   }
 
   const handleBlurPhone = ({target: {value}}) => {
@@ -49,14 +51,6 @@ const Unsubscribe = ({history}) => {
       return
     }
     setValidPhone(true)
-  }
-
-  const handleBlurReason = ({target: {value}}) => {
-    if (!value?.trim()) {
-      setValidReason(false)
-      return
-    }
-    setValidReason(true)
   }
 
   return <div className='unsubscribe'>
@@ -85,16 +79,14 @@ const Unsubscribe = ({history}) => {
           <label>
             <span>{config.translations.unsubscribe?.unsubscribe_reason_label}</span>
             <textarea
-              className={validReason ? 'normal' : 'warning'}
               name='reason'
               rows='6'
               value={inputValues.reason}
-              onBlur={handleBlurReason}
               onChange={handleChangeInput}
               placeholder={config.translations.unsubscribe?.unsubscribe_reason_placeholder}
             />
           </label>
-          <button className={'submit' + (!inputValues.reason || !validatePhone(inputValues.phone) ? ' unactive' : '')} type='submit'>
+          <button className={'submit' + (!validatePhone(inputValues.phone) ? ' unactive' : '')} type='submit'>
             <img src={`${config.urls.media}ic_send.svg`} alt='' />
             {config.translations.unsubscribe?.submit_btn_label}
           </button>
