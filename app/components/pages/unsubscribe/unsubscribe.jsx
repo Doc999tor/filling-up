@@ -20,7 +20,7 @@ const Unsubscribe = () => {
     const { phone, reason } = inputValues
     if (validatePhone(phone?.trim())) {
       setShowPopup(true)
-      let body = `${config.urls.params.slice(1)}&phone=${encodeURIComponent(phone?.trim())}`
+      let body = `${location.search.slice(1)}&phone=${encodeURIComponent(phone?.trim())}`
       if (reason?.trim()) body += `&text=${encodeURIComponent(reason?.trim())}`
       unsubscribeService(body).then(({ status }) => {
         if (status === 200 || status === 204) {
