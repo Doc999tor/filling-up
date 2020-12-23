@@ -32,5 +32,5 @@ var config = {
     permit_ads: false,
     max_side: 1000
   },
-  isRTL: false
+  isRTL: true
 }
