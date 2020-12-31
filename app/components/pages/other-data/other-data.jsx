@@ -126,7 +126,7 @@ const OtherData = ({ history }) => {
                 value={permitAds}
               />
             </div>
-            {/* <img src={config.urls.media + 'gift.svg'} alt='' /> */}
+            <img src={config.urls.media + 'gift_box.svg'} alt='' />
           </div>
           {!permitAds && <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />}
           {permitAds && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
