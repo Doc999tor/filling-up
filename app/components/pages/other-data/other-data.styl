@@ -28,6 +28,7 @@
         min-width 30%
         height 3rem
         border-radius 0.5rem
+        box-shadow 0 6px 12px 0 rgba(41, 41, 204, 0.12)
         padding 0
         select
           position relative
@@ -45,7 +46,7 @@
       display flex
       align-items center
       .permission_title
-        padding 1rem 0 0.5rem
+        padding 1.375rem 0 0.5rem
       .shared_checkbox_wrap
         margin 0
     .shared_checkbox_wrap
@@ -178,6 +179,8 @@ body[style='direction: ltr;']
         animation-delay 0.3s
 body[style='direction: rtl;']
   #other_data
+    .gift_box
+      transform: scale(-1, 1)
     .select_wrap:after
       right auto
       left 0.3rem

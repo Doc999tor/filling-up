@@ -126,7 +126,7 @@ const OtherData = ({ history }) => {
                 value={permitAds}
               />
             </div>
-            <img src={config.urls.media + 'gift_box.svg'} alt='' />
+            <img className='gift_box' src={config.urls.media + 'gift_box.svg'} alt='' />
           </div>
           {!permitAds && <img className='recommend_hand' src={config.urls.media + 'hand_recommend.png'} />}
           {permitAds && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
@@ -134,7 +134,7 @@ const OtherData = ({ history }) => {
       </div>
       <p
         className='permission_disclaimer'
-        dangerouslySetInnerHTML={{ __html: config.translations.other_data.permission_disclaimer.replace('{terms_of_use}', `<a class='terms_of_use' href='${config.footer.data[1].link}'>${config.translations.last_page.footer[config.footer.data[1].name]}</a>`)}}></p>
+        dangerouslySetInnerHTML={{ __html: config.translations.other_data.permission_disclaimer.replace('{terms_of_use}', `<a class='terms_of_use' target='_blank' href='${config.footer.data[1].link}'>${config.translations.last_page.footer[config.footer.data[1].name]}</a>`)}}></p>
       <ContinueBtn continueStep={continueStep} loading={loading} label={config.translations.other_data.continue_btn_label} />
     </div>
   )
