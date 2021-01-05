@@ -3,6 +3,17 @@
   flex-direction column
   align-items center
   flex-grow 1
+  position relative
+  .close_button
+    position absolute
+    padding 1.25rem 1rem 1.25rem
+    border none
+    display flex
+    top -3.5rem
+    z-index 21
+    img
+      width 1rem
+      height 1rem
   p
     margin 0
   .hand
@@ -103,3 +114,11 @@
   100%
     transform translate(0%, 0%)
     opacity 1
+body[style='direction: ltr;']
+  #last_page
+    .close_button
+      left 0
+body[style='direction: rtl;']
+  #last_page
+    .close_button
+      right 0

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_close" width="14" height="14" viewBox="0 0 14 14">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Combined_Shape" d="M12.293 13.707L7 8.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L5.586 7 .293 1.707A1 1 0 0 1 1.707.293L7 5.586 12.293.293a1 1 0 0 1 1.414 1.415L8.414 7l5.293 5.293a1 1 0 1 1-1.414 1.414z" class="cls-1" data-name="Combined Shape" transform="translate(5 5)"/>
+        </clipPath>
+        <style>
+            .cls-1{fill:#fff}
+        </style>
+    </defs>
+    <g id="x">
+        <path id="Combined_Shape-2" d="M12.293 13.707L7 8.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L5.586 7 .293 1.707A1 1 0 0 1 1.707.293L7 5.586 12.293.293a1 1 0 0 1 1.414 1.415L8.414 7l5.293 5.293a1 1 0 1 1-1.414 1.414z" class="cls-1" data-name="Combined Shape"/>
+        <g id="Group_10578" clip-path="url(#clip-path)" data-name="Group 10578" transform="translate(-5 -5)">
+            <g id="COLOR_black" data-name="COLOR/ black">
+                <path id="Rectangle" d="M0 0H24V24H0z" class="cls-1"/>
+            </g>
+        </g>
+    </g>
+</svg>

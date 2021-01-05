@@ -4,6 +4,9 @@ import './last-page.styl'
 const LastPage = () => {
   return (
     <div id='last_page'>
+      <a href={(config.business_links && config.business_links[0]?.url) || config.footer[1]?.link} className='close_button'>
+        <img src={config.urls.media + 'ic_close.svg'} alt='' />
+      </a>
       <div className='window_halper'>
         <div className='window'>
           <img className='hand' src={config.urls.media + '3d_hand_ok@2x.png'} alt='hand_ok' />
