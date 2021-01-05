@@ -52,7 +52,7 @@ const Greeting = ({ history }) => {
   }
   return (
     <div className='greeting'>
-      <div className='window_halper'>
+      <div className='window_helper'>
         <div className='window'>
           <img className='hand' src={config.urls.media + '3d_hand@2x.png'} alt='hand' />
         </div>
