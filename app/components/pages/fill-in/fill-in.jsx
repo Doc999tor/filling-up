@@ -107,12 +107,13 @@ const FillIn = props => {
   const continueStep = () => {
     if (name && name?.trim() && (pattern.test(email?.trim()) || email?.trim() === '' || !email)) {
       setLoading(true)
-      const query = JSON.parse(sessionStorage.getItem('fill_query'))
-      let body = `b=${query.b}&c=${query.c}&name=${name?.trim()}&email=${email || null}`
+      const c = new URL(document.location).searchParams.get('c')
+      const b = new URL(document.location).searchParams.get('b')
+      let body = `b=${b}&c=${c}&name=${name?.trim()}&email=${email || null}`
       if (config.address_based) body = body + `&address=${address?.trim() || null}`
       const photoData = new FormData()
-      photoData.append('b', query.b)
-      photoData.append('c', query.c)
+      photoData.append('b', b)
+      photoData.append('c', c)
       photo && photoData.append('photo', dataURLtoFile(photo, photoName), photoName || 'profile-picture.jpg')
       photoData.append('date', getCurrentFormatTime())
       const promises = [
