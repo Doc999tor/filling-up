@@ -11,7 +11,7 @@ var config = {
     },
     last_page: {
       last_page_title: 'Nicely Done!',
-      last_page_subtitle: 'Thank you so much for your efforts. Have a nice day and see you soon!',
+      last_page_subtitle: 'Thank you so much for\nyour efforts. Have a nice day and see you soon!',
       business_address_title: '{business_name} address',
       footer: {
         about_us: 'About Lista CRM',
@@ -92,7 +92,7 @@ var config = {
   },
   isRTL: false,
   address_based: true,
-  greetings_text: 'We`re so glad to see you our friend, your next visit you`ll get 20% discount. Remember, every client is our family',
+  greetings_text: 'We`re so glad\n to see you our friend, your next visit you`ll get 20% discount. Remember, every client is our family',
   business_name: 'Beauty Salon Maria',
   business_logo: './assets/media/ic_facebook.svg',
   business_address: 'Tel Aviv, Allenby str. 45',
