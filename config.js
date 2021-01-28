@@ -6,6 +6,7 @@ var config = {
       unsubscribe_question: 'Want to leave us?',
       unsubscribe_subtitle: 'If you unsubscribe, you will lose the opportunity to receive discounts and great offers.Still want to unsubscribe? Then fill in all the fields below.',
       phone_number_label: 'Phone number',
+      incorrect_phone_number_label: 'This number does not exist or incorrect, pls correct and send again',
       phone_number_placeholder: 'Your phone number',
       unsubscribe_reason_label: 'Unsubscribe reason',
       unsubscribe_reason_placeholder: 'Type a reason',

@@ -8,7 +8,9 @@ import './unsubscribe.styl'
 const pattern = /^[\s\d()\-*#+]+$/
 const Unsubscribe = () => {
   const [showPopup, setShowPopup] = useState(false)
+  const [incorrect, setIncorrect] = useState(false)
   const [sendingPopup, setSendingPopup] = useState(true)
+  const [isActivePopup, setIsActivePopup] = useState(false)
   const [validPhone, setValidPhone] = useState(true)
   const [inputValues, setValues] = useState({
     phone: '',
@@ -26,8 +28,24 @@ const Unsubscribe = () => {
         if (status === 200 || status === 204) {
           setSendingPopup(false)
           setTimeout(() => {
-            window.location.replace(config.urls.home_site)
+            setIsActivePopup(true)
+            setTimeout(() => {
+              setShowPopup(false)
+              setIsActivePopup(false)
+              setValues({
+                phone: '',
+                reason: ''
+              })
+            }, 300)
           }, 5000)
+        }
+        if (status === 404) {
+          setIncorrect(true)
+          setIsActivePopup(true)
+          setTimeout(() => {
+            setIsActivePopup(false)
+            setShowPopup(false)
+          }, 300)
         }
       })
     } else {
@@ -65,9 +83,9 @@ const Unsubscribe = () => {
       {!showPopup
         ? <form className='unsubscribe_form' onSubmit={handleSubmit}>
           <label>
-            <span>{config.translations.unsubscribe?.phone_number_label}</span>
+            <span className={'phone' + (incorrect ? ' incorrect_phone' : '')}>{incorrect ? config.translations.unsubscribe?.incorrect_phone_number_label : config.translations.unsubscribe?.phone_number_label}</span>
             <input
-              className={validPhone ? 'normal' : 'warning'}
+              className={validPhone && !incorrect ? 'normal' : 'warning'}
               type='tel'
               value={inputValues.phone}
               onBlur={handleBlurPhone}
@@ -91,7 +109,7 @@ const Unsubscribe = () => {
             {config.translations.unsubscribe?.submit_btn_label}
           </button>
       </form>
-        : <SendingPopup success_label={config.translations.unsubscribe?.success} sending_label={config.translations.unsubscribe?.sending} sendingPopup={sendingPopup} />}
+        : <SendingPopup isActivePopup={isActivePopup} success_label={config.translations.unsubscribe?.success} sending_label={config.translations.unsubscribe?.sending} sendingPopup={sendingPopup} />}
     </div>
     <footer>
       <a href={config.urls.home_site}>
