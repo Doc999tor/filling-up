@@ -1,4 +1,4 @@
-import mainRequestService from 'project-components/request.service.js'
+import mainRequestService from './request.service.js'
 
 export const unsubscribeService = body => {
   const url = config.urls.unsubscribe_api_service
