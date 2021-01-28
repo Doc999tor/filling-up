@@ -46,7 +46,7 @@ const Greeting = ({ history }) => {
         console.log('User cancelled login or did not fully authorize.')
       }
     }, {
-      scope: 'public_profile, email, user_photos, user_age_range, user_gender, user_link, user_photos, user_birthday, user_location, user_hometown'
+      scope: 'public_profile, email, user_gender, user_birthday'
     }
     )
   }
