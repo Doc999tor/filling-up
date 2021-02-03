@@ -92,7 +92,7 @@ var config = {
   },
   isRTL: false,
   address_based: true,
-  greetings_text: 'We`re so glad\n to see you our friend, your next visit you`ll get 20% discount. Remember, every client is our family',
+  greetings_text: 'We`re so glad\n to see you our friend, https://www.google.com/ your next visit you`ll get 20% discount. https://www.facebook.com/ Remember, every client is our family',
   business_name: 'Beauty Salon Maria',
   business_logo: './assets/media/ic_facebook.svg',
   business_address: 'Tel Aviv, Allenby str. 45',
