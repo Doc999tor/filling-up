@@ -1,17 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { ContinueBtn } from '../../continue_btn/continue.jsx'
 import { Checkbox } from 'project-components/checkbox/checkbox.jsx'
 import Datepicker from 'project-components/Datepicker_upd/datepicker.jsx'
 import { GenderItem } from 'project-components/single-gender/single-gender.jsx'
 
-import { patchService as fillingPatchService } from 'project-services/filling-up.service.js'
+import { patchService as fillingPatchService, postService } from 'project-services/filling-up.service.js'
+import { getCurrentFormatTime } from '../../../helpers/helpers.js'
 
 import './other-data.styl'
 
+let timeout
 const OtherData = ({ history }) => {
   const [loading, setLoading] = useState(false)
+  const [loader, setLoader] = useState(false)
+  const [check, setCheck] = useState(false)
   const [permitAds, setPermitAds] = useState((sessionStorage.getItem('permit_ads') === 'true' ? true : false ) || config.data.permit_ads)
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [])
   const handleCangeCheckbox = ({ target }) => {
     const { checked } = target
     setPermitAds(checked)
@@ -68,6 +77,32 @@ const OtherData = ({ history }) => {
     )
   }
 
+  const handleAddFile = ({ target }) => {
+    const { files } = target
+    const file = files[0]
+    if (file) {
+      setLoader(true)
+      const c = new URL(document.location).searchParams.get('c')
+      const b = new URL(document.location).searchParams.get('b')
+      const data = new FormData()
+      const url = config.urls.api_upload_files
+      data.append('b', b)
+      data.append('c', c)
+      data.append('file', file, file.name)
+      data.append('added', getCurrentFormatTime())
+      postService(url, data).then(r => {
+        if (r.status === 201) {
+          setLoader(false)
+          setCheck(true)
+          timeout = setTimeout(() => {
+            setCheck(false)
+          }, 2000)
+        }
+      })
+    }
+    // console.log({file})
+  }
+
   const continueStep = () => {
     if (isNaN(+year) && isNaN(+month) && isNaN(+day)) {
       sendData()
@@ -117,6 +152,20 @@ const OtherData = ({ history }) => {
             />
           </div>
         </div>
+        <div className='upload_files_strip'>
+          <h3 className='upload_title'>{config.translations.other_data.uploading_files_title}</h3>
+          <label className='uploading_wrap'>
+            <input className='input_file' type='file' onChange={handleAddFile} />
+            <div className='input_file_label'>
+              <p className='input_file_text'>{config.translations.other_data.uploading_files_label}</p>
+              <div className='img_container'>
+                {!loader && !check && <img src={config.urls.media + 'upload.svg'} alt='' />}
+                {loader && <img className='file_loader' src={config.urls.media + 'loader.svg'} alt='' />}
+                {check && <img src={config.urls.media + 'check.svg'} alt='' />}
+              </div>
+            </div>
+          </label>
+        </div>
         <div className='checkbox_container'>
           <div className='permission_strip'>
             <div>
@@ -133,9 +182,6 @@ const OtherData = ({ history }) => {
           {permitAds && <img className='ok_hand' src={config.urls.media + 'ok_hand.png'} />}
         </div>
       </div>
-      <p
-        className='permission_disclaimer'
-        dangerouslySetInnerHTML={{ __html: config.translations.other_data.permission_disclaimer.replace('{terms_of_use}', `<a class='terms_of_use' target='_blank' href='${config.footer.data[1].link}'>${config.translations.last_page.footer[config.footer.data[1].name]}</a>`)}}></p>
       <ContinueBtn continueStep={continueStep} loading={loading} label={config.translations.other_data.continue_btn_label} />
     </div>
   )
