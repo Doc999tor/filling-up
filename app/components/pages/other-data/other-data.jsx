@@ -159,9 +159,9 @@ const OtherData = ({ history }) => {
             <div className='input_file_label'>
               <p className='input_file_text'>{config.translations.other_data.uploading_files_label}</p>
               <div className='img_container'>
-                {!loader && !check && <img src={config.urls.media + 'upload.svg'} alt='' />}
+                {!loader && !check && <img className='img' src={config.urls.media + 'upload.svg'} alt='' />}
                 {loader && <img className='file_loader' src={config.urls.media + 'loader.svg'} alt='' />}
-                {check && <img src={config.urls.media + 'check.svg'} alt='' />}
+                {check && <img className='img' src={config.urls.media + 'check.svg'} alt='' />}
               </div>
             </div>
           </label>
