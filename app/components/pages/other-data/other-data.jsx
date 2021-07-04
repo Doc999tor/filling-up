@@ -110,6 +110,7 @@ const OtherData = ({ history }) => {
           setLoader(false)
         }
       })
+        .catch(err => console.error(err))
     }
   }
 
