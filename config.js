@@ -25,6 +25,8 @@ var config = {
       uploading_files_label: 'Click here to upload a file',
       permission_strip_title: 'Permission for advertising',
       checkbox_label: 'I want to receive Advertising Newsletters and Special Offers from {business_name}',
+      error_text_415: 'error_text error_text error_text error_text error_text 415',
+      error_text_413: 'error_text error_text error_text error_text error_text 413',
       continue_btn_label: 'That\'s it',
       gender: {
         male: 'Male',

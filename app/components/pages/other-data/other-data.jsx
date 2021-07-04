@@ -14,6 +14,7 @@ let timeout
 const OtherData = ({ history }) => {
   const [loading, setLoading] = useState(false)
   const [loader, setLoader] = useState(false)
+  const [uploadError, setUploadError] = useState(null)
   const [check, setCheck] = useState(false)
   const [permitAds, setPermitAds] = useState((sessionStorage.getItem('permit_ads') === 'true' ? true : false ) || config.data.permit_ads)
   useEffect(() => {
@@ -78,10 +79,12 @@ const OtherData = ({ history }) => {
   }
 
   const handleAddFile = ({ target }) => {
+    if (loader) return false
     const { files } = target
     const file = files[0]
     if (file) {
       setLoader(true)
+      setUploadError(null)
       const c = new URL(document.location).searchParams.get('c')
       const b = new URL(document.location).searchParams.get('b')
       const data = new FormData()
@@ -98,9 +101,16 @@ const OtherData = ({ history }) => {
             setCheck(false)
           }, 2000)
         }
+        if (r.status === 413) {
+          setUploadError(413)
+          setLoader(false)
+        }
+        if (r.status === 415) {
+          setUploadError(415)
+          setLoader(false)
+        }
       })
     }
-    // console.log({file})
   }
 
   const continueStep = () => {
@@ -164,6 +174,8 @@ const OtherData = ({ history }) => {
                 {check && <img className='img' src={config.urls.media + 'check.svg'} alt='' />}
               </div>
             </div>
+            {uploadError == 415 && <p className='error_text'>{config.translations.other_data.error_text_415}</p>}
+            {uploadError == 413 && <p className='error_text'>{config.translations.other_data.error_text_413}</p>}
           </label>
         </div>
         <div className='checkbox_container'>

@@ -39,6 +39,9 @@
           z-index 2
   .upload_files_strip
     padding 1rem
+    .uploading_wrap
+      display block
+      min-height 2.75rem
     .input_file
       display none
     .input_file_label
@@ -53,6 +56,7 @@
         display flex
         justify-content center
         width 4.5rem
+        min-height 1.5rem
         .img
           animation 0.3s init_img linear
           @keyframes init_img
@@ -66,7 +70,12 @@
             transform rotate(0deg)
           to
             transform rotate(360deg)
-
+    .error_text
+      margin 0
+      line-height 1
+      font-size 0.625rem
+      color var(--active-color)
+      width calc(100% - 4.5rem)
   .checkbox_container
     -moz-padding-start 1rem
     -webkit-padding-start 1rem
