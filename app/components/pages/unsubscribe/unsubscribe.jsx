@@ -111,11 +111,11 @@ const Unsubscribe = () => {
       </form>
         : <SendingPopup isActivePopup={isActivePopup} success_label={config.translations.unsubscribe?.success} sending_label={config.translations.unsubscribe?.sending} sendingPopup={sendingPopup} />}
     </div>
-    <footer>
+    {/*<footer>
       <a href={config.urls.home_site}>
         <img src={`${config.urls.media}logo_blue.svg`} alt='' />
       </a>
-    </footer>
+    </footer>*/}
   </div>
 }
 
