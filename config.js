@@ -1,5 +1,6 @@
 var config = {
   locale: 'en',
+  isUserFilesUploadingPermitted: false,
   translations: {
     language: 'en',
     greeting_page: {
@@ -21,9 +22,12 @@ var config = {
     other_data: {
       gender_strip_title: 'Select gender',
       birthdate_strip_title: 'Select birthdate',
+      uploading_files_title: 'Uploading files',
+      uploading_files_label: 'Click here to upload a file',
       permission_strip_title: 'Permission for advertising',
-      permission_disclaimer: 'By joining to the customers club you agree to {terms_of_use} of Lista',
       checkbox_label: 'I want to receive Advertising Newsletters and Special Offers from {business_name}',
+      error_text_415: 'error_text error_text error_text error_text error_text 415',
+      error_text_413: 'error_text error_text error_text error_text error_text 413',
       continue_btn_label: 'That\'s it',
       gender: {
         male: 'Male',
@@ -68,6 +72,7 @@ var config = {
     filling_up: '/filling-up',
     fb_script: './scripts/fb_script.js',
     photo_r: '/filling-up/photo',
+    api_upload_files: 'https://api.bewebmaster.co.il/filling-up/files',
     notes: '/filling-up/notes',
     other_data: '/other_data',
     client_data: './assets/clients/',

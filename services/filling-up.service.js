@@ -22,6 +22,14 @@ export const postPhotoService = body => {
   }
   return mainRequestService(url, options)
 }
+export const postService = (url, body) => {
+  const options = {
+    mode: 'cors',
+    method: 'POST',
+    body
+  }
+  return mainRequestService(url, options)
+}
 
 export const postNoteService = body => {
   const url = config.urls.main + config.urls.notes

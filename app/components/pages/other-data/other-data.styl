@@ -37,6 +37,45 @@
           font-size 1rem
           padding 0 0.5rem
           z-index 2
+  .upload_files_strip
+    padding 1rem
+    .uploading_wrap
+      display block
+      min-height 2.75rem
+    .input_file
+      display none
+    .input_file_label
+      margin-top 0.5rem
+      display flex
+      align-items center
+      .input_file_text
+        font-size 0.875rem
+        flex-grow 1
+        margin 0
+      .img_container
+        display flex
+        justify-content center
+        width 4.5rem
+        min-height 1.5rem
+        .img
+          animation 0.3s init_img linear
+          @keyframes init_img
+            0%
+              transform scale(0.3)
+      .file_loader
+        animation 1s spin infinite linear
+        opacity .8
+        @keyframes spin
+          from
+            transform rotate(0deg)
+          to
+            transform rotate(360deg)
+    .error_text
+      margin 0
+      line-height 1
+      font-size 0.625rem
+      color var(--active-color)
+      width calc(100% - 4.5rem)
   .checkbox_container
     -moz-padding-start 1rem
     -webkit-padding-start 1rem
