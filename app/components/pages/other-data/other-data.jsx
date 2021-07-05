@@ -16,7 +16,7 @@ const OtherData = ({ history }) => {
   const [loader, setLoader] = useState(false)
   const [uploadError, setUploadError] = useState(null)
   const [check, setCheck] = useState(false)
-  const [permitAds, setPermitAds] = useState((sessionStorage.getItem('permit_ads') === 'true' ? true : false ) || config.data.permit_ads)
+  const [permitAds, setPermitAds] = useState((sessionStorage.getItem('permit_ads') === 'true') || config.data.permit_ads)
   useEffect(() => {
     return () => {
       clearTimeout(timeout)
@@ -69,7 +69,7 @@ const OtherData = ({ history }) => {
     const c = new URL(document.location).searchParams.get('c')
     const b = new URL(document.location).searchParams.get('b')
     const genderValue = gender === 'male' || gender === 'female' ? gender : null
-    let body = `b=${b}&c=${c}&gender=${genderValue || null}&permit_ads=${permitAds}&birthyear=${birthyear}&birthdate=${birthdate}`
+    const body = `b=${b}&c=${c}&gender=${genderValue || null}&permit_ads=${permitAds}&birthyear=${birthyear}&birthdate=${birthdate}`
     fillingPatchService(body).then(r => {
       if (r.status === 204) {
         history.push({ pathname: config.urls.baseUrl + config.urls.last_page, search: config.urls.params })
@@ -163,22 +163,24 @@ const OtherData = ({ history }) => {
             />
           </div>
         </div>
-        <div className='upload_files_strip'>
-          <h3 className='upload_title'>{config.translations.other_data.uploading_files_title}</h3>
-          <label className='uploading_wrap'>
-            <input className='input_file' type='file' onChange={handleAddFile} />
-            <div className='input_file_label'>
-              <p className='input_file_text'>{config.translations.other_data.uploading_files_label}</p>
-              <div className='img_container'>
-                {!loader && !check && <img className='img' src={config.urls.media + 'upload.svg'} alt='' />}
-                {loader && <img className='file_loader' src={config.urls.media + 'loader.svg'} alt='' />}
-                {check && <img className='img' src={config.urls.media + 'check.svg'} alt='' />}
+        {config.isUserFilesUploadingPermitted && (
+          <div className='upload_files_strip'>
+            <h3 className='upload_title'>{config.translations.other_data.uploading_files_title}</h3>
+            <label className='uploading_wrap'>
+              <input className='input_file' type='file' onChange={handleAddFile} />
+              <div className='input_file_label'>
+                <p className='input_file_text'>{config.translations.other_data.uploading_files_label}</p>
+                <div className='img_container'>
+                  {!loader && !check && <img className='img' src={config.urls.media + 'upload.svg'} alt='' />}
+                  {loader && <img className='file_loader' src={config.urls.media + 'loader.svg'} alt='' />}
+                  {check && <img className='img' src={config.urls.media + 'check.svg'} alt='' />}
+                </div>
               </div>
-            </div>
-            {uploadError == 415 && <p className='error_text'>{config.translations.other_data.error_text_415}</p>}
-            {uploadError == 413 && <p className='error_text'>{config.translations.other_data.error_text_413}</p>}
-          </label>
-        </div>
+              {uploadError == 415 && <p className='error_text'>{config.translations.other_data.error_text_415}</p>}
+              {uploadError == 413 && <p className='error_text'>{config.translations.other_data.error_text_413}</p>}
+            </label>
+          </div>
+        )}
         <div className='checkbox_container'>
           <div className='permission_strip'>
             <div>

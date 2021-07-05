@@ -1,5 +1,6 @@
 var config = {
   locale: 'en',
+  isUserFilesUploadingPermitted: false,
   translations: {
     language: 'en',
     greeting_page: {
