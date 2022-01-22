@@ -7,9 +7,9 @@ import './last-page.styl'
 const LastPage = () => {
   return (
     <div id='last_page'>
-      <a href={(config.business_links && config.business_links[0]?.url) || config.footer.data[0]?.link} className='close_button'>
-        <img src={config.urls.media + 'ic_close.svg'} alt='' />
-      </a>
+      {
+        config.business_links && config.business_links[0]?.url && <a href={(config.business_links && config.business_links[0]?.url) || config.footer.data[0]?.link} className='close_button'><img src={config.urls.media + 'ic_close.svg'} alt='' /></a>
+      }
       <div className='window_helper'>
         <div className='window'>
           <img className='hand' src={config.urls.media + '3d_hand_ok@2x.png'} alt='hand_ok' />
@@ -32,9 +32,9 @@ const LastPage = () => {
       <div className='links'>
         {config.business_links?.map(({ url, icon, type }) => <a key={url} className={type} href={url}><img src={config.urls.media + icon} /></a>)}
       </div>
-      <footer className='footer'>
+      {/*<footer className='footer'>
         {config.footer?.data?.map(({ name, link, icon }) => <a key={link} href={link}>{icon && <img src={config.urls.media + icon} />}{name && config.translations.last_page.footer[name]}</a>)}
-      </footer>
+      </footer>*/}
     </div>
   )
 }
