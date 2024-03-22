@@ -2,13 +2,22 @@ var config = {
   locale: 'en',
   isUserFilesUploadingPermitted: false,
   translations: {
-    language: 'en',
+    // language: 'en',
     greeting_page: {
       greeting_title: 'Hello!',
       greeting_title_with_name: 'Hello, {name}!',
       greeting_subtitle: 'You can autofill all the data with your Facebook account just in one tap! Or fill in the questionnaire manually',
       fb_btn_label: 'Continue with Facebook',
       fill_in_btn_label: 'Fill In the Form'
+    },
+    appointment_confirmation: {
+      title: 'Hello, {client_name}',
+      subtitle: 'Your appointment is {appointment_date} at {appointment_time} for {services} at {business_name}',
+      btn_label: 'Confirm the appointment',
+    },
+    ac_last_page: {
+      title: 'Nicely Done!',
+      subtitle: 'Thank you so much for\nyour efforts. Have a nice day and see you soon!',
     },
     last_page: {
       last_page_title: 'Nicely Done!',
@@ -77,6 +86,9 @@ var config = {
     other_data: '/other_data',
     client_data: './assets/clients/',
     last_page: '/last_page',
+    appointment_confirmation: '/ac',
+    api_appointment_confirmation: 'https://api.bewebmaster.co.il/appointments/{appointment_id}/confirmation',
+    ac_last_page: '/ac_last_page',
     media: './assets/media/',
     photo: '/photo',
     baseUrl: '',
@@ -94,6 +106,12 @@ var config = {
     note: '',
     permit_ads: false,
     max_side: 1000
+  },
+  appointment_data: {
+    id: 7,
+    name: 'Ahuva Ben Shushan',
+    start: '2024-03-24 09:00:00',
+    services: [{ id: 1, name: 'Service1' }, { id: 2, name: 'Service2' }]
   },
   isRTL: false,
   address_based: true,

@@ -43,3 +43,12 @@ export const postNoteService = body => {
   }
   return mainRequestService(url, options)
 }
+
+export const appointmentConfirmationService = () => {
+  const url = config.urls.main + config.urls.api_appointment_confirmation.replace('{appointment_id}', config.appointment_data.id)
+  const options = {
+    mode: 'cors',
+    method: 'PUT'
+  }
+  return mainRequestService(url, options)
+}
