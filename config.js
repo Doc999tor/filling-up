@@ -92,7 +92,8 @@ var config = {
     media: './assets/media/',
     photo: '/photo',
     baseUrl: '',
-    params: '?b=123&c=sdfs2d1f'
+    fu_params: '?b=123&c=sdfs2d1f',
+    ac_params: '?b=123&c=sdfs2d1f&a=123',
   },
   data: {
     name: 'Ahuva Ben Shushan',

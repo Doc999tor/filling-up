@@ -8,17 +8,13 @@ const AppointmentConfirmation = ({ history }) => {
   const [loader, setLoader] = useState(false)
 
   useEffect(() => {
-    history.replace({ pathname: config.urls.baseUrl + config.urls.appointment_confirmation, search: config.urls.params })
-    const b = new URL(document.location).searchParams.get('b')
-    const c = new URL(document.location).searchParams.get('c')
-    const query = { c, b }
-    query.c && query.b && sessionStorage.setItem('fill_query', JSON.stringify(query))
+    history.replace({ pathname: config.urls.baseUrl + config.urls.appointment_confirmation, search: config.urls.ac_params })
   }, [])
   const handleConfirm = () => {
     setLoader(true)
     appointmentConfirmationService().then(r => {
       if (r.status === 204) {
-        history.push({pathname: config.urls.baseUrl + config.urls.ac_last_page, search: config.urls.params})
+        history.push({ pathname: config.urls.baseUrl + config.urls.ac_last_page, search: config.urls.ac_params })
       }
     })
   }

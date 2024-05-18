@@ -121,7 +121,7 @@ const FillIn = props => {
         photo ? fillingPhotoPostService(photoData) : Promise.resolve('resolved')
       ]
       Promise.all(promises).then(() => {
-        props.history.push({ pathname: config.urls.baseUrl + config.urls.other_data, search: config.urls.params })
+        props.history.push({ pathname: config.urls.baseUrl + config.urls.other_data, search: config.urls.fu_params })
       })
       return false
     }

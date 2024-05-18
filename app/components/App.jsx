@@ -14,11 +14,11 @@ export const App = () => {
   const history = useHistory()
   useEffect(() => {
     const pageName = new URL(document.location).searchParams.get('page')
-    if (pageName === config.urls.photo.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.photo, search: config.urls.params })
-    if (pageName === config.urls.other_data.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.other_data, search: config.urls.params })
-    if (pageName === config.urls.last_page.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.last_page, search: config.urls.params })
-    if (pageName === config.urls.appointment_confirmation.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.appointment_confirmation, search: config.urls.params })
-    if (pageName === config.urls.ac_last_page.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.ac_last_page, search: config.urls.params })
+    if (pageName === config.urls.photo.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.photo, search: config.urls.fu_params })
+    if (pageName === config.urls.other_data.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.other_data, search: config.urls.fu_params })
+    if (pageName === config.urls.last_page.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.last_page, search: config.urls.fu_params })
+    if (pageName === config.urls.appointment_confirmation.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.appointment_confirmation, search: config.urls.ac_params })
+    if (pageName === config.urls.ac_last_page.slice(1)) history.replace({ pathname: config.urls.baseUrl + config.urls.ac_last_page, search: config.urls.ac_params })
   }, [])
   return (
     <Layout>
