@@ -1,6 +1,7 @@
 var config = {
   locale: 'en',
   isUserFilesUploadingPermitted: false,
+  isFBActive: false,
   translations: {
     language: 'en',
     greeting_page: {
