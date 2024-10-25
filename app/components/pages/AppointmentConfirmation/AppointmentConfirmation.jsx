@@ -4,7 +4,6 @@ import { appointmentConfirmationService } from 'project-services/filling-up.serv
 import '../greeting/greeting.styl'
 
 const AppointmentConfirmation = ({ history }) => {
-
   const [loader, setLoader] = useState(false)
 
   useEffect(() => {
@@ -31,10 +30,12 @@ const AppointmentConfirmation = ({ history }) => {
       <div className='common_container'>
         <p className='greeting_subtitle'>{
           config.translations.appointment_confirmation?.subtitle
-            .replace('{appointment_date}', new Intl.RelativeTimeFormat(config.locale, { numeric: 'auto' }).format(moment(config.appointment_data.start).diff(moment().format('YYYY-MM-DD'), 'days'), 'day'))
+            .replace('{appointment_date}', moment(config.appointment_data.start).format('DD/MM'))
+            .replace('{relative_date}', new Intl.RelativeTimeFormat(config.locale, { numeric: 'auto' }).format(moment(config.appointment_data.start).diff(moment().format('YYYY-MM-DD'), 'days'), 'day'))
             .replace('{appointment_time}', moment(config.appointment_data.start).format('HH:mm'))
             .replace('{services}', new Intl.ListFormat(config.locale, { style: 'long', type: 'conjunction' }).format(config.appointment_data.services.map(({ name }) => name)))
             .replace('{business_name}', config.business_name)
+            .replace('{worker_name}', config.appointment_data.worker_name)
         }
         </p>
         <div className='btn_section' onClick={handleConfirm}>

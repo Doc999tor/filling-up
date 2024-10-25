@@ -14,9 +14,9 @@ module.exports = {
   entry: './app/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: process.env.NODE_ENV === 'development' ? '/' : '/public/filling-up/',
-    chunkFilename: process.env.NODE_ENV === 'development' ? '[name].chunk.js' : '[name].[contenthash:6].chunk.js',
-    filename: process.env.NODE_ENV === 'development' ? 'main.bundle.js' : 'main.[contenthash:6].bundle.min.js'
+    publicPath: process.env.NODE_ENV === 'development' ? '/' : '/public/appointment_confirmation/',
+    chunkFilename: process.env.NODE_ENV === 'development' ? '[name].chunk.js' : '[name].[contenthash:2].chunk.js',
+    filename: process.env.NODE_ENV === 'development' ? 'main.bundle.js' : 'main.[contenthash:2].bundle.min.js'
   },
   module: {
     rules: [
