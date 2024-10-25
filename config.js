@@ -2,13 +2,22 @@ var config = {
   locale: 'en',
   isUserFilesUploadingPermitted: false,
   translations: {
-    language: 'en',
+    // language: 'en',
     greeting_page: {
       greeting_title: 'Hello!',
       greeting_title_with_name: 'Hello, {name}!',
       greeting_subtitle: 'You can autofill all the data with your Facebook account just in one tap! Or fill in the questionnaire manually',
       fb_btn_label: 'Continue with Facebook',
       fill_in_btn_label: 'Fill In the Form'
+    },
+    appointment_confirmation: {
+      title: 'Hello, {client_name}',
+      subtitle: 'Your appointment is {appointment_date} ({relative_date}) at {appointment_time} for {services} at {business_name} with {worker_name}',
+      btn_label: 'Confirm the appointment',
+    },
+    ac_last_page: {
+      title: 'Nicely Done!',
+      subtitle: 'Thank you so much for\nyour efforts. Have a nice day and see you soon!',
     },
     last_page: {
       last_page_title: 'Nicely Done!',
@@ -67,20 +76,24 @@ var config = {
     }
   },
   urls: {
-    add_address: `https://api.bewebmaster.co.il/settings/maps-api-key?token=${token}`,
-    main: 'https://api.bewebmaster.co.il',
+    add_address: `http://api.bewebmaster.co.il/settings/maps-api-key?token=${token}`,
+    main: 'http://api.bewebmaster.co.il',
     filling_up: '/filling-up',
     fb_script: './scripts/fb_script.js',
     photo_r: '/filling-up/photo',
-    api_upload_files: 'https://api.bewebmaster.co.il/filling-up/files',
+    api_upload_files: 'http://api.bewebmaster.co.il/filling-up/files',
     notes: '/filling-up/notes',
     other_data: '/other_data',
     client_data: './assets/clients/',
     last_page: '/last_page',
+    appointment_confirmation: '/ac',
+    api_appointment_confirmation: 'http://api.bewebmaster.co.il/appointments/{appointment_id}/confirmation',
+    ac_last_page: '/ac_last_page',
     media: './assets/media/',
     photo: '/photo',
-    baseUrl: '',
-    params: '?b=123&c=sdfs2d1f'
+    baseUrl: '/filling-up',
+    fu_params: '?b=123&c=sdfs2d1f',
+    ac_params: '?b=123&c=sdfs2d1f&a=123',
   },
   data: {
     name: 'Ahuva Ben Shushan',
@@ -94,6 +107,12 @@ var config = {
     note: '',
     permit_ads: false,
     max_side: 1000
+  },
+  appointment_data: {
+    id: 7,
+    name: 'Ahuva Ben Shushan',
+    start: '2024-03-24 09:00:00',
+    services: [{ id: 1, name: 'Service1' }, { id: 2, name: 'Service2' }]
   },
   isRTL: false,
   address_based: true,

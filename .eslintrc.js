@@ -25,10 +25,6 @@ module.exports = {
   ],
   "rules": {
     "indent": [2,2],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
     "quotes": [
       "error",
       "single"
@@ -46,7 +42,7 @@ module.exports = {
       }
     ],
     "arrow-parens": ["error", "as-needed"],
-    "camelcase": "warn",
+    "camelcase": "off",
     "vars-on-top": 1,
     "no-console": 1
   }

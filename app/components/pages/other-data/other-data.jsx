@@ -72,7 +72,7 @@ const OtherData = ({ history }) => {
     const body = `b=${b}&c=${c}&gender=${genderValue || null}&permit_ads=${permitAds}&birthyear=${birthyear}&birthdate=${birthdate}`
     fillingPatchService(body).then(r => {
       if (r.status === 204) {
-        history.push({ pathname: config.urls.baseUrl + config.urls.last_page, search: config.urls.params })
+        history.push({ pathname: config.urls.baseUrl + config.urls.last_page, search: config.urls.fu_params })
       }
     }
     )

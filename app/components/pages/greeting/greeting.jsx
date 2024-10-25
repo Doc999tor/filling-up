@@ -11,7 +11,7 @@ const Greeting = ({ history }) => {
   }
   useEffect(() => {
     loadFB()
-    history.replace({ pathname: config.urls.baseUrl, search: config.urls.params })
+    history.replace({ pathname: config.urls.baseUrl, search: config.urls.fu_params })
     const b = new URL(document.location).searchParams.get('b')
     const c = new URL(document.location).searchParams.get('c')
     const query = { c, b }
@@ -38,7 +38,7 @@ const Greeting = ({ history }) => {
               }
             }
             fillingPatchService(body).then(r => {
-              if (r.status === 204) history.push({ pathname: config.urls.baseUrl + config.urls.other_data, search: config.urls.params })
+              if (r.status === 204) history.push({ pathname: config.urls.baseUrl + config.urls.other_data, search: config.urls.fu_params })
             })
           }
         })
@@ -66,7 +66,7 @@ const Greeting = ({ history }) => {
         <p className='greeting_subtitle'>{config.translations.greeting_page?.greeting_subtitle}</p>
         <div className='btn_section'>
           <button onClick={facebookLogin} className={'fb_button' + (highlightBtn ? ' error_btn' : '')}><img src={config.urls.media + 'ic_facebook.svg'} alt='fb_button' />{config.translations.greeting_page?.fb_btn_label}</button>
-          <Link to={{ pathname: config.urls.baseUrl + config.urls.photo, search: config.urls.params }} className='fill_in_button'><img src={config.urls.media + 'ic_fill_in.svg'} alt='fill_in_button' />{config.translations.greeting_page?.fill_in_btn_label}</Link>
+          <Link to={{ pathname: config.urls.baseUrl + config.urls.photo, search: config.urls.fu_params }} className='fill_in_button'><img src={config.urls.media + 'ic_fill_in.svg'} alt='fill_in_button' />{config.translations.greeting_page?.fill_in_btn_label}</Link>
         </div>
       </div>
 
