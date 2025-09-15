@@ -25,7 +25,13 @@ const ACLastPage = () => {
       </div>
 
       <div className='links ac_links'>
-        {config.business_links?.map(({ url, icon, type }) => <a key={url} className={type} href={url}><img src={config.urls.media + icon} /></a>)}
+        {config.business_links?.map(({ url, icon, type }) => <a
+          key={url}
+          className={type}
+          target='_blank'
+          rel='noopener noreferrer'
+          href={url}
+        ><img src={config.urls.media + icon} /></a>)}
       </div>
     </div>
   )

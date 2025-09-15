@@ -42,6 +42,8 @@ module.exports = {
       }
     ],
     "arrow-parens": ["error", "as-needed"],
+    "react/jsx-curly-spacing": "off",
+    "react/prop-types": "off",
     "camelcase": "off",
     "vars-on-top": 1,
     "no-console": 1
