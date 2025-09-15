@@ -65,6 +65,8 @@ const FillIn = props => {
 
   const [photo, setPhoto] = useState(sessionStorage.getItem('photo') || '')
   const [photoName, setPhotoName] = useState(sessionStorage.getItem('photoName') || '')
+  // const [photo, setPhoto] = useState(sessionStorage.getItem('photo') || config.urls.client_data + config.data.profile_image || '')
+  // const [photoName, setPhotoName] = useState(sessionStorage.getItem('photoName') || config.data.profile_image || '')
 
   const callbackPhoto = photo => {
     setPhoto(photo)

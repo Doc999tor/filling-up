@@ -12,7 +12,9 @@ var config = {
     },
     appointment_confirmation: {
       title: 'Hello, {client_name}',
-      subtitle: 'Your appointment is {appointment_date} ({relative_date}) at {appointment_time} for {services} at {business_name} with {worker_name}',
+      subtitle: 'Your appointment is {appointment_date} ({relative_date}) at {appointment_time}\nfor {services}\nat {business_name} with {worker_name}',
+      subtitle_week: 'Your appointment is {relative_date} at {appointment_time}\nfor {services}\nat {business_name} with {worker_name}',
+      subtitle_today: 'Your appointment is at {appointment_time}\nfor {services}\nat {business_name} with {worker_name}',
       btn_label: 'Confirm the appointment',
     },
     ac_last_page: {
@@ -77,7 +79,7 @@ var config = {
   },
   urls: {
     add_address: `http://api.bewebmaster.co.il/settings/maps-api-key?token=${token}`,
-    main: 'http://api.bewebmaster.co.il',
+    main: '',
     filling_up: '/filling-up',
     fb_script: './scripts/fb_script.js',
     photo_r: '/filling-up/photo',
@@ -91,9 +93,9 @@ var config = {
     ac_last_page: '/ac_last_page',
     media: './assets/media/',
     photo: '/photo',
-    baseUrl: '/filling-up',
+    baseUrl: '',
     fu_params: '?b=123&c=sdfs2d1f',
-    ac_params: '?b=123&c=sdfs2d1f&a=123',
+    ac_params: '?b=123&a=123',
   },
   data: {
     name: 'Ahuva Ben Shushan',
@@ -111,7 +113,8 @@ var config = {
   appointment_data: {
     id: 7,
     name: 'Ahuva Ben Shushan',
-    start: '2024-03-24 09:00:00',
+    start: moment().add(1, 'day').add(1, 'hour').startOf('hour').format('YYYY-MM-DD HH:mm:ss'),
+    worker_name: 'Worker Name',
     services: [{ id: 1, name: 'Service1' }, { id: 2, name: 'Service2' }]
   },
   isRTL: false,
@@ -124,6 +127,9 @@ var config = {
   business_links: [
     { icon: 'link_facebook.svg', url: '/facebook_url', type: 'facebook' },
     { icon: 'link_instagram.svg', url: '/instagram', type: 'instagram' },
+    { icon: 'logo_waze.svg', url: 'https://waze.com/ul?q={address}', type: 'map' },
+    { icon: 'map-pin.svg', url: 'https://maps.google.com/?q={address}', type: 'map' },
+    { icon: 'whatsapp.svg', url: 'https://wa.me/972544513371', type: 'whatsapp' },
     {
       icon: 'link_website.svg',
       type: 'website',

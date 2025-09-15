@@ -17,6 +17,36 @@ const AppointmentConfirmation = ({ history }) => {
       }
     })
   }
+
+  function getSubtitle () {
+    const start = moment(config.appointment_data.start)
+    const daysFromToday = start.diff(moment(), 'days')
+    const formatter = new Intl.RelativeTimeFormat(config.locale, { numeric: 'auto' })
+    const listFormatter = new Intl.ListFormat(config.locale, { style: 'long', type: 'conjunction' })
+    if (daysFromToday === 0) {
+      return config.translations.appointment_confirmation?.subtitle_today
+        .replace('{appointment_time}', start.format('HH:mm'))
+        .replace('{services}', listFormatter.format(config.appointment_data.services.map(({ name }) => name)))
+        .replace('{business_name}', config.business_name)
+        .replace('{worker_name}', config.appointment_data.worker_name)
+    } else if (daysFromToday < 4) {
+      return config.translations.appointment_confirmation?.subtitle_week
+        .replace('{relative_date}', formatter.format(daysFromToday, 'day'))
+        .replace('{appointment_time}', start.format('HH:mm'))
+        .replace('{services}', listFormatter.format(config.appointment_data.services.map(({ name }) => name)))
+        .replace('{business_name}', config.business_name)
+        .replace('{worker_name}', config.appointment_data.worker_name)
+    } else {
+      return config.translations.appointment_confirmation?.subtitle
+        .replace('{appointment_date}', start.format('DD/MM'))
+        .replace('{relative_date}', formatter.format(daysFromToday, 'day'))
+        .replace('{appointment_time}', start.format('HH:mm'))
+        .replace('{services}', listFormatter.format(config.appointment_data.services.map(({ name }) => name)))
+        .replace('{business_name}', config.business_name)
+        .replace('{worker_name}', config.appointment_data.worker_name)
+    }
+  }
+
   return (
     <div className='greeting'>
       <div className='window_helper'>
@@ -28,15 +58,7 @@ const AppointmentConfirmation = ({ history }) => {
         <p>{config.translations.appointment_confirmation?.title?.replace('{client_name}', config.appointment_data.name)}</p>
       </div>
       <div className='common_container'>
-        <p className='greeting_subtitle'>{
-          config.translations.appointment_confirmation?.subtitle
-            .replace('{appointment_date}', moment(config.appointment_data.start).format('DD/MM'))
-            .replace('{relative_date}', new Intl.RelativeTimeFormat(config.locale, { numeric: 'auto' }).format(moment(config.appointment_data.start).diff(moment().format('YYYY-MM-DD'), 'days'), 'day'))
-            .replace('{appointment_time}', moment(config.appointment_data.start).format('HH:mm'))
-            .replace('{services}', new Intl.ListFormat(config.locale, { style: 'long', type: 'conjunction' }).format(config.appointment_data.services.map(({ name }) => name)))
-            .replace('{business_name}', config.business_name)
-            .replace('{worker_name}', config.appointment_data.worker_name)
-        }
+        <p className='greeting_subtitle'>{ getSubtitle() }
         </p>
         <div className='btn_section' onClick={handleConfirm}>
           <button disabled={loader} className='fill_in_button'>
