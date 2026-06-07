@@ -15,6 +15,8 @@ var config = {
       subtitle: 'Your appointment is {appointment_date} ({relative_date}) at {appointment_time}\nfor {services}\nat {business_name} with {worker_name}',
       subtitle_week: 'Your appointment is {relative_date} at {appointment_time}\nfor {services}\nat {business_name} with {worker_name}',
       subtitle_today: 'Your appointment is at {appointment_time}\nfor {services}\nat {business_name} with {worker_name}',
+      subtitle_deleted: 'this appointment is deleted',
+      subtitle_confirmed: 'this appointment is already confirmed',
       btn_label: 'Confirm the appointment',
     },
     ac_last_page: {
@@ -113,8 +115,10 @@ var config = {
   appointment_data: {
     id: 7,
     name: 'Ahuva Ben Shushan',
-    start: moment().add(1, 'day').add(1, 'hour').startOf('hour').format('YYYY-MM-DD HH:mm:ss'),
+    start: moment().add(2, 'day').add(1, 'hour').startOf('hour').format('YYYY-MM-DD HH:mm:ss'),
     worker_name: 'Worker Name',
+    is_deleted: false,
+    is_confirmed: false,
     services: [{ id: 1, name: 'Service1' }, { id: 2, name: 'Service2' }]
   },
   isRTL: false,

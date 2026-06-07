@@ -19,25 +19,31 @@ const AppointmentConfirmation = ({ history }) => {
   }
 
   function getSubtitle () {
+    if (config.appointment_data.is_deleted) {
+      return config.translations.appointment_confirmation.subtitle_deleted
+    }
+    if (config.appointment_data.is_confirmed) {
+      return config.translations.appointment_confirmation.subtitle_confirmed
+    }
     const start = moment(config.appointment_data.start)
-    const daysFromToday = start.diff(moment(), 'days')
+    const daysFromToday = start.clone().startOf('day').diff(moment().startOf('day'), 'days')
     const formatter = new Intl.RelativeTimeFormat(config.locale, { numeric: 'auto' })
     const listFormatter = new Intl.ListFormat(config.locale, { style: 'long', type: 'conjunction' })
     if (daysFromToday === 0) {
-      return config.translations.appointment_confirmation?.subtitle_today
+      return config.translations.appointment_confirmation.subtitle_today
         .replace('{appointment_time}', start.format('HH:mm'))
         .replace('{services}', listFormatter.format(config.appointment_data.services.map(({ name }) => name)))
         .replace('{business_name}', config.business_name)
         .replace('{worker_name}', config.appointment_data.worker_name)
     } else if (daysFromToday < 4) {
-      return config.translations.appointment_confirmation?.subtitle_week
+      return config.translations.appointment_confirmation.subtitle_week
         .replace('{relative_date}', formatter.format(daysFromToday, 'day'))
         .replace('{appointment_time}', start.format('HH:mm'))
         .replace('{services}', listFormatter.format(config.appointment_data.services.map(({ name }) => name)))
         .replace('{business_name}', config.business_name)
         .replace('{worker_name}', config.appointment_data.worker_name)
     } else {
-      return config.translations.appointment_confirmation?.subtitle
+      return config.translations.appointment_confirmation.subtitle
         .replace('{appointment_date}', start.format('DD/MM'))
         .replace('{relative_date}', formatter.format(daysFromToday, 'day'))
         .replace('{appointment_time}', start.format('HH:mm'))
@@ -54,19 +60,23 @@ const AppointmentConfirmation = ({ history }) => {
           <img className='business-logo' src={config.business_logo} alt='business-logo' />
         </div>
       </div>
-      <div className='title_text'>
-        <p>{config.translations.appointment_confirmation?.title?.replace('{client_name}', config.appointment_data.name)}</p>
-      </div>
+      {!config.appointment_data.is_deleted && (
+        <div className='title_text'>
+          <p>{config.translations.appointment_confirmation.title.replace('{client_name}', config.appointment_data.name)}</p>
+        </div>
+      )}
       <div className='common_container'>
         <p className='greeting_subtitle'>{ getSubtitle() }
         </p>
-        <div className='btn_section' onClick={handleConfirm}>
-          <button disabled={loader} className='fill_in_button'>
-            {!loader && <img src={config.urls.media + 'check-circle.svg'} alt='fill_in_button' />}
-            {loader && <img className='loader' src={config.urls.media + 'loader.svg'} alt='' />}
-            {config.translations.appointment_confirmation?.btn_label}
-          </button>
-        </div>
+        {!(config.appointment_data.is_deleted || config.appointment_data.is_confirmed) && (
+          <div className='btn_section' onClick={handleConfirm}>
+            <button disabled={loader} className='fill_in_button'>
+              {!loader && <img src={config.urls.media + 'check-circle.svg'} alt='fill_in_button' />}
+              {loader && <img className='loader' src={config.urls.media + 'loader.svg'} alt='' />}
+              {config.translations.appointment_confirmation?.btn_label}
+            </button>
+          </div>
+        )}
       </div>
 
     </div>
