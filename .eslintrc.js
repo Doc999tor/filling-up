@@ -41,6 +41,7 @@ module.exports = {
         "vars": "all"
       }
     ],
+    "comma-dangle": "off",
     "arrow-parens": ["error", "as-needed"],
     "react/jsx-curly-spacing": "off",
     "react/prop-types": "off",
